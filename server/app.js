@@ -8,6 +8,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/Survey')
+  .then(() => {
+    console.log("Connected to the mongo DB database");
+  })
+  .catch((err) => {
+    console.log("OH NO ERROR", err);
+  })
+
 
 var app = express();
 
