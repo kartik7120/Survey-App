@@ -1,7 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React from "react";
+// import { set } from "../server/app";
 
 function App() {
+  const [state, setState] = React.useState("");
+
+  React.useEffect(function () {
+    fetch("http://localhost:9000/testServer")
+      .then((jsonData) => {
+        return jsonData.text();
+      })
+      .then((data) => {
+        setState(data);
+      })
+      .catch((err) => {
+        console.log("Some error occured  = ", err);
+      });
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +34,8 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <p>I am data from the api call from the backend {state}</p>
     </div>
   );
 }
