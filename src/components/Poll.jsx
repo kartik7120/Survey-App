@@ -5,8 +5,8 @@ import OptionsColumn from "./OptionColumn";
 function Poll(props) {
   return (
     <>
-      <Typography variant="h2" component={"h1"}>
-        I am an h1
+      <Typography variant="h2" component={"h1"} sx={{ mx: "auto", my: 0 }}>
+        Create a Poll
       </Typography>
       <Container maxWidth="md">
         <div className="poll--create">
@@ -19,7 +19,7 @@ function Poll(props) {
             <hr />
           </Divider>
           <OptionsColumn />
-          <Button variant="contained" color="warning">
+          <Button variant="contained" color="warning" type="submit">
             Add Option
           </Button>
         </div>
