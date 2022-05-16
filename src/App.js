@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
+import "./style.css";
 // import { set } from "../server/app";
 
 function App() {

@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import Home from "./routes/Home";
 import About from './routes/About';
+import Poll from './components/Poll';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +17,7 @@ root.render(
         <Route path='/' element={<App />} />
         <Route path='home' element={<Home />} />
         <Route path='about' element={<About />} />
+        <Route path='poll' element={<Poll />} />
       </Routes>
     </React.StrictMode>
   </BrowserRouter>
