@@ -18,8 +18,20 @@ function Poll(props) {
           <Divider orientation="vertical" flexItem>
             <hr />
           </Divider>
-          <Option />
-          <Option />
+          <div className="optionGrid">
+            <div>
+              <Option />
+              <Option />
+            </div>
+            <div className="side-list-on-poll">
+              <ol>
+                <li>Suggest short clear options</li>
+                <li>The more options, the better</li>
+                <li>Choose the poll duration</li>
+                <li>Options can't be edited after post creation</li>
+              </ol>
+            </div>
+          </div>
         </div>
       </Container>
     </>
