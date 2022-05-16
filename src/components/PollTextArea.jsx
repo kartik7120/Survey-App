@@ -8,7 +8,7 @@ function PollTextArea(props) {
       label="Poll description"
       placeholder="Enter description"
       multiline
-      sx={{ width: "45em" }}
+      sx={{ width: "45em", alignSelf: "flex-start" }}
     />
   );
 }

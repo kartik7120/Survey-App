@@ -3,9 +3,10 @@ import { TextField } from "@mui/material";
 function Option(props) {
   return (
     <TextField
-      helperText=" "
+      helperText=""
       id="demo-helper-text-aligned-no-helper"
-      label="Name"
+      label="Option 1"
+      sx={{ marginBottom: "0.5em", width: "30em", alignSelf: "flex-start" }}
     />
   );
 }

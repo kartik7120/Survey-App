@@ -19,6 +19,7 @@ function Poll(props) {
             <hr />
           </Divider>
           <Option />
+          <Option />
         </div>
       </Container>
     </>

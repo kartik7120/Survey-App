@@ -4,8 +4,8 @@ h1 {
 .poll--create {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  align-items: flex-start;
   border: 2px solid black;
   padding: 1em;
 }
