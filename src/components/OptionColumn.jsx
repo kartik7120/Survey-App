@@ -1,12 +1,15 @@
 import Option from "./Option";
 import ErrorIcon from "@mui/icons-material/Error";
 function OptionsColumn(props) {
+  let optionArray = [];
+  if (props.optionCount <= 6) {
+    for (let i = 1; i <= props.optionCount; i++) {
+      optionArray.push(<Option key={i * 10} optionNo={i} />);
+    }
+  }
   return (
     <div className="optionGrid">
-      <div>
-        <Option />
-        <Option />
-      </div>
+      <div>{optionArray}</div>
       <div className="side-list-on-poll">
         <ol>
           <span>

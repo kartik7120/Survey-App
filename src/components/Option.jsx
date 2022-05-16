@@ -5,7 +5,7 @@ function Option(props) {
     <TextField
       helperText=""
       id="demo-helper-text-aligned-no-helper"
-      label="Option 1"
+      label={`Option ${props.optionNo}`}
       sx={{ marginBottom: "0.5em", width: "30em", alignSelf: "flex-start" }}
       className={"option-text-feild"}
     />
