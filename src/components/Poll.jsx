@@ -14,9 +14,14 @@ function Poll(props) {
   function deleteOption(e) {
     setState((oldState) => oldState - 1);
   }
+
   return (
     <>
-      <Typography variant="h2" component={"h1"} sx={{ mx: "auto", my: 0 }}>
+      <Typography
+        variant="h2"
+        component={"h1"}
+        sx={{ textAlign: "center", marginBottom: "0.7em" }}
+      >
         Create a Poll
       </Typography>
       <Container maxWidth="md">
