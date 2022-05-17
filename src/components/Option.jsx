@@ -20,6 +20,7 @@ function Option(props) {
             aria-label="delete"
             size="large"
             sx={{ display: "inline" }}
+            onClick={props.deleteOption} // function for deleting an option
           >
             <DeleteOutlinedIcon sx={{ display: "inline" }} />
           </IconButton>
