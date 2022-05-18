@@ -11,6 +11,9 @@ function Title(props) {
       required
       value={props.formState.title}
       onChange={props.handleChangeTitle}
+      inputProps={{ maxLength: 200 }}
+      multiline
+      name="title"
     />
   );
 }

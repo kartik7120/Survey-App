@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Home from "./routes/Home";
 import About from './routes/About';
 import Poll from './components/Poll';
+import AllPolls from './routes/AllPolls';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
         <Route path='home' element={<Home />} />
         <Route path='about' element={<About />} />
         <Route path='poll' element={<Poll />} />
+        <Route path="Allpolls" element={<AllPolls />} />
       </Routes>
     </React.StrictMode>
   </BrowserRouter>
