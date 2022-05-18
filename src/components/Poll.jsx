@@ -25,25 +25,27 @@ function Poll(props) {
         Create a Poll
       </Typography>
       <Container maxWidth="md">
-        <div className="poll--create">
-          <Title />
-          <Divider orientation="vertical" flexItem>
-            <hr />
-          </Divider>
-          <PollTextArea />
-          <Divider orientation="vertical" flexItem>
-            <hr />
-          </Divider>
-          <OptionsColumn optionCount={state} deleteOption={deleteOption} />
-          <Button
-            variant="contained"
-            color="warning"
-            type="submit"
-            onClick={handleClick}
-          >
-            Add Option
-          </Button>
-        </div>
+        <form action="/poll/create">
+          <div className="poll--create">
+            <Title />
+            <Divider orientation="vertical" flexItem>
+              <hr />
+            </Divider>
+            <PollTextArea />
+            <Divider orientation="vertical" flexItem>
+              <hr />
+            </Divider>
+            <OptionsColumn optionCount={state} deleteOption={deleteOption} />
+            <Button
+              variant="contained"
+              color="warning"
+              type="submit"
+              onClick={handleClick}
+            >
+              Add Option
+            </Button>
+          </div>
+        </form>
       </Container>
     </>
   );

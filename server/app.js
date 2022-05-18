@@ -1,4 +1,7 @@
 // import router from './routes/testServer';
+// import Poll from "./models/pollSchema";
+// import { router as PollRouter } from "./routes/poll";
+const pollRouter = require("./routes/poll");
 const router = require("./routes/testServer");
 const cors = require("cors");
 var createError = require('http-errors');
@@ -32,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/testServer", router); // for testing the router the server
+app.use("/poll", pollRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
