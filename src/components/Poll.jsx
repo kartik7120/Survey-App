@@ -6,6 +6,22 @@ import React from "react";
 
 function Poll(props) {
   const [state, setState] = React.useState(2);
+  const [formState, setFormState] = React.useState({
+    title: "",
+    description: "",
+    options: [],
+  });
+
+  function handleChangeTitle(e) {
+    const titleFeild = e.target;
+    const titleFeildValue = titleFeild.value;
+    setFormState(function (oldFormState) {
+      return {
+        ...oldFormState,
+        title: titleFeildValue,
+      };
+    });
+  }
 
   function handleClick(e) {
     if (state < 6) setState((oldState) => oldState + 1);
@@ -25,9 +41,12 @@ function Poll(props) {
         Create a Poll
       </Typography>
       <Container maxWidth="md">
-        <form action="/poll/create">
+        <form action="/poll/create" method="post">
           <div className="poll--create">
-            <Title />
+            <Title
+              formState={formState}
+              handleChangeTitle={handleChangeTitle}
+            />
             <Divider orientation="vertical" flexItem>
               <hr />
             </Divider>
@@ -36,13 +55,15 @@ function Poll(props) {
               <hr />
             </Divider>
             <OptionsColumn optionCount={state} deleteOption={deleteOption} />
+            <Button variant="contained" color="warning" onClick={handleClick}>
+              Add Option
+            </Button>
             <Button
               variant="contained"
-              color="warning"
+              sx={{ alignSelf: "flex-end" }}
               type="submit"
-              onClick={handleClick}
             >
-              Add Option
+              Create poll
             </Button>
           </div>
         </form>
