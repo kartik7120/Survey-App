@@ -1,4 +1,4 @@
-import Poll from "../models/pollSchema";
+const Poll = require("../models/pollSchema");
 // import { Router } from "express";
 const express = require("express");
 const router = express.Router();
@@ -19,12 +19,14 @@ router.post("/create", async (req, res, next) => {
             vote.push(0); // initial values for votes for each option value
         }
         const newPoll = new Poll({
-            title: req.body.title,
-            description: req.body.description,
+            title: title,
+            description: description,
             options: op,
             votes: vote
         });
-        await newPoll.save();
+        await newPoll.save()
+            .then(() => console.log("Successfully saved to the database"))
+            .catch((err) => console.log("Error in saving to the database", err));
         res.send("Hello I am the poll route");
     } catch (error) {
         next(error);

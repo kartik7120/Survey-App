@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose";
+const mongoose = require("mongoose");
 
-const pollSchema = new Schema({
+const pollSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -18,4 +18,4 @@ const pollSchema = new Schema({
     }
 });
 const Poll = mongoose.model("Poll", pollSchema);
-export default Poll;
+module.exports = Poll;
