@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 import "./style.css";
+import { Outlet } from "react-router";
 // import { set } from "../server/app";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
       </header>
 
       <p>I am data from the api call from the backend {state}</p>
+      <Outlet />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Route, Routes } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
@@ -9,17 +9,21 @@ import Home from "./routes/Home";
 import About from './routes/About';
 import Poll from './components/Poll';
 import AllPolls from './routes/AllPolls';
+import Navbar from './components/Navbar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
       <Routes>
-        <Route path='/' element={<App />} />
-        <Route path='home' element={<Home />} />
-        <Route path='about' element={<About />} />
-        <Route path='poll' element={<Poll />} />
-        <Route path="Allpolls" element={<AllPolls />} />
+        <Route path='/' element={<Navbar />}>
+          <Route index element={<Home />} />
+          <Route path='home' element={<Home />} />
+          <Route path='about' element={<About />} />
+          <Route path='poll' element={<Poll />} />
+          <Route path="Allpolls" element={<AllPolls />} />
+        </Route>
+        <Route path="*" element={<div>This path does not exist</div>} />
       </Routes>
     </React.StrictMode>
   </BrowserRouter>
