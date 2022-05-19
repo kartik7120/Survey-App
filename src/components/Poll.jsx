@@ -3,9 +3,11 @@ import PollTextArea from "./PollTextArea";
 import Title from "./Title";
 import OptionsColumn from "./OptionColumn";
 import React from "react";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 function Poll(props) {
+  let navigate = useNavigate();
   const [state, setState] = React.useState(2);
+  const [isSubmited, setIsSubmited] = React.useState(false);
   const [formState, setFormState] = React.useState({
     title: "",
     description: "",
@@ -14,7 +16,6 @@ function Poll(props) {
 
   function handleChangeTitle(e) {
     const titleFeild = e.target;
-    console.log(titleFeild.id);
     const titleFeildValue = titleFeild.value;
     if (titleFeild.id === "pollTitle")
       setFormState(function (oldFormState) {
@@ -32,10 +33,13 @@ function Poll(props) {
       });
     }
   }
-
-  function handleSubmit(e) {
-    let navigate = useNavigate();
-    
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.querySelector(".createPollForm");
+    console.log("form element = ", form);
+    await form.submit();
+    setIsSubmited(true);
+    navigate("/Allpolls", { replace: true });
   }
 
   function handleClick(e) {
@@ -44,6 +48,10 @@ function Poll(props) {
 
   function deleteOption(e) {
     setState((oldState) => oldState - 1);
+  }
+
+  if (isSubmited) {
+    return <Navigate to="/Allpolls" replace={true} />;
   }
 
   return (
@@ -59,7 +67,7 @@ function Poll(props) {
         <form
           action="http://localhost:9000/poll/create"
           method="post"
-          onSubmit={handleSubmit}
+          className="createPollForm"
         >
           <div className="poll--create">
             <Title
@@ -83,7 +91,8 @@ function Poll(props) {
             <Button
               variant="contained"
               sx={{ alignSelf: "flex-end" }}
-              type="submit"
+              type="button"
+              onClick={handleSubmit}
             >
               Create poll
             </Button>

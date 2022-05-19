@@ -15,7 +15,7 @@ function Option(props) {
           sx={{ marginBottom: "0.5em", width: "30em", alignSelf: "flex-start" }}
           className={"option-text-feild"}
           required
-          name={`option ${props.optionNo}`}
+          name={`option${props.optionNo}`}
         ></TextField>
         {props.optionNo > 2 ? (
           <IconButton

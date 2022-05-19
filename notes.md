@@ -12,3 +12,9 @@
 - [ ] Store the poll results in the database
 - [ ] All polls will be associated to a particular user
 - [ ] Add the navbar bar at the top of the page to navigate
+
+### Seed data for poll create form
+
+- Title -> Top 3 programming languages that make developer life easy
+- Description -> blah blah blah wjjfoijeiogjewjg
+- Kotlin, JavaScript and Rust
