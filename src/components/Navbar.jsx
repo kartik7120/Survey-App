@@ -14,11 +14,6 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Outlet } from "react-router";
 import { NavLink } from "react-router-dom";
-// import { NavLink } from "react-router-dom";
-
-// const home = (
-//     <NavLink to={"/home"}
-// );
 
 const pages = ["home", "about", "poll", "Allpolls"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -98,7 +93,18 @@ const ResponsiveAppBar = () => {
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
-                      <NavLink to={"/home"}>{page.toUpperCase()}</NavLink>
+                      <NavLink
+                        to={"/home"}
+                        style={({ isActive }) => {
+                          return {
+                            display: "block",
+                            margin: "1rem 0",
+                            color: isActive ? "white" : "",
+                          };
+                        }}
+                      >
+                        {page.toUpperCase()}
+                      </NavLink>
                     </Typography>
                   </MenuItem>
                 ))}
