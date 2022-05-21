@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@1,200&display=swap");
+.poll-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.poll {
+  border: 2px solid black;
+  width: 55em;
+  min-height: 15em;
+  padding: 1em;
+}
+.poll > h1 {
+  font-weight: 370;
+}

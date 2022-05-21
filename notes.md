@@ -18,3 +18,5 @@
 - Title -> Top 3 programming languages that make developer life easy
 - Description -> blah blah blah wjjfoijeiogjewjg
 - Kotlin, JavaScript and Rust
+
+Adding timer in a poll
