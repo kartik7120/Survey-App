@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@1,200&display=swap");
 .poll-wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -11,6 +11,7 @@
   width: 55em;
   min-height: 15em;
   padding: 1em;
+  margin-top: 1em;
 }
 .poll > h1 {
   font-weight: 370;

@@ -3,9 +3,15 @@ const Poll = require("../models/pollSchema");
 const express = require("express");
 const router = express.Router();
 
-router.get("/allPolls", async (req, res) => {
-    
-    res.send("I will send all the data of all the poll database");
+router.get("/allPolls", async (req, res, next) => {
+    try {
+        const pollData = await Poll.find({});
+        console.log(pollData);
+        res.contentType("application/json");
+        res.send(pollData);
+    } catch (error) {
+        next(error);
+    }
 })
 
 router.post("/create", async (req, res, next) => {

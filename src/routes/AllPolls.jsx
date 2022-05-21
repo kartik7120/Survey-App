@@ -7,19 +7,34 @@
 import "../allPolls.css";
 import { Container } from "@mui/material";
 import React from "react";
-import PollChoice from "../components/pollChoice";
-
+import SinglePoll from "../components/SinglePoll";
 function AllPolls(props) {
-  
+  const [state, setState] = React.useState(null);
+  React.useEffect(function () {
+    fetch("http://localhost:9000/poll/allPolls")
+      .then((jsonData) => jsonData.json())
+      .then((data) => {
+        console.log("Data from the allPolls route", data);
+        setState(function (oldState) {
+          return data;
+        });
+      });
+  }, []);
+  console.log("state = ", state);
   return (
     <Container maxWidth="xl">
       <div className="poll-wrapper">
-        <div className="poll">
-          <h1>I am all polls route</h1>
-          <p>I am description of this poll</p>
-          <p>I am total number of votes</p>
-          <PollChoice />
-        </div>
+        {state
+          ? state.map((pollData, index) => {
+              return (
+                <SinglePoll
+                  key={index * 10}
+                  title={pollData.title}
+                  description={pollData.description}
+                />
+              );
+            })
+          : "Please wait...."}
       </div>
     </Container>
   );
