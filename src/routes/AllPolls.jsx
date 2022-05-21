@@ -10,6 +10,10 @@ import React from "react";
 import SinglePoll from "../components/SinglePoll";
 function AllPolls(props) {
   const [state, setState] = React.useState(null);
+  // const [formState, setFormState] = React.useState({
+  //   title: "",
+  //   description: "",
+  // });
   React.useEffect(function () {
     fetch("http://localhost:9000/poll/allPolls")
       .then((jsonData) => jsonData.json())
@@ -31,6 +35,8 @@ function AllPolls(props) {
                   key={index * 10}
                   title={pollData.title}
                   description={pollData.description}
+                  votes={pollData.votes}
+                  options={pollData.options}
                 />
               );
             })

@@ -11,16 +11,18 @@ function PollChoice(props) {
       <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="female"
+        defaultValue={props.options[0]}
         name="radio-buttons-group"
       >
-        <FormControlLabel
-          value="PSYCHO-PASS"
-          control={<Radio />}
-          label="PSYCHO-PASS"
-        />
-        <FormControlLabel value="male" control={<Radio />} label="Male" />
-        <FormControlLabel value="other" control={<Radio />} label="Other" />
+        {props.options.map((option) => {
+          return (
+            <FormControlLabel
+              value={option}
+              control={<Radio />}
+              label={option}
+            />
+          );
+        })}
       </RadioGroup>
     </FormControl>
   );
