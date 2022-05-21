@@ -9,8 +9,8 @@ function SinglePoll(props) {
     <div className="poll">
       <h1>{props.title}</h1>
       <p>{props.description}</p>
-      <p>{totalVotes}</p>
-      <PollChoice options={props.options}/>
+      <p>{totalVotes} votes</p>
+      <PollChoice options={props.options} votes={props.votes}/>
     </div>
   );
 }

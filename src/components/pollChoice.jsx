@@ -5,6 +5,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+import "../style.css";
 function PollChoice(props) {
   return (
     <FormControl>
@@ -14,15 +15,20 @@ function PollChoice(props) {
         defaultValue={props.options[0]}
         name="radio-buttons-group"
       >
-        {props.options.map((option) => {
-          return (
-            <FormControlLabel
-              value={option}
-              control={<Radio />}
-              label={option}
-            />
-          );
-        })}
+        <div className="all-polls-vote-column">
+          {props.options.map((option, index) => {
+            return (
+              <>
+                <FormControlLabel
+                  value={option}
+                  control={<Radio />}
+                  label={option}
+                />
+                <div className="no-of-option-vote">{props.votes[index]}</div>
+              </>
+            );
+          })}
+        </div>
       </RadioGroup>
     </FormControl>
   );
