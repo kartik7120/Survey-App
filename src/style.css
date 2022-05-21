@@ -27,6 +27,7 @@ h1 {
   justify-content: flex-start;
 }
 .all-polls-vote-column {
+  display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(2, minmax(30em, 1fr));
   grid-auto-rows: minmax(5em, 1fr);
