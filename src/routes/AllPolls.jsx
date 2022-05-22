@@ -15,16 +15,16 @@ function AllPolls(props) {
   //   description: "",
   // });
   React.useEffect(function () {
-    fetch("http://localhost:9000/poll/allPolls")
+    fetch("/poll/allPolls")
       .then((jsonData) => jsonData.json())
       .then((data) => {
-        console.log("Data from the allPolls route", data);
+        // console.log("Data from the allPolls route", data);
         setState(function (oldState) {
           return data;
         });
       });
   }, []);
-  console.log("state = ", state);
+  // console.log("state = ", state);
   return (
     <Container maxWidth="xl">
       <div className="poll-wrapper">

@@ -35,9 +35,36 @@ function Poll(props) {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    const form = document.querySelector(".createPollForm");
-    console.log("form element = ", form);
-    await form.submit();
+    // const form = document.querySelector(".createPollForm");
+    // console.log("form element = ", form);
+    const body = {
+      title: "I am a title",
+      description: "I am a description",
+      options: {
+        option1: "PSYCHO-PASS",
+        option2: "ID invaded",
+        option3: "Kimi no na wa",
+      },
+    };
+    const fetchConfig = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "*/*",
+      },
+      body: JSON.stringify(body),
+    };
+
+    fetch("http://localhost:9000/poll/create", fetchConfig)
+      .then((jsonData) => jsonData.json())
+      .then((data) => console.log(data))
+      .catch((err) =>
+        console.log(
+          "Error occured while fetching POST request to the backend server",
+          err
+        )
+      );
+    // await form.submit();
     setIsSubmited(true);
     navigate("/Allpolls", { replace: true });
   }
@@ -64,11 +91,7 @@ function Poll(props) {
         Create a Poll
       </Typography>
       <Container maxWidth="md">
-        <form
-          action="http://localhost:9000/poll/create"
-          method="post"
-          className="createPollForm"
-        >
+        <form action="/poll/create" method="post" className="createPollForm">
           <div className="poll--create">
             <Title
               formState={formState}

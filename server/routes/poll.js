@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/allPolls", async (req, res, next) => {
     try {
         const pollData = await Poll.find({});
-        console.log(pollData);
+        // console.log(pollData);
         res.contentType("application/json");
         res.send(pollData);
     } catch (error) {
@@ -16,8 +16,7 @@ router.get("/allPolls", async (req, res, next) => {
 
 router.post("/create", async (req, res, next) => {
     try {
-        console.log("request body = ", req.body);
-        const { title, description, ...options } = req.body;
+        const { title, description, options } = req.body;
         console.log("Title = ", title);
         console.log("description = ", description);
         console.log("options = ", options);
@@ -38,7 +37,7 @@ router.post("/create", async (req, res, next) => {
         await newPoll.save()
             .then(() => console.log("Successfully saved to the database"))
             .catch((err) => console.log("Error in saving to the database", err));
-        res.send("Hello I am the poll route");
+        res.json("Hello I am the POST poll route");
     } catch (error) {
         next(error);
     }
