@@ -16,11 +16,8 @@ function SinglePoll(props) {
     0
   );
 
-  // console.log(props.id);
-
   function handleSubmit(e) {
     e.preventDefault();
-    // console.log("Submit event emitted");
     const fetchConfig = {
       method: "PATCH",
       headers: {
@@ -31,7 +28,21 @@ function SinglePoll(props) {
     };
     fetch(`http://localhost:9000/poll/updateVotes/${state.id}`, fetchConfig)
       .then((jsonData) => jsonData.json())
-      .then((data) => console.log("Data recieved from patch request", data))
+      .then((data) => {
+        console.log("Data recieved from patch request", data);
+        const objData = JSON.parse(data);
+        console.log(objData);
+        setState(function (oldState) {
+          return {
+            ...oldState,
+            id: objData._id,
+            title: objData.title,
+            options: objData.options,
+            votes: objData.votes,
+            description: objData.description,
+          };
+        });
+      })
       .catch((err) =>
         console.log("Error occured while making a PATCH request", err)
       );
