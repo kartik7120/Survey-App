@@ -42,10 +42,29 @@ router.post("/create", async (req, res, next) => {
     }
 });
 
-router.patch("/updateVotes", (req, res) => {
+router.patch("/updateVotes/:id", async (req, res) => {
     console.log(req.body);
+    const { id, targetValue } = req.body;
+
+    const poll = await Poll.findById({ _id: id });
+    let updateIdx = -1;
+    const optionArray = poll.options;
+    for (let i = 0; i < optionArray.length; i++) {
+        if (optionArray[i] === targetValue) {
+            updateIdx = i;
+            break;
+        }
+    }
+
+    const votesArray = poll.votes;
+    console.log("before updating votes array : ", votesArray);
+    votesArray[updateIdx] = votesArray[updateIdx] + 1;
+    console.log("After updating votes array : ", votesArray);
+
+    const newPoll = await Poll.findByIdAndUpdate({ _id: id }, { $set: { "votes": votesArray } }, { new: true });
     res.contentType("application/json");
-    res.json("This is a patch route to update the votes for updating the votes");
+
+    res.json(JSON.stringify(newPoll));
 })
 
 module.exports = router;

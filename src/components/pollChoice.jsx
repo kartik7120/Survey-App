@@ -7,6 +7,16 @@ import {
 } from "@mui/material";
 import "../style.css";
 function PollChoice(props) {
+  
+  function handleChange(e) {
+    props.setState(function (oldState) {
+      return {
+        ...oldState,
+        targetValue: e.target.value,
+      };
+    });
+  }
+
   return (
     <FormControl>
       <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
@@ -23,6 +33,7 @@ function PollChoice(props) {
                   value={option}
                   control={<Radio />}
                   label={option}
+                  onChange={handleChange}
                 />
                 <div className="no-of-option-vote">{props.votes[index]}</div>
               </>
