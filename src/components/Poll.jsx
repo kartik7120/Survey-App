@@ -52,16 +52,6 @@ function Poll(props) {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    // const body = {
-    //   title: "I am a title",
-    //   description: "I am a description",
-    //   options: {
-    //     option1: "PSYCHO-PASS",
-    //     option2: "ID invaded",
-    //     option3: "Kimi no na wa",
-    //   },
-    // };
-
     const body = formState;
     const fetchConfig = {
       method: "POST",

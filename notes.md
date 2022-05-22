@@ -11,7 +11,9 @@
 - [x] Only logged in user can create a poll and vote on a poll
 - [x] Store the poll results in the database
 - [ ] All polls will be associated to a particular user
-- [ ] Add the navbar bar at the top of the page to navigate
+- [x] Add the navbar bar at the top of the page to navigate
+- [ ] Add ablibty to vote in the all polls section
+- [ ] Add pagination to All polls page
 
 ### Seed data for poll create form
 
