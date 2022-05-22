@@ -11,25 +11,22 @@ function Poll(props) {
   const [formState, setFormState] = React.useState({
     title: "",
     description: "",
-    option: {},
+    options: {},
   });
-  // const [optionState, setOptionState] = React.useState({});
 
   function handleOptionChange(e) {
-    console.log("I am a function that changes option state");
     const name = e.target.name;
     const value = e.target.value;
 
-    const optionObj = formState.option;
+    const optionObj = formState.options;
     const newOptionObject = {
       ...optionObj,
       [name]: value,
     };
-    console.log(e.target.name, e.target.value);
     setFormState(function (oldFormState) {
       return {
         ...oldFormState,
-        newOptionObject,
+        options: newOptionObject,
       };
     });
   }
@@ -55,17 +52,17 @@ function Poll(props) {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    // const form = document.querySelector(".createPollForm");
-    // console.log("form element = ", form);
-    const body = {
-      title: "I am a title",
-      description: "I am a description",
-      options: {
-        option1: "PSYCHO-PASS",
-        option2: "ID invaded",
-        option3: "Kimi no na wa",
-      },
-    };
+    // const body = {
+    //   title: "I am a title",
+    //   description: "I am a description",
+    //   options: {
+    //     option1: "PSYCHO-PASS",
+    //     option2: "ID invaded",
+    //     option3: "Kimi no na wa",
+    //   },
+    // };
+
+    const body = formState;
     const fetchConfig = {
       method: "POST",
       headers: {
