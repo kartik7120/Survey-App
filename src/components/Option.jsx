@@ -5,6 +5,7 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 // import {} from "@mui/icons-material";
 
 function Option(props) {
+  const optionObject = props.formState.option;
   return (
     <>
       <div className="option-flex-box">
@@ -16,6 +17,8 @@ function Option(props) {
           className={"option-text-feild"}
           required
           name={`option${props.optionNo}`}
+          value={optionObject[`option${props.optionNo}`]}
+          onChange={props.handleOptionChange}
         ></TextField>
         {props.optionNo > 2 ? (
           <IconButton

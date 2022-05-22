@@ -5,7 +5,15 @@ function OptionsColumn(props) {
   let optionArray = [];
   if (props.optionCount <= 6) {
     for (let i = 1; i <= props.optionCount; i++) {
-      optionArray.push(<Option key={i * 10} optionNo={i} deleteOption={props.deleteOption}/>);
+      optionArray.push(
+        <Option
+          key={i * 10}
+          optionNo={i}
+          deleteOption={props.deleteOption}
+          handleOptionChange={props.handleOptionChange}
+          formState={props.formState}
+        />
+      );
     }
   }
   return (

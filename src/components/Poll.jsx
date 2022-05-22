@@ -11,8 +11,28 @@ function Poll(props) {
   const [formState, setFormState] = React.useState({
     title: "",
     description: "",
+    option: {},
   });
   // const [optionState, setOptionState] = React.useState({});
+
+  function handleOptionChange(e) {
+    console.log("I am a function that changes option state");
+    const name = e.target.name;
+    const value = e.target.value;
+
+    const optionObj = formState.option;
+    const newOptionObject = {
+      ...optionObj,
+      [name]: value,
+    };
+    console.log(e.target.name, e.target.value);
+    setFormState(function (oldFormState) {
+      return {
+        ...oldFormState,
+        newOptionObject,
+      };
+    });
+  }
 
   function handleChangeTitle(e) {
     const titleFeild = e.target;
@@ -54,7 +74,7 @@ function Poll(props) {
       },
       body: JSON.stringify(body),
     };
-
+    //  Making the fetch request in the backend and sending JSON body
     fetch("http://localhost:9000/poll/create", fetchConfig)
       .then((jsonData) => jsonData.json())
       .then((data) => console.log(data))
@@ -64,7 +84,6 @@ function Poll(props) {
           err
         )
       );
-    // await form.submit();
     setIsSubmited(true);
     navigate("/Allpolls", { replace: true });
   }
@@ -107,7 +126,12 @@ function Poll(props) {
             <Divider orientation="vertical" flexItem>
               <hr />
             </Divider>
-            <OptionsColumn optionCount={state} deleteOption={deleteOption} />
+            <OptionsColumn
+              optionCount={state}
+              deleteOption={deleteOption}
+              handleOptionChange={handleOptionChange}
+              formState={formState}
+            />
             <Button variant="contained" color="warning" onClick={handleClick}>
               Add Option
             </Button>
