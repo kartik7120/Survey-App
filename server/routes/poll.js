@@ -1,5 +1,4 @@
 const Poll = require("../models/pollSchema");
-// import { Router } from "express";
 const express = require("express");
 const router = express.Router();
 
@@ -42,5 +41,11 @@ router.post("/create", async (req, res, next) => {
         next(error);
     }
 });
+
+router.patch("/updateVotes", (req, res) => {
+    console.log(req.body);
+    res.contentType("application/json");
+    res.json("This is a patch route to update the votes for updating the votes");
+})
 
 module.exports = router;
