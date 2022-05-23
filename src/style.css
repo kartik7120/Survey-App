@@ -1,6 +1,10 @@
 h1 {
   margin: 0 auto;
 }
+
+body {
+  scroll-behavior: smooth;
+}
 .poll--create {
   display: flex;
   flex-direction: column;
@@ -17,6 +21,8 @@ h1 {
 .optionGrid {
   display: -ms-grid;
   display: grid;
+  -ms-grid-column: auto;
+  grid-column: auto;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: minmax(10em, 1fr);
 }
@@ -37,4 +43,28 @@ h1 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.barGrid {
+  position: relative;
+  display: grid;
+  grid-auto-columns: minmax(5em, 1fr);
+  grid-auto-rows: 1fr;
+}
+
+.bar {
+  background-color: transparent;
+  border: 2px solid black;
+  position: absolute;
+  width: 10em;
+  height: 5em;
+  top: 5em;
+  margin-top: 1em;
+}
+
+.bar:first-of-type {
+  margin-top: 0;
+  width: 10em;
+  height: 5em;
+  top: 0;
 }

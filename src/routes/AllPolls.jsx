@@ -15,7 +15,7 @@ function AllPolls(props) {
         });
       });
   }, []);
-  // console.log("state = ", state);
+
   return (
     <Container maxWidth="xl">
       <div className="poll-wrapper">

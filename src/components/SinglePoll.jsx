@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import React from "react";
 import PollChoice from "../components/pollChoice";
+
 function SinglePoll(props) {
   const [state, setState] = React.useState({
     id: props.id,

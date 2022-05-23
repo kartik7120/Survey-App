@@ -1,16 +1,17 @@
-import { Container } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import React from "react";
 import "../homeStyle.css";
+
 function Home(props) {
   function handleClick(e) {}
   return (
-    <Container maxWidth="xl" className="homeBody">
+    <Container maxWidth="xl" className="homeBody" sx={{ display: "flex" }}>
       <div className="flex-box-home">
         <h1>Voting app</h1>
         <p>Made using React</p>
-        <button type="button" onClick={handleClick}>
+        <Button variant="contained" onClick={handleClick}>
           Get Started
-        </button>
+        </Button>
       </div>
     </Container>
   );

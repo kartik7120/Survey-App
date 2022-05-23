@@ -1,9 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@1,200&display=swap");
+
 .homeBody {
   background-image: url("./images/47f2488bdd1e2787b857fc00a0627683.webp");
   min-height: 40em;
-  margin-top: 0;
+  /* margin-top: 50em; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-box-home {
@@ -12,13 +17,20 @@
   justify-content: center;
   align-items: center;
 }
+
 .flex-box-home > h1 {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 7em;
   color: hsl(19, 89%, 57%);
+  margin: 0.5em;
+  margin-top: 0;
+  margin-bottom: 0.2em;
+  /* display: block; */
 }
+
 .flex-box-home > p {
   font-family: "Plus Jakarta Sans", sans-serif;
+  display: block;
   font-size: 3em;
   font-weight: 600;
   margin-top: 0;
