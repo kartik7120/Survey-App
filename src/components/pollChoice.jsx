@@ -2,6 +2,7 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
+  LinearProgress,
   Radio,
   RadioGroup,
 } from "@mui/material";
@@ -35,6 +36,13 @@ function PollChoice(props) {
                   onChange={handleChange}
                 />
                 <div className="no-of-option-vote">{props.votes[index]}</div>
+                <LinearProgress
+                  variant="determinate"
+                  value={props.votes[index]}
+                  valueBuffer={0}
+                  color="secondary"
+                  sx={{ height: "0.5em", display: "block" }}
+                />
               </>
             );
           })}

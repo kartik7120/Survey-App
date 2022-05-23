@@ -99,9 +99,10 @@ const ResponsiveAppBar = () => {
                           return {
                             display: "block",
                             margin: "1rem 0",
-                            color: isActive ? "white" : "",
+                            color: isActive ? "black" : "",
                           };
                         }}
+                        className="navbarTextCollapased"
                       >
                         {page.toUpperCase()}
                       </NavLink>

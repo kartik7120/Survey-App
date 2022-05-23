@@ -68,3 +68,6 @@ body {
   height: 5em;
   top: 0;
 }
+.navbarTextCollapased{
+  text-decoration: none;
+}
