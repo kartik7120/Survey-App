@@ -14,6 +14,10 @@
 - [x] Add the navbar bar at the top of the page to navigate
 - [ ] Add ablibty to vote in the all polls section
 - [ ] Add pagination to All polls page
+- [ ] Make a user Schema
+- [ ] Make a client side and server side route so that we can view a particular poll
+- [ ] Make the site look pretty
+- [ ] Make a proper landing page for the web app
 
 ### Seed data for poll create form
 
@@ -22,3 +26,12 @@
 - Kotlin, JavaScript and Rust
 
 Adding timer in a poll
+
+### User Schema
+
+- Name
+- Email
+- Password
+- All the polls that the user is associated with
+- Total number of votes on his/her poll
+- Profile page of a user
