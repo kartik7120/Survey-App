@@ -9,7 +9,7 @@ function Home(props) {
       <div className="flex-box-home">
         <h1>Voting app</h1>
         <p>Made using React</p>
-        <Button variant="contained" onClick={handleClick}>
+        <Button variant="contained" onClick={handleClick} className="getStartedButton">
           Get Started
         </Button>
       </div>

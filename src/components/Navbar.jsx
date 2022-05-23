@@ -134,9 +134,19 @@ const ResponsiveAppBar = () => {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  variant="text"
+                  sx={{
+                    my: 2,
+                    display: "block",
+                  }}
+                  color="secondary"
                 >
-                  <NavLink to={`/${page}`}>{page.toUpperCase()}</NavLink>
+                  <NavLink
+                    to={`/${page}`}
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    {page.toUpperCase()}
+                  </NavLink>
                 </Button>
               ))}
             </Box>
