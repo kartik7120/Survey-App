@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Poll = require("./pollSchema");
+// const Poll = require("./pollSchema");
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = mongoose.Schema({

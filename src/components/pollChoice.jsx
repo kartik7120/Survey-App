@@ -7,6 +7,7 @@ import {
   RadioGroup,
 } from "@mui/material";
 import "../style.css";
+
 function PollChoice(props) {
   function handleChange(e) {
     props.setState(function (oldState) {

@@ -58,9 +58,9 @@ export default function Login() {
       body: JSON.stringify(body),
     };
 
-    fetch("/users/signup", fetchConfig)
+    fetch("/users/register", fetchConfig)
       .then((Jsondata) => Jsondata.json())
-      .then((data) => console.log("Login data", data))
+      .then((data) => console.log("Login data = ", data))
       .catch((err) => console.log("Error occured while sign up route", err));
   };
 

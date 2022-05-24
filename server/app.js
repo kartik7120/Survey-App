@@ -1,6 +1,3 @@
-// import router from './routes/testServer';
-// import Poll from "./models/pollSchema";
-// import { router as PollRouter } from "./routes/poll";
 const User = require("./models/userSchema");
 const pollRouter = require("./routes/poll");
 const router = require("./routes/testServer");
@@ -8,12 +5,13 @@ const cors = require("cors");
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+const session = require("express-session");
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const passport = require("passport");
-const LocalStrategy = require("passport-local-mongoose");
+const LocalStrategy = require("passport-local");
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/Survey')
   .then(() => {
@@ -35,6 +33,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: "ilikeanime",
+  resave: true,
+  saveUninitialized: true
+}))
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/testServer", router); // for testing the router the server
