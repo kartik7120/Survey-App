@@ -10,6 +10,7 @@ import About from './routes/About';
 import Poll from './components/Poll';
 import AllPolls from './routes/AllPolls';
 import Navbar from './components/Navbar';
+import Login from "./routes/Login";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
           <Route path='home' element={<Home />} />
           <Route path='about' element={<About />} />
           <Route path='poll' element={<Poll />} />
+          <Route path="login" element={<Login />} />
           <Route path="Allpolls" element={<AllPolls />} />
         </Route>
         <Route path="*" element={<div>This path does not exist</div>} />
