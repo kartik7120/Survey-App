@@ -49,7 +49,19 @@ export default function Login() {
       lastName: data.get("lastName"),
     };
 
+    const fetchConfig = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "*/*",
+      },
+      body: JSON.stringify(body),
+    };
 
+    fetch("/users/signup", fetchConfig)
+      .then((Jsondata) => Jsondata.json())
+      .then((data) => console.log("Login data", data))
+      .catch((err) => console.log("Error occured while sign up route", err));
   };
 
   return (

@@ -6,4 +6,9 @@ router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
+router.post("/signup", (req, res) => {
+  res.contentType("application/json");
+  res.json("This is the sign up route");
+})
+
 module.exports = router;
