@@ -1,6 +1,7 @@
 // import router from './routes/testServer';
 // import Poll from "./models/pollSchema";
 // import { router as PollRouter } from "./routes/poll";
+const User = require("./models/userSchema");
 const pollRouter = require("./routes/poll");
 const router = require("./routes/testServer");
 const cors = require("cors");
@@ -11,6 +12,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const passport = require("passport");
+const LocalStrategy = require("passport-local-mongoose");
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/Survey')
   .then(() => {
@@ -36,6 +39,10 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/testServer", router); // for testing the router the server
 app.use("/poll", pollRouter);
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
