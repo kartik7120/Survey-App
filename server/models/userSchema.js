@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 // const Poll = require("./pollSchema");
 const passportLocalMongoose = require('passport-local-mongoose');
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
     email: {
         type: String,
-        require: true
+        required: true
     },
     polls: {
         type: mongoose.Schema.Types.ObjectId,

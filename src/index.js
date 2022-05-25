@@ -10,7 +10,8 @@ import About from './routes/About';
 import Poll from './components/Poll';
 import AllPolls from './routes/AllPolls';
 import Navbar from './components/Navbar';
-import Login from "./routes/Login";
+import Login from "./routes/Register";
+import SignIn from './routes/Signin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,7 +23,8 @@ root.render(
           <Route path='home' element={<Home />} />
           <Route path='about' element={<About />} />
           <Route path='poll' element={<Poll />} />
-          <Route path="register" element={<Login />} />
+          <Route path="Signup" element={<Login />} />
+          <Route path='Signin' element={<SignIn />} />
           <Route path="Allpolls" element={<AllPolls />} />
         </Route>
         <Route path="*" element={<div>This path does not exist</div>} />

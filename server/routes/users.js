@@ -1,10 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../models/userSchema");
-
+const passport = require("passport");
 router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
+
+router.post("/login", passport.authenticate("local", passport.authenticate()), (req, res) => {
+  res.contentType("application/json");
+  console.log(req.session);
+  res.json("User is logged in", req.user, req.isAuthenticated());
+})
 
 router.post("/register", async (req, res, next) => {
   try {
@@ -16,20 +22,17 @@ router.post("/register", async (req, res, next) => {
       username: name,
       email: email
     })
-    console.log("name = ", name);
-    User.register(newUser, password, function (err) {
+
+    await User.register(newUser, password, function (err) {
       if (err) {
         console.log("Some error occured while registering the user");
         next(err);
       }
     })
-
-    const userId = await User.find({ username: name });
-    console.log("User id = ", userId);
-    req.session.user = name;
+    req.session.user = req.user;
     console.log(req.session);
     res.contentType("application/json");
-    res.json("This is the sign up route");
+    res.json("User registered", req.session.user);
   } catch (error) {
     console.log("Some error occured = ", error);
     next(error);

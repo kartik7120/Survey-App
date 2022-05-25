@@ -16,7 +16,14 @@ import { Outlet } from "react-router";
 import { NavLink } from "react-router-dom";
 
 const pages = ["home", "about", "poll", "Allpolls"];
-const settings = ["Profile", "Account", "Dashboard", "register", "Logout"];
+const settings = [
+  "Profile",
+  "Account",
+  "Dashboard",
+  "Signup",
+  "Signin",
+  "Logout",
+];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
