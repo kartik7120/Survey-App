@@ -41,6 +41,27 @@ export default function SignIn() {
       email: data.get("email"),
       password: data.get("password"),
     });
+
+    const body = {
+      email: data.get("email"),
+      password: data.get("password"),
+    };
+
+    const fetchConfig = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "*/*",
+      },
+      body: JSON.stringify(body),
+    };
+
+    fetch("/users/login", fetchConfig)
+      .then((jsonData) => jsonData.json())
+      .then((data) => console.log("Data returned by the login route", data))
+      .catch((err) =>
+        console.log("Error occuered while fetching login route", err)
+      );
   };
 
   return (
