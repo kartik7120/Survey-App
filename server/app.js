@@ -38,14 +38,14 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }))
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use("/testServer", router); // for testing the router the server
-app.use("/poll", pollRouter);
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use("/testServer", router); // for testing the router the server
+app.use("/poll", pollRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

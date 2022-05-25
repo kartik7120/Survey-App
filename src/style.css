@@ -2,9 +2,6 @@ h1 {
   margin: 0 auto;
 }
 
-body {
-  scroll-behavior: smooth;
-}
 .poll--create {
   display: flex;
   flex-direction: column;
@@ -68,6 +65,6 @@ body {
   height: 5em;
   top: 0;
 }
-.navbarTextCollapased{
+.navbarTextCollapased {
   text-decoration: none;
 }

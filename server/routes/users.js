@@ -7,21 +7,33 @@ router.get('/', function (req, res, next) {
 });
 
 router.post("/register", async (req, res, next) => {
-  console.log(req.body);
-  const { firstName, lastName, password, email } = req.body;
+  try {
+    console.log(req.body);
+    const { firstName, lastName, password, email } = req.body;
 
-  const name = firstName + " " + lastName;
+    const name = firstName + " " + lastName;
+    const newUser = new User({
+      username: name,
+      email: email
+    })
+    console.log("name = ", name);
+    User.register(newUser, password, function (err) {
+      if (err) {
+        console.log("Some error occured while registering the user");
+        next(err);
+      }
+    })
 
-  User.register(new User({ username: name, email: email }), password, function (err) {
-    if (err) {
-      console.log("Some error occured while registering the user");
-      next(err);
-    }
-  })
-  req.session.user = name;
-  console.log(req.session);
-  res.contentType("application/json");
-  res.json("This is the sign up route");
+    const userId = await User.find({ username: name });
+    console.log("User id = ", userId);
+    req.session.user = name;
+    console.log(req.session);
+    res.contentType("application/json");
+    res.json("This is the sign up route");
+  } catch (error) {
+    console.log("Some error occured = ", error);
+    next(error);
+  }
 });
 
 module.exports = router;

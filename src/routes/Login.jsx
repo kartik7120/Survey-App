@@ -10,6 +10,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useNavigate } from "react-router";
 
 function Copyright(props) {
   return (
@@ -32,6 +33,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
+  let navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -62,6 +64,7 @@ export default function Login() {
       .then((Jsondata) => Jsondata.json())
       .then((data) => console.log("Login data = ", data))
       .catch((err) => console.log("Error occured while sign up route", err));
+    navigate("../home", { replace: true });
   };
 
   return (

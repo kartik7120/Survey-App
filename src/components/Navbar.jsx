@@ -16,7 +16,7 @@ import { Outlet } from "react-router";
 import { NavLink } from "react-router-dom";
 
 const pages = ["home", "about", "poll", "Allpolls"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Dashboard", "register", "Logout"];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -176,7 +176,15 @@ const ResponsiveAppBar = () => {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign="center">
+                      <NavLink
+                        to={`${setting}`}
+                        style={{ textDecoration: "none" }}
+                        className="NavbarProfileLink"
+                      >
+                        {setting}
+                      </NavLink>
+                    </Typography>
                   </MenuItem>
                 ))}
               </Menu>

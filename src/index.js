@@ -22,7 +22,7 @@ root.render(
           <Route path='home' element={<Home />} />
           <Route path='about' element={<About />} />
           <Route path='poll' element={<Poll />} />
-          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Login />} />
           <Route path="Allpolls" element={<AllPolls />} />
         </Route>
         <Route path="*" element={<div>This path does not exist</div>} />
