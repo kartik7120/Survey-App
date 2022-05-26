@@ -3,27 +3,21 @@ const router = express.Router();
 const User = require("../models/userSchema");
 const passport = require("passport");
 
-router.get('/', function (req, res, next) {
-  res.send('respond with a resource');
-});
-
-router.post("/login", (req, res, next) => {
-  passport.authenticate('local', function (err, user, info) {
-    if (err) { return next(err); }
-    if (!user) { return res.redirect('/users/login'); }
-
-    // NEED TO CALL req.login()!!!
-    req.login(user, next);
-  })(req, res, next);
-
-  res.contentType("application/json");
-  console.log(req.session);
-  const body = {
-    user: req.user,
-    isAuthenticated: req.isAuthenticated()
+router.post("/login", passport.authenticate("local", { failureRedirect: "/Signin", failureFlash: false, failureMessage: "Could not log in" }), (req, res, next) => {
+  try {
+    res.contentType("application/json");
+    console.log(req.session);
+    const body = {
+      user: req.user,
+      isAuthenticated: req.isAuthenticated(),
+      message: "User logged in"
+    }
+    console.log(JSON.stringify(body));
+    res.json(JSON.stringify(body));
+  } catch (error) {
+    console.log("Oh no some error occured in login route = ", error);
+    next(error);
   }
-  console.log(JSON.stringify(body));
-  res.json(JSON.stringify(body));
 })
 
 router.post("/register", async (req, res, next) => {
@@ -55,5 +49,11 @@ router.post("/register", async (req, res, next) => {
     next(error);
   }
 });
+
+router.post("/logout", (req, res, next) => {
+  req.logOut();
+  res.contentType("application/json");
+  res.json("User logged out");
+})
 
 module.exports = router;
