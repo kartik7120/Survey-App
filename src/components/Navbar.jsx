@@ -28,7 +28,14 @@ const settings = [
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [signInState, setSignInState] = React.useState(false);
 
+  const stateObject = {
+    signInState,
+    setSignInState,
+  };
+
+  const signInContext = React.createContext(stateObject);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -199,7 +206,9 @@ const ResponsiveAppBar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      <Outlet />
+      <signInContext.Provider value={stateObject}>
+        <Outlet />
+      </signInContext.Provider>
     </>
   );
 };
