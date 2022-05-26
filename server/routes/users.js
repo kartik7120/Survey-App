@@ -8,7 +8,8 @@ router.post("/login", passport.authenticate("local", { failureRedirect: "/Signin
     res.contentType("application/json");
     console.log(req.session);
     const body = {
-      user: req.user,
+      username: req.user.username,
+      user_id: req.user._id,
       isAuthenticated: req.isAuthenticated(),
       message: "User logged in"
     }

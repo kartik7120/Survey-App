@@ -12,7 +12,7 @@ import AllPolls from './routes/AllPolls';
 import Navbar from './components/Navbar';
 import Login from "./routes/Register";
 import SignIn from './routes/Signin';
-
+import LogOut from './routes/LogOut';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -26,6 +26,7 @@ root.render(
           <Route path="Signup" element={<Login />} />
           <Route path='Signin' element={<SignIn />} />
           <Route path="Allpolls" element={<AllPolls />} />
+          <Route path='Logout' element={<LogOut />} />
         </Route>
         <Route path="*" element={<div>This path does not exist</div>} />
       </Routes>

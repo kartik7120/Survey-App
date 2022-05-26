@@ -14,7 +14,7 @@
 - [x] Add the navbar bar at the top of the page to navigate
 - [ ] Add ablibty to vote in the all polls section
 - [ ] Add pagination to All polls page
-- [ ] Make a user Schema
+- [x] Make a user Schema
 - [ ] Make a client side and server side route so that we can view a particular poll
 - [ ] Make the site look pretty
 - [ ] Make a proper landing page for the web app
