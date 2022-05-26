@@ -9,7 +9,11 @@ router.get('/', function (req, res, next) {
 router.post("/login", passport.authenticate("local", passport.authenticate()), (req, res) => {
   res.contentType("application/json");
   console.log(req.session);
-  res.json("User is logged in", req.user, req.isAuthenticated());
+  const body = {
+    user: req.user,
+    isAuthenticated: req.isAuthenticated()
+  }
+  res.json(JSON.stringify(body));
 })
 
 router.post("/register", async (req, res, next) => {
