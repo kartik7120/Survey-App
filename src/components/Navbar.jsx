@@ -25,6 +25,8 @@ const settings = [
   "Logout",
 ];
 
+const signInContext = React.createContext(null);
+
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -35,7 +37,6 @@ const ResponsiveAppBar = () => {
     setSignInState,
   };
 
-  const signInContext = React.createContext(stateObject);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -213,6 +214,7 @@ const ResponsiveAppBar = () => {
   );
 };
 export default ResponsiveAppBar;
+export { signInContext };
 
 // import { Outlet } from "react-router";
 

@@ -1,10 +1,10 @@
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import "../logout.css";
 
 function LogOut(props) {
-  let navigate = useNavigate();
+  //   let navigate = useNavigate();
 
   return (
     <div className="logout-flexbox">

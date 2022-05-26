@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router";
-
+import { signInContext } from "../components/Navbar";
 function Copyright(props) {
   return (
     <Typography
@@ -34,6 +34,7 @@ const theme = createTheme();
 
 export default function Login() {
   let navigate = useNavigate();
+  const signStateObject = React.useContext(signInContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
