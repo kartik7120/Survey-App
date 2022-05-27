@@ -52,9 +52,20 @@ router.post("/register", async (req, res, next) => {
 });
 
 router.post("/logout", (req, res, next) => {
-  req.logOut();
-  res.contentType("application/json");
-  res.json("User logged out");
+  try {
+    req.logOut(req.user, err => {
+      if (err)
+        return next(err);
+    })
+    console.log(req.user);
+    res.contentType("application/json");
+    const body = {
+      message: "User logged out"
+    }
+    res.json(JSON.stringify(body));
+  } catch (error) {
+    console.log(error);
+  }
 })
 
 module.exports = router;

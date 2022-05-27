@@ -11,6 +11,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { signInContext } from "../components/Navbar";
+import { useNavigate } from "react-router";
 
 function Copyright(props) {
   return (
@@ -33,6 +35,9 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  let navigate = useNavigate();
+  const signInObject = React.useContext(signInContext);
+  const setSignInState = signInObject.setSignInState;
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -57,10 +62,14 @@ export default function SignIn() {
 
     fetch("/users/login", fetchConfig)
       .then((jsonData) => jsonData.json())
-      .then((data) => console.log("Data returned by the login route", data))
+      .then((data) => {
+        console.log("Data returned by the login route", data);
+        setSignInState(data.isAuthenticated);
+      })
       .catch((err) =>
         console.log("Error occuered while fetching login route", err)
       );
+    navigate("../home", { replace: true });
   };
 
   return (

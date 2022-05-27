@@ -35,6 +35,8 @@ const theme = createTheme();
 export default function Login() {
   let navigate = useNavigate();
   const signStateObject = React.useContext(signInContext);
+  const setSignInState = signStateObject.setSignInState;
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -63,7 +65,10 @@ export default function Login() {
 
     fetch("http://localhost:9000/users/register", fetchConfig)
       .then((Jsondata) => Jsondata.json())
-      .then((data) => console.log("Login data = ", data))
+      .then((data) => {
+        console.log("Login data = ", data);
+        setSignInState(data.isAuthenticated);
+      })
       .catch((err) => console.log("Error occured while sign up route", err));
     navigate("../home", { replace: true });
   };

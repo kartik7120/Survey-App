@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import React from "react";
 import PollChoice from "../components/pollChoice";
 import { signInContext } from "./Navbar";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 function SinglePoll(props) {
   let navigate = useNavigate();
