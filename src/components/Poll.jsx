@@ -68,7 +68,7 @@ function Poll(props) {
         body: JSON.stringify(body),
       };
       //  Making the fetch request in the backend and sending JSON body
-      fetch("http://localhost:9000/poll/create", fetchConfig)
+      fetch("/poll/create", fetchConfig)
         .then((jsonData) => jsonData.json())
         .then((data) => console.log(data))
         .catch((err) =>

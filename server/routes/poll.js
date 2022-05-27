@@ -7,7 +7,6 @@ const { default: mongoose } = require("mongoose");
 router.get("/allPolls", async (req, res, next) => {
     try {
         const pollData = await Poll.find({});
-        // console.log(pollData);
         res.contentType("application/json");
         res.send(pollData);
     } catch (error) {
@@ -17,6 +16,8 @@ router.get("/allPolls", async (req, res, next) => {
 
 router.post("/create", async (req, res, next) => {
     try {
+        console.log("Session user = ", req.user);
+        console.log("Session = ", req.session);
         if (req.user) {
             const { title, description, options } = req.body;
             console.log("Title = ", title);

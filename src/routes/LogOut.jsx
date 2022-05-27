@@ -17,7 +17,7 @@ function LogOut(props) {
         Accept: "*/*",
       },
     };
-    fetch("http://localhost:9000/users/logout", fetchConfig)
+    fetch("/users/logout", fetchConfig)
       .then((jsonData) => jsonData.json())
       .then((data) => {
         console.log("Data recieved from logout route", data);

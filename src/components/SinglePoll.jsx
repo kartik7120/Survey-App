@@ -33,7 +33,7 @@ function SinglePoll(props) {
         },
         body: JSON.stringify(state),
       };
-      fetch(`http://localhost:9000/poll/updateVotes/${state.id}`, fetchConfig)
+      fetch(`/poll/updateVotes/${state.id}`, fetchConfig)
         .then((jsonData) => jsonData.json())
         .then((data) => {
           console.log("Data recieved from patch request", data);

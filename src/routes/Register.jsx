@@ -63,7 +63,7 @@ export default function Login() {
       body: JSON.stringify(body),
     };
 
-    fetch("http://localhost:9000/users/register", fetchConfig)
+    fetch("/users/register", fetchConfig)
       .then((Jsondata) => Jsondata.json())
       .then((data) => {
         console.log("Login data = ", data);
