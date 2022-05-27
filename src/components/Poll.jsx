@@ -4,8 +4,13 @@ import Title from "./Title";
 import OptionsColumn from "./OptionColumn";
 import React from "react";
 import { Navigate, useNavigate } from "react-router";
+import { signInContext } from "./Navbar";
+
 function Poll(props) {
   let navigate = useNavigate();
+  const signInObject = React.useContext(signInContext);
+  const signInState = signInObject.signInState;
+  // const setSignInState = signInObject.setSignInState;
   const [state, setState] = React.useState(2);
   const [isSubmited, setIsSubmited] = React.useState(false);
   const [formState, setFormState] = React.useState({
@@ -51,28 +56,32 @@ function Poll(props) {
     }
   }
   async function handleSubmit(e) {
-    e.preventDefault();
-    const body = formState;
-    const fetchConfig = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "*/*",
-      },
-      body: JSON.stringify(body),
-    };
-    //  Making the fetch request in the backend and sending JSON body
-    fetch("http://localhost:9000/poll/create", fetchConfig)
-      .then((jsonData) => jsonData.json())
-      .then((data) => console.log(data))
-      .catch((err) =>
-        console.log(
-          "Error occured while fetching POST request to the backend server",
-          err
-        )
-      );
-    setIsSubmited(true);
-    navigate("/Allpolls", { replace: true });
+    if (signInState !== false) {
+      e.preventDefault();
+      const body = formState;
+      const fetchConfig = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*",
+        },
+        body: JSON.stringify(body),
+      };
+      //  Making the fetch request in the backend and sending JSON body
+      fetch("http://localhost:9000/poll/create", fetchConfig)
+        .then((jsonData) => jsonData.json())
+        .then((data) => console.log(data))
+        .catch((err) =>
+          console.log(
+            "Error occured while fetching POST request to the backend server",
+            err
+          )
+        );
+      setIsSubmited(true);
+      navigate("/Allpolls", { replace: true });
+    } else {
+      navigate("/Signup");
+    }
   }
 
   function handleClick(e) {
