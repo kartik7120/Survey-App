@@ -2,12 +2,11 @@ import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { signInContext } from "../components/Navbar";
-
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import "../logout.css";
 
 function LogOut(props) {
-  //   let navigate = useNavigate();
+  let navigate = useNavigate();
   const signInObject = React.useContext(signInContext);
   const setSignInState = signInObject.setSignInState;
 
@@ -25,6 +24,7 @@ function LogOut(props) {
         setSignInState(false);
       })
       .catch((err) => console.log("Some errored while logging out", err));
+    navigate("../home", { replace: true });
   }
   return (
     <div className="logout-flexbox">
