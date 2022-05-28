@@ -42,8 +42,8 @@ router.post("/create", async (req, res, next) => {
                 .then(() => console.log("Successfully saved to the database"))
                 .catch((err) => console.log("Error in saving to the database", err));
 
-            const user = await User.findById({ _id: req.user.id });
-            user.polls = newPoll._id;
+            await (await User.findByIdAndUpdate({ _id: req.user.id }, { $push: { "polls": newPoll._id } }, { new: true })).save();
+            // user.polls = newPoll._id;
             res.json("Hello I am the POST poll route");
         }
         else

@@ -34,9 +34,8 @@ router.post("/register", async (req, res, next) => {
 
     const registeredUser = await User.register(newUser, password);
     req.logIn(registeredUser, err => {
-      if (err)
-        return next(err);
-    })
+      if (err) return next(err);
+    });
     console.log(req.session);
     console.log("User set by passport = ", req.user);
     res.contentType("application/json");

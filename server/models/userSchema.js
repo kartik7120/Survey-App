@@ -7,10 +7,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    polls: {
+    polls: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Poll"
-    }
+    }]
+
 });
 
 userSchema.plugin(passportLocalMongoose);
