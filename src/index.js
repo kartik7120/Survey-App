@@ -13,6 +13,7 @@ import Navbar from './components/Navbar';
 import Login from "./routes/Register";
 import SignIn from './routes/Signin';
 import LogOut from './routes/LogOut';
+import SinglePagePoll from './components/SinglePagePoll';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -22,10 +23,11 @@ root.render(
           <Route index element={<Home />} />
           <Route path='home' element={<Home />} />
           <Route path='about' element={<About />} />
-          <Route path='poll' element={<Poll />} />
+          <Route path='createPoll' element={<Poll />} />
           <Route path="Signup" element={<Login />} />
           <Route path='Signin' element={<SignIn />} />
           <Route path="Allpolls" element={<AllPolls />} />
+          <Route path='/poll/:id' element={<SinglePagePoll />} />
           <Route path='Logout' element={<LogOut />} />
         </Route>
         <Route path="*" element={<div>This path does not exist</div>} />

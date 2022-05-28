@@ -15,7 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Outlet } from "react-router";
 import { NavLink } from "react-router-dom";
 
-const pages = ["home", "about", "poll", "Allpolls"];
+const pages = ["home", "about", "createPoll", "Allpolls"];
 const settings = [
   "Profile",
   "Account",

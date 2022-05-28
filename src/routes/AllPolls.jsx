@@ -2,6 +2,7 @@ import "../allPolls.css";
 import { Container } from "@mui/material";
 import React from "react";
 import SinglePoll from "../components/SinglePoll";
+import { Outlet } from "react-router";
 function AllPolls(props) {
   const [state, setState] = React.useState(null);
 
@@ -33,6 +34,7 @@ function AllPolls(props) {
               );
             })
           : "Please wait...."}
+        <Outlet />
       </div>
     </Container>
   );

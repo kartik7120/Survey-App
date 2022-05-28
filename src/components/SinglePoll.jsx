@@ -1,6 +1,6 @@
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import React from "react";
-import PollChoice from "../components/pollChoice";
+// import PollChoice from "../components/pollChoice";
 import { signInContext } from "./Navbar";
 import { useNavigate } from "react-router";
 
@@ -64,14 +64,14 @@ function SinglePoll(props) {
         <h1>{state.title}</h1>
         <p>{state.description}</p>
         <p>{totalVotes} votes</p>
-        <PollChoice
+        {/* <PollChoice
           options={state.options}
           votes={state.votes}
           setState={setState}
-        />
-        <Button variant="contained" color="warning" type="submit">
+        /> */}
+        {/* <Button variant="contained" color="warning" type="submit">
           Vote
-        </Button>
+        </Button> */}
       </form>
     </div>
   );
