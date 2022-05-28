@@ -54,7 +54,7 @@ router.post("/register", async (req, res, next) => {
 
 router.post("/logout", (req, res, next) => {
   try {
-    req.logOut(req.user, err => {
+    req.logout(req.user, err => {
       if (err)
         return next(err);
     })
