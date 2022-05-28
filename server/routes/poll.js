@@ -14,6 +14,16 @@ router.get("/allPolls", async (req, res, next) => {
     }
 })
 
+router.get("/allPolls/:id", async (req, res) => {
+    const { id } = req.params;
+
+    const poll = await Poll.findById({ _id: id });
+    console.log("Poll data from allPolls/:id route", poll);
+    res.contentType("application/json");
+
+    res.json(JSON.stringify(poll));
+})
+
 router.post("/create", async (req, res, next) => {
     try {
         console.log("Session user = ", req.user);
