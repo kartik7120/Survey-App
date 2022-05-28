@@ -27,7 +27,7 @@ root.render(
           <Route path="Signup" element={<Login />} />
           <Route path='Signin' element={<SignIn />} />
           <Route path="Allpolls" element={<AllPolls />} />
-          <Route path='/poll/:id' element={<SinglePagePoll />} />
+          <Route path='poll/:id' element={<SinglePagePoll />} />
           <Route path='Logout' element={<LogOut />} />
         </Route>
         <Route path="*" element={<div>This path does not exist</div>} />

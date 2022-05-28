@@ -22,6 +22,10 @@ function SinglePoll(props) {
     0
   );
 
+  function handleClick(e) {
+    navigate(`../poll/${state.id}`);
+  }
+
   function handleSubmit(e) {
     if (signInState !== false) {
       e.preventDefault();
@@ -59,20 +63,20 @@ function SinglePoll(props) {
   }
 
   return (
-    <div className="poll">
-      <form action="" method="post" onSubmit={handleSubmit}>
-        <h1>{state.title}</h1>
-        <p>{state.description}</p>
-        <p>{totalVotes} votes</p>
-        {/* <PollChoice
+    <div className="poll" onClick={handleClick}>
+      {/* <form action="" method="post" onSubmit={handleSubmit}> */}
+      <h1>{state.title}</h1>
+      <p>{state.description}</p>
+      <p>{totalVotes} votes</p>
+      {/* <PollChoice
           options={state.options}
           votes={state.votes}
           setState={setState}
         /> */}
-        {/* <Button variant="contained" color="warning" type="submit">
+      {/* <Button variant="contained" color="warning" type="submit">
           Vote
         </Button> */}
-      </form>
+      {/* </form> */}
     </div>
   );
 }
