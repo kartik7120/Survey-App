@@ -1,9 +1,9 @@
 import React from "react";
 import { signInContext } from "../components/Navbar";
-import { Avatar, Container } from "@mui/material";
+import { Avatar, CardActionArea, CardContent, Container } from "@mui/material";
 import { Divider } from "@mui/material";
 import "../profile.css";
-
+import { Card } from "@mui/material";
 function stringToColor(string) {
   let hash = 0;
   let i;
@@ -47,11 +47,19 @@ function Profile(props) {
         .then((data) => {
           console.log("Data from the /users/:id route", data);
           const body = JSON.parse(data);
+          let totalVotes = 0;
+          body.polls.map((ele) => {
+            return ele.votes.map((vote) => {
+              return (totalVotes += vote);
+            });
+          });
           setUserDataState(function () {
             return {
               _id: body._id,
               polls: body.polls,
               username: body.username,
+              pollCount: body.polls.length,
+              totalVotes: totalVotes,
             };
           });
         })
@@ -67,22 +75,38 @@ function Profile(props) {
 
   return (
     <>
-      <Container maxWidth="md">
-        <div className="profileFlexBox">
-          <div className="upperProfilePart">
-            <div>
-              <Avatar {...stringAvatar(`${userDataState.username}`)} />
-            </div>
-            <Divider />
-            <h1>I am the profile route</h1>
-          </div>
-          <div className="LowerProfilePart">
-            <div>Total Number of votes</div>
-            <div>Totall number of polls</div>
-            <div>View all polls made by the user</div>
-          </div>
-        </div>
-      </Container>
+      {userDataState ? (
+        <Container maxWidth="md" sx={{ marginTop: "5rem" }}>
+          <Card>
+            <CardContent>
+              <div className="profileFlexBox">
+                <div className="upperProfilePart">
+                  <div>
+                    <Avatar {...stringAvatar(`${userDataState.username}`)} />
+                  </div>
+                  <Divider />
+                  <h1>{userDataState.username}</h1>
+                </div>
+                <div className="LowerProfilePart">
+                  <CardActionArea>
+                    <div>
+                      Total Number of votes = {userDataState.totalVotes}
+                    </div>
+                  </CardActionArea>
+                  <CardActionArea>
+                    <div>Total number of polls = {userDataState.pollCount}</div>
+                  </CardActionArea>
+                  <CardActionArea>
+                    <div>View all polls made by the user</div>
+                  </CardActionArea>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </Container>
+      ) : (
+        ""
+      )}
     </>
   );
 }

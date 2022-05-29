@@ -3,14 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
-.upperProfilePart{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.upperProfilePart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .LowerProfilePart {
