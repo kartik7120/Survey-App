@@ -16,7 +16,7 @@
 - [ ] Add pagination to All polls page
 - [x] Make a user Schema
 - [x] Make a client side and server side route so that we can view a particular poll
-- [ ] Make the site look pretty
+- [ ] Make the app look pretty
 - [ ] Make a proper landing page for the web app
 
 ### Seed data for poll create form
@@ -35,3 +35,10 @@ Adding timer in a poll
 - All the polls that the user is associated with
 - Total number of votes on his/her poll
 - Profile page of a user
+
+### Profile page
+
+- Username
+- Number of polls made by the user
+- logout button
+- View all pages made by the User
