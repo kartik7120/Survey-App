@@ -64,7 +64,12 @@ export default function SignIn() {
       .then((jsonData) => jsonData.json())
       .then((data) => {
         console.log("Data returned by the login route", data);
-        setSignInState(data.isAuthenticated);
+        setSignInState(function (oldState) {
+          return {
+            isAuthenticated: data.isAuthenticated,
+            _id: data.user_id,
+          };
+        });
       })
       .catch((err) =>
         console.log("Error occuered while fetching login route", err)

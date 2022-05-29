@@ -36,7 +36,7 @@ function SinglePagePoll(props) {
   //     0
   //   );
   function handleSubmit(e) {
-    if (signInState !== false) {
+    if (signInState.isAuthenticated !== false) {
       e.preventDefault();
       const fetchConfig = {
         method: "PATCH",
