@@ -4,6 +4,7 @@ import { Avatar, CardActionArea, CardContent, Container } from "@mui/material";
 import { Divider } from "@mui/material";
 import "../profile.css";
 import { Card } from "@mui/material";
+import { Link, Outlet } from "react-router-dom";
 function stringToColor(string) {
   let hash = 0;
   let i;
@@ -96,13 +97,16 @@ function Profile(props) {
                   <CardActionArea>
                     <div>Total number of polls = {userDataState.pollCount}</div>
                   </CardActionArea>
-                  <CardActionArea>
-                    <div>View all polls made by the user</div>
-                  </CardActionArea>
+                  <Link to="polls">
+                    <CardActionArea>
+                      <div>View all polls made by the user</div>
+                    </CardActionArea>
+                  </Link>
                 </div>
               </div>
             </CardContent>
           </Card>
+          <Outlet />
         </Container>
       ) : (
         ""

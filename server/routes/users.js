@@ -3,12 +3,16 @@ const router = express.Router();
 const User = require("../models/userSchema");
 const passport = require("passport");
 
-router.get("/:id", async (req, res) => {
-  const { id } = req.params;
-  const user = await User.findById({ _id: id }).populate("polls");
-  const body = JSON.stringify(user);
-  res.contentType("application/json");
-  res.json(body);
+router.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById({ _id: id }).populate("polls");
+    const body = JSON.stringify(user);
+    res.contentType("application/json");
+    res.json(body);
+  } catch (error) {
+    next(error);
+  }
 })
 
 router.post("/login", passport.authenticate("local", { failureRedirect: "/Signin", failureFlash: false, failureMessage: "Could not log in" }), (req, res, next) => {
