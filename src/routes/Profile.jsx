@@ -2,6 +2,8 @@ import React from "react";
 import { signInContext } from "../components/Navbar";
 import { Avatar, Container } from "@mui/material";
 import { Divider } from "@mui/material";
+import "../profile.css";
+
 function stringToColor(string) {
   let hash = 0;
   let i;
@@ -26,6 +28,8 @@ function stringAvatar(name) {
   return {
     sx: {
       bgcolor: stringToColor(name),
+      width: "5em",
+      height: "5em",
     },
     children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
   };
@@ -66,13 +70,19 @@ function Profile(props) {
       <Container maxWidth="xl">
         <div className="profileFlexBox">
           <div>
-            <Avatar {...stringAvatar("Kogami Shinya")} />
+            <div>
+              <Avatar {...stringAvatar(`${userDataState.username}`)} />
+            </div>
+            <Divider />
+            <h1>I am the profile route</h1>
           </div>
-
-          <h1>I am the profile route</h1>
+          <div></div>
         </div>
       </Container>
     </>
   );
 }
 export default Profile;
+// Total number of polls
+// Total number of votes on those polls
+// View all polls made by a particular user
