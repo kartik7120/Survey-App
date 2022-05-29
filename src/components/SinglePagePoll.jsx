@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { signInContext } from "./Navbar";
 import { useNavigate } from "react-router";
 import React from "react";
+import PollChoice from "./pollChoice";
 import { Button } from "@mui/material";
 function SinglePagePoll(props) {
   const { id } = useParams();
@@ -9,22 +10,17 @@ function SinglePagePoll(props) {
   let navigate = useNavigate();
   const signInObject = React.useContext(signInContext);
   const signInState = signInObject.signInState;
-  const [state, setState] = React.useState({
-    id: props.id,
-    title: props.title,
-    description: props.description,
-    options: props.options,
-    votes: props.votes,
-    // targetValue: props.options[0],
-  });
+  const [state, setState] = React.useState(null);
 
   React.useEffect(
     function () {
       fetch(`/poll/allPolls/${id}`)
         .then((jsonData) => jsonData.json())
-        .then((data) =>
-          console.log("Data revieved from allPolls/:id route", data)
-        )
+        .then((data) => {
+          console.log("Data revieved from allPolls/:id route", data);
+          const pollData = JSON.parse(data);
+          setState(pollData);
+        })
         .catch((err) =>
           console.log(
             "Error occured while fetching data from allPolls/:id route",
@@ -50,7 +46,7 @@ function SinglePagePoll(props) {
         },
         body: JSON.stringify(state),
       };
-      fetch(`/poll/updateVotes/${state.id}`, fetchConfig)
+      fetch(`/poll/updateVotes/${state._id}`, fetchConfig)
         .then((jsonData) => jsonData.json())
         .then((data) => {
           console.log("Data recieved from patch request", data);
@@ -59,7 +55,7 @@ function SinglePagePoll(props) {
           setState(function (oldState) {
             return {
               ...oldState,
-              id: objData._id,
+              _id: objData._id,
               title: objData.title,
               options: objData.options,
               votes: objData.votes,
@@ -77,10 +73,31 @@ function SinglePagePoll(props) {
 
   return (
     <>
-      <h1>I am a single page poll </h1>
-      <Button variant="contained" color="warning" type="submit">
-        Vote
-      </Button>
+      {state ? (
+        <>
+          {/* <h1>{state.title}</h1>
+          <Button variant="contained" color="warning" type="submit">
+            Vote
+          </Button> */}
+          <div className="poll" style={{ margin: "3em auto" }}>
+            <form action="" method="post" onSubmit={handleSubmit}>
+              <h1>{state.title}</h1>
+              <p>{state.description}</p>
+              {/* <p>{totalVotes} votes</p> */}
+              <PollChoice
+                options={state.options}
+                votes={state.votes}
+                setState={setState}
+              />
+              <Button variant="contained" color="warning" type="submit">
+                Vote
+              </Button>
+            </form>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 }

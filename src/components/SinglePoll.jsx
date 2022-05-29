@@ -1,13 +1,13 @@
 // import { Button } from "@mui/material";
 import React from "react";
 // import PollChoice from "../components/pollChoice";
-import { signInContext } from "./Navbar";
+// import { signInContext } from "./Navbar";
 import { useNavigate } from "react-router";
 
 function SinglePoll(props) {
   let navigate = useNavigate();
-  const signInObject = React.useContext(signInContext);
-  const signInState = signInObject.signInState;
+  // const signInObject = React.useContext(signInContext);
+  // const signInState = signInObject.signInState;
   const [state] = React.useState({
     id: props.id,
     title: props.title,

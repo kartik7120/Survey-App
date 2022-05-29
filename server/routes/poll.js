@@ -64,9 +64,9 @@ router.post("/create", async (req, res, next) => {
 });
 
 router.patch("/updateVotes/:id", async (req, res) => {
-    const { id, targetValue } = req.body;
+    const { _id, targetValue } = req.body;
 
-    const poll = await Poll.findById({ _id: id });
+    const poll = await Poll.findById({ _id });
     let updateIdx = -1;
     const optionArray = poll.options;
     for (let i = 0; i < optionArray.length; i++) {
@@ -79,7 +79,7 @@ router.patch("/updateVotes/:id", async (req, res) => {
     const votesArray = poll.votes;
     votesArray[updateIdx] = votesArray[updateIdx] + 1;
 
-    const newPoll = await Poll.findByIdAndUpdate({ _id: id }, { $set: { "votes": votesArray } }, { new: true });
+    const newPoll = await Poll.findByIdAndUpdate({ _id }, { $set: { "votes": votesArray } }, { new: true });
     res.contentType("application/json");
 
     res.json(JSON.stringify(newPoll));
