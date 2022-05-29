@@ -5,7 +5,7 @@ const passport = require("passport");
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  const user = await User.findById({ _id: id });
+  const user = await User.findById({ _id: id }).populate("polls");
   const body = JSON.stringify(user);
   res.contentType("application/json");
   res.json(body);
