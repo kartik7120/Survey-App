@@ -42,3 +42,9 @@ Adding timer in a poll
 - Number of polls made by the user
 - logout button
 - View all pages made by the User
+
+### Bug fixes
+
+- Add a 404 page for the path that does not exist
+- Add proper error handling and responses for backend 
+- Fix the proxy connection issue in React
