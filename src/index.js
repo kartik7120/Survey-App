@@ -14,6 +14,7 @@ import Login from "./routes/Register";
 import SignIn from './routes/Signin';
 import LogOut from './routes/LogOut';
 import SinglePagePoll from './components/SinglePagePoll';
+import Profile from './routes/Profile';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -29,6 +30,7 @@ root.render(
           <Route path="Allpolls" element={<AllPolls />} />
           <Route path='poll/:id' element={<SinglePagePoll />} />
           <Route path='Logout' element={<LogOut />} />
+          <Route path='Profile' element={<Profile />} />
         </Route>
         <Route path="*" element={<div>This path does not exist</div>} />
       </Routes>
