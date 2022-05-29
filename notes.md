@@ -10,12 +10,12 @@
 - [x] Add upto six options in a single poll
 - [x] Only logged in user can create a poll and vote on a poll
 - [x] Store the poll results in the database
-- [ ] All polls will be associated to a particular user
+- [x] All polls will be associated to a particular user
 - [x] Add the navbar bar at the top of the page to navigate
-- [ ] Add ablibty to vote in the all polls section
+- [x] Add ablibty to vote in the all polls section
 - [ ] Add pagination to All polls page
 - [x] Make a user Schema
-- [ ] Make a client side and server side route so that we can view a particular poll
+- [x] Make a client side and server side route so that we can view a particular poll
 - [ ] Make the site look pretty
 - [ ] Make a proper landing page for the web app
 

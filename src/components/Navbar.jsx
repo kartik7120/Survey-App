@@ -17,7 +17,7 @@ import { NavLink } from "react-router-dom";
 
 const pages = ["home", "about", "createPoll", "Allpolls"];
 const settings = ["Profile", "Signup", "Signin", "Logout"];
-
+ 
 const signInContext = React.createContext(null);
 
 const ResponsiveAppBar = () => {
