@@ -28,8 +28,8 @@ function stringAvatar(name) {
   return {
     sx: {
       bgcolor: stringToColor(name),
-      width: "5em",
-      height: "5em",
+      width: "8em",
+      height: "8em",
     },
     children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
   };
@@ -67,16 +67,20 @@ function Profile(props) {
 
   return (
     <>
-      <Container maxWidth="xl">
+      <Container maxWidth="md">
         <div className="profileFlexBox">
-          <div>
+          <div className="upperProfilePart">
             <div>
               <Avatar {...stringAvatar(`${userDataState.username}`)} />
             </div>
             <Divider />
             <h1>I am the profile route</h1>
           </div>
-          <div></div>
+          <div className="LowerProfilePart">
+            <div>Total Number of votes</div>
+            <div>Totall number of polls</div>
+            <div>View all polls made by the user</div>
+          </div>
         </div>
       </Container>
     </>
