@@ -64,10 +64,11 @@ export default function SignIn() {
       .then((jsonData) => jsonData.json())
       .then((data) => {
         console.log("Data returned by the login route", data);
+        const body = JSON.parse(data);
         setSignInState(function (oldState) {
           return {
-            isAuthenticated: data.isAuthenticated,
-            _id: data.user_id,
+            isAuthenticated: body.isAuthenticated,
+            _id: body.user_id,
           };
         });
       })
