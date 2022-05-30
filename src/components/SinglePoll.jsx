@@ -9,7 +9,6 @@ function SinglePoll(props) {
     description: props.description,
     options: props.options,
     votes: props.votes,
-    targetValue: props.options[0],
   });
 
   const totalVotes = props.votes.reduce(
@@ -18,7 +17,7 @@ function SinglePoll(props) {
   );
 
   function handleClick(e) {
-    navigate(`../poll/${state.id}`);
+    navigate(`/poll/${state.id}`);
   }
 
   return (
