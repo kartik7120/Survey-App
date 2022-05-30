@@ -19,13 +19,14 @@ const pages = ["home", "about", "createPoll", "Allpolls"];
 const settings = ["Profile", "Signup", "Signin", "Logout"];
 
 const signInContext = React.createContext(null);
+let stateObject;
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [signInState, setSignInState] = React.useState(false);
 
-  const stateObject = {
+  stateObject = {
     signInState,
     setSignInState,
   };
@@ -207,7 +208,7 @@ const ResponsiveAppBar = () => {
   );
 };
 export default ResponsiveAppBar;
-export { signInContext };
+export { signInContext, stateObject };
 
 // import { Outlet } from "react-router";
 

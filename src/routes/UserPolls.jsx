@@ -1,9 +1,9 @@
 import React from "react";
-import signInContext from "../components/Navbar";
+import { profileUserContext } from "./Profile";
 import { useNavigate } from "react-router-dom";
 function UserPolls(props) {
   let navigate = useNavigate();
-  let signInObject = React.useContext(signInContext);
+  let signInObject = React.useContext(profileUserContext);
   console.log("signInObject in userPolls route = ", signInObject);
   const signInState = signInObject.signInState;
 

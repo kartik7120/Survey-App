@@ -5,6 +5,9 @@ import { Divider } from "@mui/material";
 import "../profile.css";
 import { Card } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
+
+const profileUserContext = React.createContext("No user is logged in");
+
 function stringToColor(string) {
   let hash = 0;
   let i;
@@ -39,7 +42,7 @@ function stringAvatar(name) {
 function Profile(props) {
   const signInObject = React.useContext(signInContext);
   const signInState = signInObject.signInState;
-  console.log("signInState = ", signInState);
+  console.log("signInState from profile route = ", signInState);
   const [userDataState, setUserDataState] = React.useState(null);
   React.useEffect(
     function () {
@@ -106,7 +109,9 @@ function Profile(props) {
               </div>
             </CardContent>
           </Card>
-          <Outlet />
+          <profileUserContext.Provider value={signInObject}>
+            <Outlet />
+          </profileUserContext.Provider>
         </Container>
       ) : (
         ""
@@ -115,6 +120,7 @@ function Profile(props) {
   );
 }
 export default Profile;
+export { profileUserContext };
 // Total number of polls
 // Total number of votes on those polls
 // View all polls made by a particular user
