@@ -40,7 +40,7 @@ function SinglePoll(props) {
       <Card
         sx={{
           margin: "1em",
-          boxShadow: "10px 10px 14px -9px rgba(0,0,0,0.75)",
+          boxShadow: "3px 3px 14px -9px rgba(0,0,0,0.75)",
         }}
       >
         <CardContent>
