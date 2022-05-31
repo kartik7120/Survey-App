@@ -41,10 +41,11 @@ function SinglePoll(props) {
         sx={{
           margin: "1em",
           boxShadow: "3px 3px 14px -9px rgba(0,0,0,0.75)",
+          borderRadius: "2em",
         }}
       >
         <CardContent>
-          <CardActionArea onClick={handleClick}>
+          <CardActionArea onClick={handleClick} sx={{ borderRadius: "2em" }}>
             <div className="poll">
               <h1>{state.title}</h1>
               <p>{state.description}</p>
