@@ -5,11 +5,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 2em;
 }
 .poll {
   width: 55em;
   padding: 1em;
-  margin-top: 1em;
+  margin: 1em;
 }
 .poll > h1 {
   font-weight: 370;
