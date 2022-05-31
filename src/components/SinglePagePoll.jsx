@@ -3,7 +3,13 @@ import { signInContext } from "./Navbar";
 import { useNavigate } from "react-router";
 import React from "react";
 import PollChoice from "./pollChoice";
-import { Button } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardHeader,
+} from "@mui/material";
 function SinglePagePoll(props) {
   const { id } = useParams();
   console.log(id);
@@ -75,25 +81,27 @@ function SinglePagePoll(props) {
     <>
       {state ? (
         <>
-          {/* <h1>{state.title}</h1>
-          <Button variant="contained" color="warning" type="submit">
-            Vote
-          </Button> */}
-          <div className="poll" style={{ margin: "3em auto" }}>
-            <form action="" method="post" onSubmit={handleSubmit}>
-              <h1>{state.title}</h1>
-              <p>{state.description}</p>
-              {/* <p>{totalVotes} votes</p> */}
-              <PollChoice
-                options={state.options}
-                votes={state.votes}
-                setState={setState}
-              />
-              <Button variant="contained" color="warning" type="submit">
-                Vote
-              </Button>
-            </form>
-          </div>
+          <Card
+            sx={{ maxWidth: "68em", margin: "2em auto", borderRadius: "3em" }}
+          >
+            <CardContent>
+              <div className="poll" style={{ margin: "3em auto" }}>
+                <form action="" method="post" onSubmit={handleSubmit}>
+                  <h1>{state.title}</h1>
+                  <p>{state.description}</p>
+                  {/* <p>{totalVotes} votes</p> */}
+                  <PollChoice
+                    options={state.options}
+                    votes={state.votes}
+                    setState={setState}
+                  />
+                  <Button variant="contained" color="warning" type="submit">
+                    Vote
+                  </Button>
+                </form>
+              </div>
+            </CardContent>
+          </Card>
         </>
       ) : (
         ""

@@ -1,8 +1,8 @@
 import {
   FormControl,
   FormControlLabel,
-  FormLabel,
-  LinearProgress,
+  // FormLabel,
+  // LinearProgress,
   Radio,
   RadioGroup,
 } from "@mui/material";
@@ -20,7 +20,7 @@ function PollChoice(props) {
 
   return (
     <FormControl>
-      <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+      {/* <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel> */}
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue={props.options[0]}
@@ -37,13 +37,13 @@ function PollChoice(props) {
                   onChange={handleChange}
                 />
                 <div className="no-of-option-vote">{props.votes[index]}</div>
-                <LinearProgress
+                {/* <LinearProgress
                   variant="determinate"
                   value={props.votes[index]}
                   valueBuffer={0}
                   color="secondary"
                   sx={{ height: "0.5em", display: "block" }}
-                />
+                /> */}
               </>
             );
           })}

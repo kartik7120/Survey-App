@@ -48,3 +48,10 @@ Adding timer in a poll
 - Add a 404 page for the path that does not exist
 - Add proper error handling and responses for backend 
 - Fix the proxy connection issue in React
+
+### idea for making poll choice div
+
+1. Make the original div position relative
+2. Make the inner div absolute
+3. set z-index of absolute div higher
+4. and make the original div transparent
