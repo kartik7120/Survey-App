@@ -7,9 +7,7 @@
   align-items: center;
 }
 .poll {
-  border: 2px solid black;
   width: 55em;
-  min-height: 15em;
   padding: 1em;
   margin-top: 1em;
 }

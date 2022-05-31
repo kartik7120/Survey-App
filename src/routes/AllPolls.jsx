@@ -23,14 +23,14 @@ function AllPolls(props) {
         {state
           ? state.map((pollData, index) => {
               return (
-                <SinglePoll
-                  id={pollData._id}
-                  key={index * 10}
-                  title={pollData.title}
-                  description={pollData.description}
-                  votes={pollData.votes}
-                  options={pollData.options}
-                />
+                    <SinglePoll
+                      id={pollData._id}
+                      key={index * 10}
+                      title={pollData.title}
+                      description={pollData.description}
+                      votes={pollData.votes}
+                      options={pollData.options}
+                    />
               );
             })
           : "Please wait...."}
