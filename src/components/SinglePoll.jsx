@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { Card, CardActionArea, CardContent } from "@mui/material";
+import { Card, CardActionArea, CardContent, Button } from "@mui/material";
 import { motion } from "framer-motion";
 
 function SinglePoll(props) {
@@ -48,7 +48,7 @@ function SinglePoll(props) {
             <div className="poll">
               <h1>{state.title}</h1>
               <p>{state.description}</p>
-              <p>{totalVotes} votes</p>
+              <Button variant="text">{totalVotes} votes</Button>
             </div>
           </CardActionArea>
         </CardContent>
