@@ -32,11 +32,17 @@ function SinglePoll(props) {
   return (
     <motion.div
       variants={variants}
-      animate={{ y: 50 }}
+      animate={{ y: 20 }}
       transition={{ duration: 1 }}
       whileTap="whiletap"
+      layout
     >
-      <Card sx={{ margin: "1em" }}>
+      <Card
+        sx={{
+          margin: "1em",
+          boxShadow: "10px 10px 14px -9px rgba(0,0,0,0.75)",
+        }}
+      >
         <CardContent>
           <CardActionArea onClick={handleClick}>
             <div className="poll">
