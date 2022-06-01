@@ -81,10 +81,17 @@ function SinglePagePoll(props) {
     <>
       {state ? (
         <>
-          <Container maxWidth="xl">
-            <Card
-              sx={{ maxWidth: "70%", margin: "2em auto", borderRadius: "3em" }}
-            >
+          <Container
+            maxWidth="xl"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "end",
+              alignItems: "center",
+              marginTop: "5%",
+            }}
+          >
+            <Card sx={{ width: "50%", borderRadius: "3em" }}>
               <CardContent>
                 <div className="poll">
                   <form action="" method="post" onSubmit={handleSubmit}>
