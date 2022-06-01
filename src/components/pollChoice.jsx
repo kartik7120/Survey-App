@@ -45,7 +45,6 @@ function PollChoice(props) {
                     transition={{ duration: 0.4 }}
                     whileHover="hover"
                     layout
-                    // className="vote-bar"
                   >
                     <FormControlLabel
                       value={option}
