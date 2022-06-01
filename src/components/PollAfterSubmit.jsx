@@ -5,6 +5,11 @@ function PollAfterSubmit(props) {
       scale: 1.1,
     },
   };
+
+  const totalVotes = props.votes.reduce(
+    (prevValue, currValue) => prevValue + currValue,
+    0
+  );
   return (
     <>
       {props.options.map((option, index) => {
@@ -23,15 +28,16 @@ function PollAfterSubmit(props) {
               <motion.div
                 className="poll-fill-in"
                 animate={{
-                  width: `${40}%`,
+                  width: `${props.votes[index]}%`,
                 }}
                 layout
-                transition={{ delay: 1, type: "tween" }}
+                transition={{ delay: 0.5, type: "tween" }}
               ></motion.div>
             </div>
           </motion.div>
         );
       })}
+      <span>{totalVotes} Votes</span>
     </>
   );
 }
