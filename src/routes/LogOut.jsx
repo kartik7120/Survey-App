@@ -28,20 +28,9 @@ function LogOut(props) {
   }
   return (
     <div className="logout-flexbox">
-      <Box
-        component="span"
-        sx={{ p: 2, border: "1px dashed grey" }}
-        className="logout-box"
-      >
-        <Typography variant="h3" component="div" gutterBottom>
-          Username
-          {props.username}
-        </Typography>
-
-        <Button variant="contained" color="error" onClick={handleClick}>
-          LogOut
-        </Button>
-      </Box>
+      <Button variant="contained" color="error" onClick={handleClick}>
+        LogOut
+      </Button>
     </div>
   );
 }

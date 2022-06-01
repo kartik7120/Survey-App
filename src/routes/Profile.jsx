@@ -6,6 +6,7 @@ import "../profile.css";
 import { Card } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router";
+import LogOut from "./LogOut";
 const profileUserContext = React.createContext("No user is logged in");
 
 function stringToColor(string) {
@@ -128,6 +129,7 @@ function Profile(props) {
                   </Link>
                 </div>
               </div>
+            <LogOut />
             </CardContent>
           </Card>
           <profileUserContext.Provider value={signInObject}>
