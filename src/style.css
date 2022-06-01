@@ -92,3 +92,9 @@ h1 {
   bottom: 0;
 }
 /* 4896ef5d */
+.voteNumber {
+  font-size: 4em;
+}
+.totalVotes {
+  font-size: 1em;
+}

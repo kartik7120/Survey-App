@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 function PollAfterSubmit(props) {
   const variants = {
     hover: {
-      scale: 1.1,
+      scale: 1.05,
     },
   };
 
@@ -17,7 +17,7 @@ function PollAfterSubmit(props) {
           <motion.div
             animate={{ scale: 1 }}
             variants={variants}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
             whileHover="hover"
             layout
           >
@@ -37,7 +37,9 @@ function PollAfterSubmit(props) {
           </motion.div>
         );
       })}
-      <span>{totalVotes} Votes</span>
+      <span className="totalVotes">
+        <span className="voteNumber">{totalVotes}</span> Votes
+      </span>
     </>
   );
 }
