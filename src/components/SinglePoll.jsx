@@ -36,6 +36,11 @@ function SinglePoll(props) {
       transition={{ duration: 1 }}
       whileTap="whiletap"
       layout
+      style={{
+        minWidth: "30em",
+        width: "80%",
+        maxWidth: "50em",
+      }}
     >
       <Card
         sx={{
@@ -53,8 +58,6 @@ function SinglePoll(props) {
             </div>
           </CardActionArea>
         </CardContent>
-        {/* <div className="shadow-1"></div>
-      <div className="shadow-2"></div> */}
       </Card>
     </motion.div>
   );
