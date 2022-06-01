@@ -15,14 +15,10 @@ function PollAfterSubmit(props) {
             transition={{ duration: 0.5 }}
             whileHover="hover"
           >
-            <div
-              style={{
-                backgroundColor: "#4b5256",
-                margin: "1em",
-                color: "whitesmoke",
-              }}
-            >
-              {option} <span>{props.votes[index]}</span>
+            <div className="poll-after-submit-option">
+              <div className="indivisual-poll">
+                <div>{option}</div> <div>{props.votes[index]}</div>
+              </div>
             </div>
           </motion.div>
         );
