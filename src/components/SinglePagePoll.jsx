@@ -85,21 +85,25 @@ function SinglePagePoll(props) {
                   <form action="" method="post" onSubmit={handleSubmit}>
                     <h1>{state.title}</h1>
                     <p>{state.description}</p>
-                    {/* <p>{totalVotes} votes</p> */}
                     <PollChoice
                       options={state.options}
                       votes={state.votes}
                       setState={setState}
                       voteButtonState={state.voteButtonState}
                     />
-                    {state.voteButtonState ? (
-                      ""
-                    ) : (
-                      <Button variant="contained" color="warning" type="submit">
-                        Vote
-                      </Button>
-                    )}
                   </form>
+                  {state.voteButtonState ? (
+                    ""
+                  ) : (
+                    <Button
+                      variant="contained"
+                      color="warning"
+                      type="submit"
+                      onClick={handleSubmit}
+                    >
+                      Vote
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
