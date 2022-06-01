@@ -66,6 +66,7 @@ function SinglePagePoll(props) {
               options: objData.options,
               votes: objData.votes,
               description: objData.description,
+              voteButtonState: true,
             };
           });
         })
@@ -94,6 +95,7 @@ function SinglePagePoll(props) {
                     options={state.options}
                     votes={state.votes}
                     setState={setState}
+                    voteButtonState={state.voteButtonState}
                   />
                   <Button variant="contained" color="warning" type="submit">
                     Vote
