@@ -14,11 +14,19 @@ function PollAfterSubmit(props) {
             variants={variants}
             transition={{ duration: 0.5 }}
             whileHover="hover"
+            layout
           >
             <div className="poll-after-submit-option">
               <div className="indivisual-poll">
                 <div>{option}</div> <div>{props.votes[index]}</div>
               </div>
+              <motion.div
+                className="poll-fill-in"
+                style={{
+                  width: `${40}%`,
+                }}
+                layout
+              ></motion.div>
             </div>
           </motion.div>
         );

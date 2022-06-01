@@ -69,9 +69,9 @@ h1 {
   text-decoration: none;
 }
 .poll-after-submit-option {
-  background-color: #4b5256;
+  position: relative;
   margin: 1em auto;
-  color: whitesmoke;
+  color: black;
   width: 80%;
   height: 5em;
   border-radius: 1.2em;
@@ -85,3 +85,10 @@ h1 {
   flex-direction: row;
   justify-content: space-between;
 }
+.poll-fill-in {
+  background-color: #4362ee48;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+/* 4896ef5d */
