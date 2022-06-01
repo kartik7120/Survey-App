@@ -9,28 +9,34 @@ function UserPolls(props) {
   console.log("signInObject in userPolls route = ", signInObject);
   const signInState = signInObject.signInState;
 
-  React.useEffect(function () {
-    if (signInState.isAuthenticated !== false) {
-      fetch(`/users/${signInState._id}`)
-        .then((jsonData) => jsonData.json())
-        .then((data) => {
-          console.log("Data recieved from the /users/:id", data);
-          const body = JSON.parse(data);
-          const pollArray = body.polls.map((obj) => {
-            return {
-              _id: obj._id,
-              title: obj.title,
-              description: obj.description,
-              votes: obj.votes,
-            };
-          });
-          setUserPollsState(pollArray);
-        })
-        .catch((err) =>
-          console.log("Error occured while fetching data from /users/:id", err)
-        );
-    } else navigate("../Signup");
-  }, []);
+  React.useEffect(
+    function () {
+      if (signInState.isAuthenticated !== false) {
+        fetch(`/users/${signInState._id}`)
+          .then((jsonData) => jsonData.json())
+          .then((data) => {
+            console.log("Data recieved from the /users/:id", data);
+            const body = JSON.parse(data);
+            const pollArray = body.polls.map((obj) => {
+              return {
+                _id: obj._id,
+                title: obj.title,
+                description: obj.description,
+                votes: obj.votes,
+              };
+            });
+            setUserPollsState(pollArray);
+          })
+          .catch((err) =>
+            console.log(
+              "Error occured while fetching data from /users/:id",
+              err
+            )
+          );
+      } else navigate("../Signup");
+    },
+    [navigate, signInState._id, signInState.isAuthenticated]
+  );
   return (
     <>
       {userPollsState

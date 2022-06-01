@@ -77,36 +77,55 @@ function Profile(props) {
           );
       } else navigate("../Signup");
     },
-    [signInState._id]
+    [signInState._id, navigate, signInState]
   );
 
   return (
     <>
       {userDataState ? (
         <Container maxWidth="md" sx={{ marginTop: "5rem" }}>
-          <Card>
+          <Card
+            style={{
+              borderRadius: "5%",
+            }}
+          >
             <CardContent>
               <div className="profileFlexBox">
                 <div className="upperProfilePart">
                   <div>
                     <Avatar {...stringAvatar(`${userDataState.username}`)} />
                   </div>
-                  <Divider />
                   <h1>{userDataState.username}</h1>
                 </div>
+                <Divider
+                  variant="fullWidth"
+                  orientation="horizontal"
+                  component="hr"
+                  flexItem
+                />
                 <div className="LowerProfilePart">
-                  <CardActionArea>
-                    <div>
-                      Total Number of votes = {userDataState.totalVotes}
-                    </div>
-                  </CardActionArea>
-                  <CardActionArea>
-                    <div>Total number of polls = {userDataState.pollCount}</div>
-                  </CardActionArea>
+                  {/* <CardActionArea> */}
+                  <div>Total Number of votes = {userDataState.totalVotes}</div>
+                  {/* </CardActionArea> */}
+                  <Divider
+                    variant="fullWidth"
+                    orientation="vertical"
+                    component="hr"
+                    flexItem
+                  />
+                  {/* <CardActionArea> */}
+                  <div>Total number of polls = {userDataState.pollCount}</div>
+                  <Divider
+                    variant="fullWidth"
+                    orientation="vertical"
+                    component="hr"
+                    flexItem
+                  />
+                  {/* </CardActionArea> */}
                   <Link to="polls">
-                    <CardActionArea>
-                      <div>View all polls made by the user</div>
-                    </CardActionArea>
+                    {/* <CardActionArea> */}
+                    <div>View all polls made by the user</div>
+                    {/* </CardActionArea> */}
                   </Link>
                 </div>
               </div>
