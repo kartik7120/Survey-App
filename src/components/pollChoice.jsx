@@ -38,7 +38,7 @@ function PollChoice(props) {
           >
             {props.options.map((option, index) => {
               return (
-                <div className="wrapper">
+                <div className="wrapper" key={index * 10}>
                   <motion.div
                     animate={{ scale: 1 }}
                     variants={variants}

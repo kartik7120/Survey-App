@@ -22,6 +22,7 @@ function PollAfterSubmit(props) {
               transition={{ duration: 0.4 }}
               whileHover="hover"
               layout
+              key={index * 521}
             >
               <div className="poll-after-submit-option">
                 <div className="indivisual-poll">
