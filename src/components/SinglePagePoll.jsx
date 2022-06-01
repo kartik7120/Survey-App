@@ -3,13 +3,7 @@ import { signInContext } from "./Navbar";
 import { useNavigate } from "react-router";
 import React from "react";
 import PollChoice from "./pollChoice";
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardHeader,
-} from "@mui/material";
+import { Button, Card, CardContent } from "@mui/material";
 function SinglePagePoll(props) {
   const { id } = useParams();
   console.log(id);
@@ -97,9 +91,13 @@ function SinglePagePoll(props) {
                     setState={setState}
                     voteButtonState={state.voteButtonState}
                   />
-                  <Button variant="contained" color="warning" type="submit">
-                    Vote
-                  </Button>
+                  {state.voteButtonState ? (
+                    ""
+                  ) : (
+                    <Button variant="contained" color="warning" type="submit">
+                      Vote
+                    </Button>
+                  )}
                 </form>
               </div>
             </CardContent>
