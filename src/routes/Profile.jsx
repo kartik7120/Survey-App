@@ -5,7 +5,7 @@ import { Divider } from "@mui/material";
 import "../profile.css";
 import { Card } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
-
+import { useNavigate } from "react-router";
 const profileUserContext = React.createContext("No user is logged in");
 
 function stringToColor(string) {
@@ -40,39 +40,42 @@ function stringAvatar(name) {
 }
 
 function Profile(props) {
+  let navigate = useNavigate();
   const signInObject = React.useContext(signInContext);
   const signInState = signInObject.signInState;
   console.log("signInState from profile route = ", signInState);
   const [userDataState, setUserDataState] = React.useState(null);
   React.useEffect(
     function () {
-      fetch(`/users/${signInState._id}`)
-        .then((jsonData) => jsonData.json())
-        .then((data) => {
-          console.log("Data from the /users/:id route", data);
-          const body = JSON.parse(data);
-          let totalVotes = 0;
-          body.polls.map((ele) => {
-            return ele.votes.map((vote) => {
-              return (totalVotes += vote);
+      if (signInState !== false) {
+        fetch(`/users/${signInState._id}`)
+          .then((jsonData) => jsonData.json())
+          .then((data) => {
+            console.log("Data from the /users/:id route", data);
+            const body = JSON.parse(data);
+            let totalVotes = 0;
+            body.polls.map((ele) => {
+              return ele.votes.map((vote) => {
+                return (totalVotes += vote);
+              });
             });
-          });
-          setUserDataState(function () {
-            return {
-              _id: body._id,
-              polls: body.polls,
-              username: body.username,
-              pollCount: body.polls.length,
-              totalVotes: totalVotes,
-            };
-          });
-        })
-        .catch((err) =>
-          console.log(
-            "Some error occured while fetching data from /users/:id route",
-            err
-          )
-        );
+            setUserDataState(function () {
+              return {
+                _id: body._id,
+                polls: body.polls,
+                username: body.username,
+                pollCount: body.polls.length,
+                totalVotes: totalVotes,
+              };
+            });
+          })
+          .catch((err) =>
+            console.log(
+              "Some error occured while fetching data from /users/:id route",
+              err
+            )
+          );
+      } else navigate("../Signup");
     },
     [signInState._id]
   );

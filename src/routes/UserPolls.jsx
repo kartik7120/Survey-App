@@ -33,7 +33,6 @@ function UserPolls(props) {
   }, []);
   return (
     <>
-      <h1>I am user polls route</h1>
       {userPollsState
         ? userPollsState.map((ele, index) => (
             <SinglePoll
