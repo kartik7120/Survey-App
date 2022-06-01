@@ -2,7 +2,6 @@ import {
   FormControl,
   FormControlLabel,
   // FormLabel,
-  // LinearProgress,
   Radio,
   RadioGroup,
 } from "@mui/material";
@@ -11,7 +10,6 @@ import PollAfterSubmit from "./PollAfterSubmit";
 import "../style.css";
 
 function PollChoice(props) {
-  // const [voteButtonState, setVoteButtonState] = React.useState(null);
   function handleChange(e) {
     props.setState(function (oldState) {
       return {
@@ -24,7 +22,7 @@ function PollChoice(props) {
   return (
     <>
       {props.voteButtonState ? (
-        <PollAfterSubmit />
+        <PollAfterSubmit options={props.options} votes={props.votes} />
       ) : (
         <FormControl>
           {/* <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel> */}

@@ -1,4 +1,14 @@
 function PollAfterSubmit(props) {
-  return <h1>I am poll after submit</h1>;
+  return (
+    <>
+      {props.options.map((option, index) => {
+        return (
+          <div>
+            {option} <span>{props.votes[index]}</span>
+          </div>
+        );
+      })}
+    </>
+  );
 }
 export default PollAfterSubmit;
