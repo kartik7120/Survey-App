@@ -34,6 +34,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(2, minmax(30em, 1fr));
   grid-auto-rows: minmax(5em, 1fr);
+  width: 50%;
 }
 .no-of-option-vote {
   display: flex;
