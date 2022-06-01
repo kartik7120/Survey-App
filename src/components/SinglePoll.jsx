@@ -40,6 +40,7 @@ function SinglePoll(props) {
         minWidth: "30em",
         width: "80%",
         maxWidth: "50em",
+        margin: "0 auto",
       }}
     >
       <Card
