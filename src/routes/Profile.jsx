@@ -104,16 +104,13 @@ function Profile(props) {
                   flexItem
                 />
                 <div className="LowerProfilePart">
-                  {/* <CardActionArea> */}
                   <div>Total Number of votes = {userDataState.totalVotes}</div>
-                  {/* </CardActionArea> */}
                   <Divider
                     variant="fullWidth"
                     orientation="vertical"
                     component="hr"
                     flexItem
                   />
-                  {/* <CardActionArea> */}
                   <div>Total number of polls = {userDataState.pollCount}</div>
                   <Divider
                     variant="fullWidth"
@@ -121,11 +118,13 @@ function Profile(props) {
                     component="hr"
                     flexItem
                   />
-                  {/* </CardActionArea> */}
-                  <Link to="polls">
-                    {/* <CardActionArea> */}
-                    <div>View all polls made by the user</div>
-                    {/* </CardActionArea> */}
+                  <Link
+                    to="polls"
+                    style={{ textDecoration: "none", all: "unset" }}
+                  >
+                    <CardActionArea>
+                      <div>View My Polls</div>
+                    </CardActionArea>
                   </Link>
                 </div>
               </div>
