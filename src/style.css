@@ -119,3 +119,13 @@ h1 {
 .poll > h1 {
   font-weight: 370;
 }
+.wrapper {
+  position: relative;
+}
+.vote-bar {
+  background-color: rgba(255, 0, 0, 0.111);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}

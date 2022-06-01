@@ -7,8 +7,15 @@ import {
 import React from "react";
 import PollAfterSubmit from "./PollAfterSubmit";
 import "../style.css";
+import { motion } from "framer-motion";
 
 function PollChoice(props) {
+  const variants = {
+    hover: {
+      scale: 1.05,
+    },
+  };
+
   function handleChange(e) {
     props.setState(function (oldState) {
       return {
@@ -31,12 +38,23 @@ function PollChoice(props) {
           >
             {props.options.map((option, index) => {
               return (
-                <FormControlLabel
-                  value={option}
-                  control={<Radio />}
-                  label={option}
-                  onChange={handleChange}
-                />
+                <div className="wrapper">
+                  <motion.div
+                    animate={{ scale: 1 }}
+                    variants={variants}
+                    transition={{ duration: 0.4 }}
+                    whileHover="hover"
+                    layout
+                    // className="vote-bar"
+                  >
+                    <FormControlLabel
+                      value={option}
+                      control={<Radio />}
+                      label={option}
+                      onChange={handleChange}
+                    />
+                  </motion.div>
+                </div>
               );
             })}
           </RadioGroup>
