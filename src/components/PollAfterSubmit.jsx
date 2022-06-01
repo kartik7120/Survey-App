@@ -22,10 +22,11 @@ function PollAfterSubmit(props) {
               </div>
               <motion.div
                 className="poll-fill-in"
-                style={{
+                animate={{
                   width: `${40}%`,
                 }}
                 layout
+                transition={{ delay: 1, type: "tween" }}
               ></motion.div>
             </div>
           </motion.div>
