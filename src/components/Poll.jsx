@@ -70,7 +70,11 @@ function Poll(props) {
       //  Making the fetch request in the backend and sending JSON body
       fetch("/poll/create", fetchConfig)
         .then((jsonData) => jsonData.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+          console.log(typeof data);
+          console.log("data form the /poll/create route  = ", data);
+          navigate(`/poll/${data}`, { replace: true });
+        })
         .catch((err) =>
           console.log(
             "Error occured while fetching POST request to the backend server",
@@ -78,7 +82,6 @@ function Poll(props) {
           )
         );
       setIsSubmited(true);
-      navigate("/Allpolls", { replace: true });
     } else {
       navigate("/Signup");
     }

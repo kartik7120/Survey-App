@@ -26,7 +26,7 @@
 - [ ] Add a background color to the web app
 - [ ] Add a loading svg
 - [ ] Add error boundary
-- [ ] User redirects to it's when a new poll is made
+- [x] User redirects to it's when a new poll is made
 
 ### Seed data for poll create form
 

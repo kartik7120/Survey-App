@@ -54,7 +54,7 @@ router.post("/create", async (req, res, next) => {
 
             await (await User.findByIdAndUpdate({ _id: req.user.id }, { $push: { "polls": newPoll._id } }, { new: true })).save();
             // user.polls = newPoll._id;
-            res.json("Hello I am the POST poll route");
+            res.json(newPoll._id);
         }
         else
             res.json("User is not logged in so cannot create a poll");
