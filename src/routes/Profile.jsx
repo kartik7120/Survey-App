@@ -132,6 +132,13 @@ function Profile(props) {
                     </Link>
                   </UserDisplay>
                 </div>
+                <Divider
+                  variant="fullWidth"
+                  orientation="horizontal"
+                  component="hr"
+                  flexItem
+                  style={{ margin: "2%" }}
+                />
               </div>
               <LogOut />
             </CardContent>
