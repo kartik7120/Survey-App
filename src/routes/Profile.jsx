@@ -34,8 +34,8 @@ function stringAvatar(name) {
   return {
     sx: {
       bgcolor: stringToColor(name),
-      width: "8em",
-      height: "8em",
+      width: "5em",
+      height: "5em",
     },
     children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
   };
@@ -95,7 +95,10 @@ function Profile(props) {
               <div className="profileFlexBox">
                 <div className="upperProfilePart">
                   <div>
-                    <Avatar {...stringAvatar(`${userDataState.username}`)} />
+                    <Avatar
+                      {...stringAvatar(`${userDataState.username}`)}
+                      style={{ fontSize: "1.5em" }}
+                    />
                   </div>
                   <h1>{userDataState.username}</h1>
                 </div>
