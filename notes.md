@@ -18,6 +18,12 @@
 - [x] Make a client side and server side route so that we can view a particular poll
 - [ ] Make the app look pretty
 - [ ] Make a proper landing page for the web app
+- [ ] Users should not be able to vote on the poll that they  already voted
+- [ ] User should be logged in to vote
+- [ ] Make backend safe using different mentioned in the express document
+- [ ] Add a footer in the app
+- [ ] Add a logo
+- [ ] Add a background color to the web app
 
 ### Seed data for poll create form
 
