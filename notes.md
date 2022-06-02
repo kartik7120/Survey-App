@@ -24,7 +24,7 @@
 - [ ] Add a footer in the app
 - [ ] Add a logo
 - [ ] Add a background color to the web app
-- [ ] Add a loading svg
+- [x] Add a loading svg
 - [ ] Add error boundary
 - [x] User redirects to it's when a new poll is made
 
