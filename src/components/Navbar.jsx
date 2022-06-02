@@ -21,6 +21,35 @@ const settings = ["Profile", "Signup", "Signin", "Logout"];
 const signInContext = React.createContext(null);
 let stateObject;
 
+function stringToColor(string) {
+  let hash = 0;
+  let i;
+
+  /* eslint-disable no-bitwise */
+  for (i = 0; i < string.length; i += 1) {
+    hash = string.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  let color = "#";
+
+  for (i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += `00${value.toString(16)}`.slice(-2);
+  }
+  /* eslint-enable no-bitwise */
+
+  return color;
+}
+
+function stringAvatar(name) {
+  return {
+    sx: {
+      bgcolor: stringToColor(name),
+    },
+    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+  };
+}
+
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -164,7 +193,11 @@ const ResponsiveAppBar = () => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar
+                    {...stringAvatar(
+                      signInState ? signInState.username : "Kaartik Shukla"
+                    )}
+                  />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -209,15 +242,3 @@ const ResponsiveAppBar = () => {
 };
 export default ResponsiveAppBar;
 export { signInContext, stateObject };
-
-// import { Outlet } from "react-router";
-
-// function Navbar(props) {
-//   return (
-//     <>
-//       <h1>I am a navbar</h1>
-//       <Outlet />
-//     </>
-//   );
-// }
-// export default Navbar;

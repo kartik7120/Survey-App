@@ -69,6 +69,7 @@ export default function SignIn() {
           return {
             isAuthenticated: body.isAuthenticated,
             _id: body.user_id,
+            username: body.username,
           };
         });
       })

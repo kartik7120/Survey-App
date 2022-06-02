@@ -42,7 +42,7 @@ Adding timer in a poll
 - [x] Number of polls made by the user
 - [x] logout button
 - [x] View all pages made by the User
-- [ ] Make card for total polls and total votes
+- [x] Make card for total polls and total votes
 
 ### Bug fixes
 
