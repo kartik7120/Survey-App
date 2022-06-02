@@ -30,7 +30,7 @@ function PollAfterSubmit(props) {
               <motion.div
                 className="poll-fill-in"
                 animate={{
-                  width: `${props.votes[index]}%`,
+                  width: `${100 / (totalVotes / props.votes[index])}%`,
                 }}
                 layout
                 transition={{ delay: 0.5, type: "tween" }}

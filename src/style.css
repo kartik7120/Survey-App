@@ -101,6 +101,7 @@ h1 {
   border-radius: 1em;
   top: 0;
   bottom: 0;
+  max-width: 100%;
 }
 /* 4896ef5d */
 .voteNumber {
