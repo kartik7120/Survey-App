@@ -85,7 +85,7 @@ function Profile(props) {
   return (
     <>
       {userDataState ? (
-        <Container maxWidth="md" sx={{ marginTop: "5rem" }}>
+        <Container maxWidth="md" sx={{ marginTop: "2rem" }}>
           <Card
             style={{
               borderRadius: "5%",
