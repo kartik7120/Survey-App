@@ -24,6 +24,8 @@
 - [ ] Add a footer in the app
 - [ ] Add a logo
 - [ ] Add a background color to the web app
+- [ ] Add a loading svg
+- [ ] Add error boundary
 
 ### Seed data for poll create form
 
