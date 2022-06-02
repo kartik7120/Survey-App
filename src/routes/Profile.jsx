@@ -155,6 +155,3 @@ function Profile(props) {
 }
 export default Profile;
 export { profileUserContext };
-// Total number of polls
-// Total number of votes on those polls
-// View all polls made by a particular user
