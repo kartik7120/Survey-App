@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Outlet } from "react-router";
 import { NavLink } from "react-router-dom";
+import Footer from "./footer";
 
 const pages = ["home", "about", "createPoll", "Allpolls"];
 const settings = ["Profile", "Signup", "Signin", "Logout"];
@@ -237,6 +238,7 @@ const ResponsiveAppBar = () => {
       <signInContext.Provider value={stateObject}>
         <Outlet />
       </signInContext.Provider>
+      <Footer />
     </>
   );
 };
