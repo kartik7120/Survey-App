@@ -1,8 +1,18 @@
 import "../allPolls.css";
-import { Container } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  Container,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import SinglePoll from "../components/SinglePoll";
 import { Outlet } from "react-router";
+import { Skeleton } from "@mui/material";
+
+let dummyArray = [1, 2, 3, 4, 5];
+
 function AllPolls(props) {
   const [state, setState] = React.useState(null);
 
@@ -33,7 +43,33 @@ function AllPolls(props) {
                 />
               );
             })
-          : "Please wait...."}
+          : dummyArray.map((ele) => (
+              <Card
+                sx={{
+                  margin: "1em",
+                  boxShadow: "3px 3px 14px -9px rgba(0,0,0,0.75)",
+                  borderRadius: "2em",
+                  width: "50%",
+                }}
+              >
+                <CardContent sx={{ borderRadius: "2em" }}>
+                  <div className="poll">
+                    <Skeleton
+                      width="20em"
+                      variant="rectangle"
+                      animation="wave"
+                    />
+                    <Typography variant="h1"></Typography>
+                    <Typography variant="p">
+                      <Skeleton varaint="rectangle" />
+                    </Typography>
+                    <Button variant="contained" color="primary">
+                      <Skeleton varaint="rectangle" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
         <Outlet />
       </div>
     </Container>
