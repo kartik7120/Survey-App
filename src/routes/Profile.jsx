@@ -7,6 +7,7 @@ import { Card } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router";
 import LogOut from "./LogOut";
+import UserDisplay from "../components/cardComponent";
 const profileUserContext = React.createContext("No user is logged in");
 
 function stringToColor(string) {
@@ -105,31 +106,34 @@ function Profile(props) {
                   flexItem
                 />
                 <div className="LowerProfilePart">
-                  <div>Total Number of votes = {userDataState.totalVotes}</div>
+                  <UserDisplay
+                    title="Number of votes"
+                    value={userDataState.totalVotes}
+                    color="yellow"
+                  />
                   <Divider
                     variant="fullWidth"
                     orientation="vertical"
                     component="hr"
                     flexItem
                   />
-                  <div>Total number of polls = {userDataState.pollCount}</div>
-                  <Divider
-                    variant="fullWidth"
-                    orientation="vertical"
-                    component="hr"
-                    flexItem
-                  />
-                  <Link
-                    to="polls"
-                    style={{ textDecoration: "none", all: "unset" }}
+                  <UserDisplay
+                    title="Number of polls"
+                    color="red"
+                    value={userDataState.pollCount}
                   >
-                    <CardActionArea>
-                      <div>View My Polls</div>
-                    </CardActionArea>
-                  </Link>
+                    <Link
+                      to="polls"
+                      style={{ textDecoration: "none", all: "unset" }}
+                    >
+                      <CardActionArea>
+                        <div>View My Polls</div>
+                      </CardActionArea>
+                    </Link>
+                  </UserDisplay>
                 </div>
               </div>
-            <LogOut />
+              <LogOut />
             </CardContent>
           </Card>
           <profileUserContext.Provider value={signInObject}>
