@@ -18,16 +18,22 @@ function AllPolls(props) {
   const [state, setState] = React.useState(null);
   const [paginationState, setPaginationState] = React.useState(1);
 
-  React.useEffect(function () {
-    fetch(`/poll/allPolls/${paginationState}`)
-      .then((jsonData) => jsonData.json())
-      .then((data) => {
-        console.log("Data from the allPolls route", data);
-        setState(function (oldState) {
-          return data;
+  React.useEffect(
+    function () {
+      fetch(`/poll/allPolls/page/${paginationState}`)
+        .then((jsonData) => jsonData.json())
+        .then((data) => {
+          const body = data;
+          setState(function (oldState) {
+            return {
+              pollData: body.pollData,
+              totalPolls: body.totalPolls,
+            };
+          });
         });
-      });
-  }, []);
+    },
+    [paginationState]
+  );
 
   function paginationFunction(event, currPage) {
     setPaginationState(currPage);
@@ -37,7 +43,7 @@ function AllPolls(props) {
     <Container maxWidth="xl">
       <div className="poll-wrapper">
         {state
-          ? state.map((pollData, index) => {
+          ? state.pollData.map((pollData, index) => {
               return (
                 <SinglePoll
                   id={pollData._id}
@@ -80,7 +86,7 @@ function AllPolls(props) {
             ))}
         <Outlet />
         <Pagination
-          count={10}
+          count={state ? state.totalPolls : 1}
           color="secondary"
           sx={{ margin: "5% auto" }}
           size="large"
