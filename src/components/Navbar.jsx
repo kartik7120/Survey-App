@@ -131,9 +131,9 @@ const ResponsiveAppBar = () => {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">
+                    <Typography textAlign="center" variant="button">
                       <NavLink
-                        to={"/home"}
+                        to={`/${page}`}
                         style={({ isActive }) => {
                           return {
                             display: "block",
@@ -174,7 +174,7 @@ const ResponsiveAppBar = () => {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  variant="text"
+                  variant="contained"
                   sx={{
                     my: 2,
                     display: "block",
