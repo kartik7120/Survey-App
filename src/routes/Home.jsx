@@ -1,7 +1,7 @@
-import { Container, Typography, Divider, Button } from "@mui/material";
+import { Container, Typography, Divider, Button, Fab } from "@mui/material";
 import React from "react";
 import "../homeStyle.css";
-
+import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 function Home(props) {
   return (
     <Container maxWidth="xl">
@@ -51,10 +51,12 @@ function Home(props) {
         >
           Explore Polls Created by Awesome Pollsters Like YOU
         </Typography>
-        <Button variant="contained" sx={{ marginLeft: "5%", margin: "0 auto" }}>
+        <Fab variant="extended" color="primary">
+          <AutoFixHighIcon sx={{ mr: 1, margin: "0 auto" }} />
           Explore
-        </Button>
+        </Fab>
       </Container>
+      <Divider variant="middle" component="hr" />
     </Container>
   );
 }
