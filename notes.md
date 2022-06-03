@@ -27,7 +27,7 @@
 - [x] Add a loading svg
 - [ ] Add error boundary
 - [x] User redirects to it's when a new poll is made
-- [ ] Fix the links in the bread crumb when the app is in mobile layout
+- [x] Fix the links in the bread crumb when the app is in mobile layout
 
 ### Seed data for poll create form
 
