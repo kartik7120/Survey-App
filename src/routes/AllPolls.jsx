@@ -47,7 +47,7 @@ function AllPolls(props) {
               return (
                 <SinglePoll
                   id={pollData._id}
-                  key={index * 10}
+                  key={index * 1000 * Math.random()}
                   title={pollData.title}
                   description={pollData.description}
                   votes={pollData.votes}
@@ -55,7 +55,7 @@ function AllPolls(props) {
                 />
               );
             })
-          : dummyArray.map((ele) => (
+          : dummyArray.map((ele, index) => (
               <Card
                 sx={{
                   margin: "1em",
@@ -63,6 +63,7 @@ function AllPolls(props) {
                   borderRadius: "2em",
                   width: "50%",
                 }}
+                key={index * 1000 * Math.random()}
               >
                 <CardContent sx={{ borderRadius: "2em" }}>
                   <div className="poll">
