@@ -1,8 +1,14 @@
-import { Container, Typography, Divider, Button, Fab } from "@mui/material";
+import { Container, Typography, Divider, Fab } from "@mui/material";
+import { useNavigate } from "react-router";
 import React from "react";
 import "../homeStyle.css";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 function Home(props) {
+  let navigate = useNavigate();
+
+  function handleClick(e) {
+    navigate("../Allpolls");
+  }
   return (
     <Container maxWidth="xl">
       <div className="upperFlexBox">
@@ -51,7 +57,7 @@ function Home(props) {
         >
           Explore Polls Created by Awesome Pollsters Like YOU
         </Typography>
-        <Fab variant="extended" color="primary">
+        <Fab variant="extended" color="primary" onClick={handleClick}>
           <AutoFixHighIcon sx={{ mr: 1, margin: "0 auto" }} />
           Explore
         </Fab>
