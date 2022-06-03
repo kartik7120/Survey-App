@@ -28,6 +28,7 @@
 - [ ] Add error boundary
 - [x] User redirects to it's when a new poll is made
 - [x] Fix the links in the bread crumb when the app is in mobile layout
+- [ ] Fix the create all polls bug
 
 ### Seed data for poll create form
 
