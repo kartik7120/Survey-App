@@ -2,18 +2,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@1,200&display=swap");
 
 .homeBody {
-  background-image: url("./images/vote4.jpg");
-  min-height: 40em;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-
-  /* margin-top: 50em; */
+  width: 90%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.homeImg {
+  width: 100%;
+  display: block;
 }
 
 .flex-box-home {
@@ -46,5 +45,37 @@
   align-self: center;
   display: block;
 }
-/* font-family: 'Montserrat Alternates', sans-serif; */
+
+.upperText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: x-small;
+  min-width: 40%;
+  width: 60%;
+  margin: 0.8%;
+}
+
+.upperFlexBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2%;
+  /* align-items: baseline; */
+}
 /* font-family: 'Plus Jakarta Sans', sans-serif; */
+@media screen and (max-width: 1048px) {
+  .upperFlexBox {
+    flex-direction: column;
+    align-items: center;
+    margin: 1%;
+  }
+  .homeBody {
+    width: 100%;
+    /* min-width: 50%; */
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
