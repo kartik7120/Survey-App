@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   Container,
+  Pagination,
   Typography,
 } from "@mui/material";
 import React from "react";
@@ -59,19 +60,23 @@ function AllPolls(props) {
                       variant="rectangle"
                       animation="wave"
                     />
-                    <Typography variant="h1"></Typography>
+                    <Typography variant="h1">
+                      <Skeleton varaint="rectangle" animation="wave" />
+                    </Typography>
                     <Typography variant="p">
-                      <Skeleton varaint="rectangle" />
+                      <Skeleton varaint="rectangle" animation="wave" />
                     </Typography>
                     <Button variant="contained" color="primary">
-                      <Skeleton varaint="rectangle" />
+                      <Skeleton varaint="rectangle" animation="wave" />
                     </Button>
                   </div>
                 </CardContent>
               </Card>
             ))}
         <Outlet />
+        <Pagination count={10} color="secondary" sx={{ margin: "5% auto" }} />
       </div>
+      {/* <Pagination count={10} color="secondary" /> */}
     </Container>
   );
 }
