@@ -10,7 +10,6 @@ function Poll(props) {
   let navigate = useNavigate();
   const signInObject = React.useContext(signInContext);
   const signInState = signInObject.signInState;
-  // const setSignInState = signInObject.setSignInState;
   const [state, setState] = React.useState(2);
   const [isSubmited, setIsSubmited] = React.useState(false);
   const [formState, setFormState] = React.useState({
@@ -67,12 +66,9 @@ function Poll(props) {
         },
         body: JSON.stringify(body),
       };
-      //  Making the fetch request in the backend and sending JSON body
       fetch("/poll/create", fetchConfig)
         .then((jsonData) => jsonData.json())
         .then((data) => {
-          console.log(typeof data);
-          console.log("data form the /poll/create route  = ", data);
           navigate(`/poll/${data}`, { replace: true });
         })
         .catch((err) =>

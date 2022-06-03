@@ -13,7 +13,7 @@
 - [x] All polls will be associated to a particular user
 - [x] Add the navbar bar at the top of the page to navigate
 - [x] Add ablibty to vote in the all polls section
-- [ ] Add pagination to All polls page
+- [x] Add pagination to All polls page
 - [x] Make a user Schema
 - [x] Make a client side and server side route so that we can view a particular poll
 - [ ] Make the app look pretty
@@ -27,6 +27,7 @@
 - [x] Add a loading svg
 - [ ] Add error boundary
 - [x] User redirects to it's when a new poll is made
+- [ ] Fix the links in the bread crumb when the app is in mobile layout
 
 ### Seed data for poll create form
 
