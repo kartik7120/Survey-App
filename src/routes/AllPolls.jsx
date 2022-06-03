@@ -16,9 +16,10 @@ let dummyArray = [1, 2, 3, 4, 5];
 
 function AllPolls(props) {
   const [state, setState] = React.useState(null);
+  const [paginationState, setPaginationState] = React.useState(1);
 
   React.useEffect(function () {
-    fetch("/poll/allPolls")
+    fetch(`/poll/allPolls/${paginationState}`)
       .then((jsonData) => jsonData.json())
       .then((data) => {
         console.log("Data from the allPolls route", data);
@@ -27,6 +28,10 @@ function AllPolls(props) {
         });
       });
   }, []);
+
+  function paginationFunction(event, currPage) {
+    setPaginationState(currPage);
+  }
 
   return (
     <Container maxWidth="xl">
@@ -74,9 +79,14 @@ function AllPolls(props) {
               </Card>
             ))}
         <Outlet />
-        <Pagination count={10} color="secondary" sx={{ margin: "5% auto" }} />
+        <Pagination
+          count={10}
+          color="secondary"
+          sx={{ margin: "5% auto" }}
+          size="large"
+          onChange={paginationFunction}
+        />
       </div>
-      {/* <Pagination count={10} color="secondary" /> */}
     </Container>
   );
 }
