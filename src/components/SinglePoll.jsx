@@ -4,7 +4,6 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  Button,
   Typography,
 } from "@mui/material";
 import { motion } from "framer-motion";
