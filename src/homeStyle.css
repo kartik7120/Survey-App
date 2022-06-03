@@ -61,9 +61,8 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 2%;
-  /* align-items: baseline; */
 }
-/* font-family: 'Plus Jakarta Sans', sans-serif; */
+
 @media screen and (max-width: 1048px) {
   .upperFlexBox {
     flex-direction: column;

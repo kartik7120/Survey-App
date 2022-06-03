@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Container, Typography, Divider, Button } from "@mui/material";
 import React from "react";
 import "../homeStyle.css";
 
@@ -32,6 +32,29 @@ function Home(props) {
           <img src="/images/vote4.jpg" className="homeImg" alt="" />
         </div>
       </div>
+      <Divider variant="middle" component="hr" />
+      <Container
+        maxWidth="xl"
+        sx={{
+          margin: "3% auto",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography
+          variant="h3"
+          gutterBottom
+          component="div"
+          textAlign="center"
+          sx={{ fontSize: "2.5em" }}
+        >
+          Explore Polls Created by Awesome Pollsters Like YOU
+        </Typography>
+        <Button variant="contained" sx={{ marginLeft: "5%", margin: "0 auto" }}>
+          Explore
+        </Button>
+      </Container>
     </Container>
   );
 }
