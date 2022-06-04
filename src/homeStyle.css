@@ -64,10 +64,11 @@
 }
 
 .PollStates {
-  display: flex;
+  display: flex !important;
   flex-direction: row;
   justify-content: space-evenly;
 }
+
 .pollDetails {
   font-size: 40%;
   margin: 1em;
@@ -88,6 +89,7 @@
     background-position: center;
   }
   .PollStates {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }

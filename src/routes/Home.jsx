@@ -86,24 +86,18 @@ function Home(props) {
             }}
             className="PollStates"
           >
-            {state ? (
-              <>
-                <div style={{ fontSize: "4em" }}>
-                  {state.noOfPolls}
-                  <span className="pollDetails"> Total Polls</span>
-                </div>
-                <div style={{ fontSize: "4em" }}>
-                  {state.noOfUsers}
-                  <span className="pollDetails">Total Users</span>
-                </div>
-                <div style={{ fontSize: "4em" }}>
-                  {state.totalVotes}
-                  <span className="pollDetails">Total Votes</span>
-                </div>
-              </>
-            ) : (
-              ""
-            )}
+            <div style={{ fontSize: "4em" }}>
+              {state.noOfPolls}
+              <span className="pollDetails"> Total Polls</span>
+            </div>
+            <div style={{ fontSize: "4em" }}>
+              {state.noOfUsers}
+              <span className="pollDetails">Total Users</span>
+            </div>
+            <div style={{ fontSize: "4em" }}>
+              {state.totalVotes}
+              <span className="pollDetails">Total Votes</span>
+            </div>
           </Container>
           <Divider variant="middle" component="hr" />
         </Container>
