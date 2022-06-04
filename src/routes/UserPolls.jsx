@@ -2,12 +2,14 @@ import React from "react";
 import { profileUserContext } from "./Profile";
 import { useNavigate } from "react-router-dom";
 import SinglePoll from "../components/SinglePoll";
+import { Pagination } from "@mui/material";
 function UserPolls(props) {
   let navigate = useNavigate();
   const [userPollsState, setUserPollsState] = React.useState(null);
   let signInObject = React.useContext(profileUserContext);
   console.log("signInObject in userPolls route = ", signInObject);
   const signInState = signInObject.signInState;
+  const [paginationState, setPaginationState] = React.useState(1);
 
   React.useEffect(
     function () {
@@ -37,10 +39,16 @@ function UserPolls(props) {
     },
     [navigate, signInState._id, signInState.isAuthenticated]
   );
+
+  function paginationFunction(event, currPage) {
+    setPaginationState(currPage);
+  }
+
   return (
     <>
-      {userPollsState
-        ? userPollsState.map((ele, index) => (
+      {userPollsState ? (
+        <>
+          {userPollsState.map((ele, index) => (
             <SinglePoll
               id={ele._id}
               title={ele.title}
@@ -48,8 +56,25 @@ function UserPolls(props) {
               key={index * 102}
               votes={ele.votes}
             />
-          ))
-        : ""}
+          ))}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Pagination
+              count={userPollsState ? userPollsState.totalPolls : 1}
+              color="secondary"
+              sx={{ margin: "5% auto", display: "block" }}
+              size="large"
+              onChange={paginationFunction}
+            />
+          </div>
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 }
