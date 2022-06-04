@@ -5,6 +5,19 @@ import "../homeStyle.css";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 function Home(props) {
   let navigate = useNavigate();
+  const [state, setState] = React.useState(null);
+
+  React.useEffect(function () {
+    fetch("poll/allPolls/details")
+      .then((jsonData) => jsonData.json())
+      .then((data) => setState(data))
+      .catch((error) =>
+        console.log(
+          "Error occured while fetching data from the poll/allPolls/details = ",
+          error
+        )
+      );
+  }, []);
 
   function handleClick(e) {
     navigate("../Allpolls");
