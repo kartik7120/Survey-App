@@ -7,6 +7,8 @@ router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const user = await User.findById({ _id: id }).populate("polls");
+    const userPolls = user.polls;
+    console.log("User polls data = ", userPolls);
     const body = JSON.stringify(user);
     res.contentType("application/json");
     res.json(body);

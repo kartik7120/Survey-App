@@ -3,14 +3,16 @@ import { profileUserContext } from "./Profile";
 import { useNavigate } from "react-router-dom";
 import SinglePoll from "../components/SinglePoll";
 import { Pagination } from "@mui/material";
+
+let pollDataPagination = [];
+
 function UserPolls(props) {
   let navigate = useNavigate();
   const [userPollsState, setUserPollsState] = React.useState(null);
   let signInObject = React.useContext(profileUserContext);
-  console.log("signInObject in userPolls route = ", signInObject);
   const signInState = signInObject.signInState;
   const [paginationState, setPaginationState] = React.useState(1);
-
+  
   React.useEffect(
     function () {
       if (signInState.isAuthenticated !== false) {
@@ -20,6 +22,14 @@ function UserPolls(props) {
             console.log("Data recieved from the /users/:id", data);
             const body = JSON.parse(data);
             const pollArray = body.polls.map((obj) => {
+              if (pollDataPagination.length <= 3) {
+                pollDataPagination.push({
+                  _id: obj._id,
+                  title: obj.title,
+                  description: obj.description,
+                  votes: obj.votes,
+                });
+              }
               return {
                 _id: obj._id,
                 title: obj.title,
@@ -41,14 +51,41 @@ function UserPolls(props) {
   );
 
   function paginationFunction(event, currPage) {
+    let skip = (currPage - 1) * 3;
+    let limit = 3;
+    let i = 0;
+
+    for (i = 0; i < userPollsState.length; i++) {
+      console.log("Hello from the inner for loop");
+      if (i === skip) break;
+    }
+
+    console.log("Value of i after the skip loop = ", i);
+
+    pollDataPagination = [];
+
+    while (i < userPollsState.length && pollDataPagination.length <= limit) {
+      console.log(
+        "Value of userPollState in the while loop = ",
+        userPollsState[i]
+      );
+      pollDataPagination.push(userPollsState[i]);
+      i++;
+    }
+
+    console.log(
+      "Value of pollDataPagination after adding values in it = ",
+      pollDataPagination
+    );
+
     setPaginationState(currPage);
   }
 
   return (
     <>
-      {userPollsState ? (
+      {pollDataPagination ? (
         <>
-          {userPollsState.map((ele, index) => (
+          {pollDataPagination.map((ele, index) => (
             <SinglePoll
               id={ele._id}
               title={ele.title}
@@ -64,7 +101,7 @@ function UserPolls(props) {
             }}
           >
             <Pagination
-              count={userPollsState ? userPollsState.totalPolls : 1}
+              count={userPollsState ? Math.ceil(userPollsState.length / 3) : 1}
               color="secondary"
               sx={{ margin: "5% auto", display: "block" }}
               size="large"
