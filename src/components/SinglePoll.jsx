@@ -1,11 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 
 function SinglePoll(props) {
@@ -17,13 +12,28 @@ function SinglePoll(props) {
     },
   };
   let navigate = useNavigate();
-  const [state] = React.useState({
+  const [state, setState] = React.useState({
     id: props.id,
     title: props.title,
     description: props.description,
     options: props.options,
     votes: props.votes,
   });
+
+  React.useEffect(
+    function () {
+      setState(function (oldState) {
+        return {
+          id: props.id,
+          title: props.title,
+          description: props.description,
+          options: props.options,
+          votes: props.votes,
+        };
+      });
+    },
+    [props]
+  );
 
   const totalVotes = props.votes.reduce(
     (prevValue, currValue) => prevValue + currValue,

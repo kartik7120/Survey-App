@@ -8,7 +8,7 @@ router.get("/allPolls/page/:pgNumber", async (req, res, next) => {
     try {
         const { pgNumber } = req.params;
         const totalPolls = Math.ceil((await Poll.find({}).count()) / 5);
-        const pollData = await Poll.find({}).skip((pgNumber - 1) * 5).limit(5);
+        const pollData = await (Poll.find({}).skip((pgNumber - 1) * 5).limit(5));
         const body = {
             totalPolls,
             pollData

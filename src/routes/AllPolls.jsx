@@ -47,7 +47,7 @@ function AllPolls(props) {
               return (
                 <SinglePoll
                   id={pollData._id}
-                  key={index * 1000 * Math.random()}
+                  key={index * 123 * Math.random()}
                   title={pollData.title}
                   description={pollData.description}
                   votes={pollData.votes}
