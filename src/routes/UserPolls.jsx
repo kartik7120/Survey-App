@@ -11,8 +11,8 @@ function UserPolls(props) {
   const [userPollsState, setUserPollsState] = React.useState(null);
   let signInObject = React.useContext(profileUserContext);
   const signInState = signInObject.signInState;
-  const [paginationState, setPaginationState] = React.useState(1);
-  
+  const [, setPaginationState] = React.useState(1);
+
   React.useEffect(
     function () {
       if (signInState.isAuthenticated !== false) {
