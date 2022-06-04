@@ -63,6 +63,14 @@ function Home(props) {
         </Fab>
       </Container>
       <Divider variant="middle" component="hr" />
+      <Container maxWidth="xl">
+        <div>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. A maxime
+          consectetur rem sed impedit autem saepe ipsa necessitatibus
+          consequatur assumenda exercitationem ex blanditiis, expedita
+          voluptates veritatis ab sint dolorem est?
+        </div>
+      </Container>
     </Container>
   );
 }
