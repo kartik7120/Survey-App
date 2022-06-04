@@ -63,6 +63,16 @@
   margin: 2%;
 }
 
+.PollStates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.pollDetails {
+  font-size: 40%;
+  margin: 1em;
+}
+
 @media screen and (max-width: 1048px) {
   .upperFlexBox {
     flex-direction: column;
@@ -76,5 +86,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+  }
+  .PollStates {
+    flex-direction: column;
+    align-items: center;
   }
 }
