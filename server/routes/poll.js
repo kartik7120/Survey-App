@@ -60,8 +60,7 @@ router.post("/create", async (req, res, next) => {
         console.log("Session user = ", req.user);
         console.log("Session = ", req.session);
         if (req.user) {
-            console.log("req body in create poll route = ", req.body);
-            const { title, description, options } = req.body;
+            const { title, description, options, flair } = req.body;
             console.log("Title = ", title);
             console.log("description = ", description);
             console.log("options = ", options);
@@ -78,7 +77,8 @@ router.post("/create", async (req, res, next) => {
                 title: title,
                 description: description,
                 options: op,
-                votes: vote
+                votes: vote,
+                flair: flair
             });
             await newPoll.save()
                 .then(() => console.log("Successfully saved to the database"))
