@@ -71,3 +71,9 @@ Adding timer in a poll
 2. Make the inner div absolute
 3. set z-index of absolute div higher
 4. and make the original div transparent
+
+### Logic for checking if the user has voted a poll or note
+
+1. Check if the current signed in user is present in the userVoted array
+2. If the user is present then don't show the vote button and render the after submit state
+3. Else render the vote button and let the user vote
