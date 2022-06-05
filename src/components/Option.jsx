@@ -13,7 +13,7 @@ function Option(props) {
           helperText=""
           id="demo-helper-text-aligned-no-helper"
           label={`Option ${props.optionNo}`}
-          sx={{ marginBottom: "0.5em", width: "30em", alignSelf: "flex-start" }}
+          sx={{ marginBottom: "0.5em", width: "100%", alignSelf: "flex-start" }}
           className={"option-text-feild"}
           required
           type={"text"}

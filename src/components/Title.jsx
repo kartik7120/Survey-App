@@ -5,7 +5,7 @@ function Title(props) {
     <TextField
       fullWidth
       type={"text"}
-      sx={{ width: "45em", fontSize: "1em" }}
+      sx={{ width: "100%", fontSize: "1em" }}
       id={"pollTitle"}
       label={"Enter poll title"}
       required

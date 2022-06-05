@@ -16,6 +16,7 @@ h1 {
   justify-content: space-around;
   align-items: flex-start;
   border: 2px solid black;
+  width: 100%;
   padding: 1em;
 }
 
@@ -26,8 +27,10 @@ h1 {
 .optionGrid {
   display: -ms-grid;
   display: grid;
+  width: 100%;
   -ms-grid-column: auto;
   grid-column: auto;
+  gap: 5%;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: minmax(10em, 1fr);
 }
