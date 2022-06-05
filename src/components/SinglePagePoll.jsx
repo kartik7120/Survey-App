@@ -3,7 +3,7 @@ import { signInContext } from "./Navbar";
 import { useNavigate } from "react-router";
 import React from "react";
 import PollChoice from "./pollChoice";
-import { Button, Card, CardContent, Container } from "@mui/material";
+import { Button, Card, CardContent, Chip, Container } from "@mui/material";
 function SinglePagePoll(props) {
   const { id } = useParams();
   console.log(id);
@@ -65,6 +65,7 @@ function SinglePagePoll(props) {
               options: objData.options,
               votes: objData.votes,
               description: objData.description,
+              flair: objData.flair,
               voteButtonState: true,
             };
           });
@@ -104,18 +105,27 @@ function SinglePagePoll(props) {
                       voteButtonState={state.voteButtonState}
                     />
                   </form>
-                  {state.voteButtonState ? (
-                    ""
-                  ) : (
-                    <Button
-                      variant="contained"
-                      color="warning"
-                      type="submit"
-                      onClick={handleSubmit}
-                    >
-                      Vote
-                    </Button>
-                  )}
+                  <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    {state.voteButtonState ? (
+                      ""
+                    ) : (
+                      <Button
+                        variant="contained"
+                        color="warning"
+                        type="submit"
+                        onClick={handleSubmit}
+                      >
+                        Vote
+                      </Button>
+                    )}
+                    {state.flair ? (
+                      <Chip color="secondary" label={state.flair} />
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
               </CardContent>
             </Card>
