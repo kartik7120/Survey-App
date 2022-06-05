@@ -60,6 +60,7 @@ router.post("/create", async (req, res, next) => {
         console.log("Session user = ", req.user);
         console.log("Session = ", req.session);
         if (req.user) {
+            console.log("req body in create poll route = ", req.body);
             const { title, description, options } = req.body;
             console.log("Title = ", title);
             console.log("description = ", description);

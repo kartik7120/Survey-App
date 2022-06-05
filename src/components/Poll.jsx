@@ -31,7 +31,6 @@ function Poll(props) {
     title: "",
     description: "",
     options: {},
-    flair: "None",
   });
 
   const [open, setOpen] = React.useState(false);
@@ -77,6 +76,7 @@ function Poll(props) {
     if (signInState !== false) {
       e.preventDefault();
       const body = formState;
+      body.flair = flair;
       const fetchConfig = {
         method: "POST",
         headers: {
@@ -102,7 +102,7 @@ function Poll(props) {
     }
   }
   const handleChange = (event) => {
-    setFlair(event.target.value || "None");
+    setFlair(event.target.value || "");
   };
 
   const handleClickOpen = () => {
