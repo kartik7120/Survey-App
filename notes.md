@@ -30,7 +30,7 @@
 - [x] Fix the links in the bread crumb when the app is in mobile layout
 - [x] Fix the create all polls bug
 - [ ] Add sharable links to all polls for social media platforms
-- [ ] Add category to the create poll route
+- [x] Add category to the create poll route
 - [x] Make create poll form reponsive
 - [x] Fix margin of a single poll after the vote has been submitted0
 
