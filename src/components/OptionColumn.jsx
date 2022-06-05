@@ -18,7 +18,7 @@ function OptionsColumn(props) {
   }
   return (
     <div className="optionGrid">
-      <div>{optionArray}</div>
+      <div className="options">{optionArray}</div>
       <div className="side-list-on-poll">
         <ol>
           <span>
