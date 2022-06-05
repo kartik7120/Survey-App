@@ -32,7 +32,7 @@
 - [ ] Add sharable links to all polls for social media platforms
 - [ ] Add category to the create poll route
 - [x] Make create poll form reponsive
-- [x] Fix margin of a single poll after the vote has been submitted
+- [x] Fix margin of a single poll after the vote has been submitted0
 
 ### Seed data for poll create form
 
