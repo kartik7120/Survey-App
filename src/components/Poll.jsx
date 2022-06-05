@@ -127,17 +127,19 @@ function Poll(props) {
               handleOptionChange={handleOptionChange}
               formState={formState}
             />
-            <Button variant="contained" color="warning" onClick={handleClick}>
-              Add Option
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ alignSelf: "flex-end" }}
-              type="button"
-              onClick={handleSubmit}
-            >
-              Create poll
-            </Button>
+            <div className="button-flexBox">
+              <Button variant="contained" color="warning" onClick={handleClick}>
+                Add Option
+              </Button>
+              <Button
+                variant="contained"
+                sx={{ alignSelf: "flex-end" }}
+                type="button"
+                onClick={handleSubmit}
+              >
+                Create poll
+              </Button>
+            </div>
           </div>
         </form>
       </Container>
