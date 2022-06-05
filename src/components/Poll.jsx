@@ -1,4 +1,19 @@
-import { Button, Container, Divider, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Divider,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  Typography,
+} from "@mui/material";
 import PollTextArea from "./PollTextArea";
 import Title from "./Title";
 import OptionsColumn from "./OptionColumn";
@@ -17,6 +32,9 @@ function Poll(props) {
     description: "",
     options: {},
   });
+
+  const [open, setOpen] = React.useState(false);
+  const [age, setAge] = React.useState("");
 
   function handleOptionChange(e) {
     const name = e.target.name;
@@ -82,6 +100,19 @@ function Poll(props) {
       navigate("/Signup");
     }
   }
+  const handleChange = (event) => {
+    setAge(Number(event.target.value) || "");
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason !== "backdropClick") {
+      setOpen(false);
+    }
+  };
 
   function handleClick(e) {
     if (state < 6) setState((oldState) => oldState + 1);
@@ -131,6 +162,45 @@ function Poll(props) {
               <Button variant="contained" color="warning" onClick={handleClick}>
                 Add Option
               </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleClickOpen}
+              >
+                Flair
+              </Button>
+              <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
+                <DialogTitle>Fill the form</DialogTitle>
+                <DialogContent>
+                  <Box
+                    component="form"
+                    sx={{ display: "flex", flexWrap: "wrap" }}
+                  >
+                    <FormControl sx={{ m: 1, minWidth: 120 }}>
+                      <InputLabel id="demo-dialog-select-label">Age</InputLabel>
+                      <Select
+                        labelId="demo-dialog-select-label"
+                        id="demo-dialog-select"
+                        value={age}
+                        onChange={handleChange}
+                        input={<OutlinedInput label="Age" />}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Box>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose}>Cancel</Button>
+                  <Button onClick={handleClose}>Ok</Button>
+                </DialogActions>
+              </Dialog>
+
               <Button
                 variant="contained"
                 sx={{ alignSelf: "flex-end" }}
