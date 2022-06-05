@@ -15,6 +15,9 @@ const pollSchema = new mongoose.Schema({
     votes: {
         type: [Number],
         required: true,
+    },
+    flair: {
+        type: String
     }
 });
 const Poll = mongoose.model("Poll", pollSchema);
