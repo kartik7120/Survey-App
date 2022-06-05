@@ -1,6 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  Chip,
+  Typography,
+} from "@mui/material";
 import { motion } from "framer-motion";
 
 function SinglePoll(props) {
@@ -18,12 +24,14 @@ function SinglePoll(props) {
     description: props.description,
     options: props.options,
     votes: props.votes,
+    flair: props.flair,
   });
 
   React.useEffect(
     function () {
       setState(function (oldState) {
         return {
+          ...oldState,
           id: props.id,
           title: props.title,
           description: props.description,
@@ -70,16 +78,28 @@ function SinglePoll(props) {
             <div className="poll">
               <h1>{state.title}</h1>
               <p>{state.description}</p>
-              <Typography
-                variant="button"
-                sx={{
-                  border: "1px solid cyan",
-                  padding: "0.5em",
-                  backgroundColor: "cyan",
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
                 }}
               >
-                {totalVotes} votes
-              </Typography>
+                <Typography
+                  variant="button"
+                  sx={{
+                    border: "1px solid cyan",
+                    padding: "0.5em",
+                    backgroundColor: "cyan",
+                  }}
+                >
+                  {totalVotes} votes
+                </Typography>
+                {state.flair ? (
+                  <Chip color="secondary" label={state.flair} />
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
           </CardActionArea>
         </CardContent>
