@@ -31,10 +31,11 @@ function Poll(props) {
     title: "",
     description: "",
     options: {},
+    flair: "None",
   });
 
   const [open, setOpen] = React.useState(false);
-  const [age, setAge] = React.useState("");
+  const [flair, setFlair] = React.useState("");
 
   function handleOptionChange(e) {
     const name = e.target.name;
@@ -101,7 +102,7 @@ function Poll(props) {
     }
   }
   const handleChange = (event) => {
-    setAge(Number(event.target.value) || "");
+    setFlair(event.target.value || "None");
   };
 
   const handleClickOpen = () => {
@@ -177,20 +178,31 @@ function Poll(props) {
                     sx={{ display: "flex", flexWrap: "wrap" }}
                   >
                     <FormControl sx={{ m: 1, minWidth: 120 }}>
-                      <InputLabel id="demo-dialog-select-label">Age</InputLabel>
+                      <InputLabel id="demo-dialog-select-label">
+                        Flair
+                      </InputLabel>
                       <Select
                         labelId="demo-dialog-select-label"
                         id="demo-dialog-select"
-                        value={age}
+                        value={flair}
                         onChange={handleChange}
-                        input={<OutlinedInput label="Age" />}
+                        input={<OutlinedInput label="Flair" />}
                       >
                         <MenuItem value="">
                           <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        <MenuItem value={"Art"}>Art</MenuItem>
+                        <MenuItem value={"Business"}>Business</MenuItem>
+                        <MenuItem value={"Anime"}>Anime</MenuItem>
+                        <MenuItem value={"Economy"}>Economy</MenuItem>
+                        <MenuItem value={"Food"}>Food</MenuItem>
+                        <MenuItem value={"Education"}>Education</MenuItem>
+                        <MenuItem value={"Entertainment"}>
+                          Entertainment
+                        </MenuItem>
+                        <MenuItem value={"Games"}>Games</MenuItem>
+                        <MenuItem value={"Technology"}>Technology</MenuItem>
+                        <MenuItem value={"Misc"}>Misc</MenuItem>
                       </Select>
                     </FormControl>
                   </Box>
