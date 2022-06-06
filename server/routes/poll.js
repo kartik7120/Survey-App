@@ -103,7 +103,7 @@ router.patch("/updateVotes/:id", async (req, res, next) => {
         const poll = await Poll.findById({ _id });
         let updateIdx = -1;
         const optionArray = poll.options;
-        const userVotedArray = poll.userVoted;
+        let userVotedArray = poll.userVoted;
 
         for (let i = 0; i < optionArray.length; i++) {
             if (optionArray[i] === targetValue) {
@@ -115,6 +115,17 @@ router.patch("/updateVotes/:id", async (req, res, next) => {
         if (req.user) {
             console.log("Inside this if condition if user has logged in");
             userVotedArray.push(req.user._id);
+            const set = new Set();
+            userVotedArray.map((userId) => {
+                set.add(userId);
+                return 1;
+            })
+
+            userVotedArray = [];
+
+            for (let userId of set) {
+                userVotedArray.push(userId);
+            }
         }
 
         const votesArray = poll.votes;
