@@ -8,8 +8,27 @@ import React from "react";
 import PollAfterSubmit from "./PollAfterSubmit";
 import "../style.css";
 import { motion } from "framer-motion";
+import { signInContext } from "./Navbar";
 
 function PollChoice(props) {
+  const signInObject = React.useContext(signInContext);
+  const signInState = signInObject.signInState;
+  const [voteButtonState, setvoteButtonState] = React.useState(
+    props.voteButtonState
+  );
+
+  React.useEffect(
+    function () {
+      props.userVoted.map((userId) => {
+        if (userId === signInState._id) {
+          setvoteButtonState(true);
+        }
+        return 1;
+      });
+    },
+    [signInState._id, props.userVoted]
+  );
+
   const variants = {
     hover: {
       scale: 1.05,
@@ -27,7 +46,7 @@ function PollChoice(props) {
 
   return (
     <>
-      {props.voteButtonState ? (
+      {voteButtonState || props.voteButtonState ? (
         <PollAfterSubmit options={props.options} votes={props.votes} />
       ) : (
         <FormControl>

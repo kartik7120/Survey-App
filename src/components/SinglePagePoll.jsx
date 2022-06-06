@@ -103,6 +103,7 @@ function SinglePagePoll(props) {
                       votes={state.votes}
                       setState={setState}
                       voteButtonState={state.voteButtonState}
+                      userVoted={state.userVoted}
                     />
                   </form>
                   <div
