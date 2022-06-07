@@ -11,6 +11,7 @@ function SinglePagePoll(props) {
   const signInObject = React.useContext(signInContext);
   const signInState = signInObject.signInState;
   const [state, setState] = React.useState(null);
+  const [voteButtonState, setvoteButtonState] = React.useState(false);
 
   React.useEffect(
     function () {
@@ -24,7 +25,6 @@ function SinglePagePoll(props) {
             return {
               ...pollData,
               targetValue: pollData.options[0],
-              voteButtonState: false,
             };
           });
         })
@@ -106,12 +106,14 @@ function SinglePagePoll(props) {
                       setState={setState}
                       voteButtonState={state.voteButtonState}
                       userVoted={state.userVoted}
+                      setvoteButtonState={setvoteButtonState}
+                      voteButtonState2={voteButtonState}
                     />
                   </form>
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    {state.voteButtonState ? (
+                    {state.voteButtonState || voteButtonState ? (
                       ""
                     ) : (
                       <Button

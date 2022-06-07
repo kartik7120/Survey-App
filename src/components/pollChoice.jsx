@@ -13,9 +13,6 @@ import { signInContext } from "./Navbar";
 function PollChoice(props) {
   const signInObject = React.useContext(signInContext);
   const signInState = signInObject.signInState;
-  const [voteButtonState, setvoteButtonState] = React.useState(
-    props.voteButtonState
-  );
 
   React.useEffect(
     function () {
@@ -23,7 +20,7 @@ function PollChoice(props) {
         console.log("Logged in user id = ", signInState._id);
         console.log("user id that has voted the poll = ", userId);
         if (userId === signInState._id) {
-          setvoteButtonState(true);
+          props.setvoteButtonState(true);
         }
         return 1;
       });
@@ -48,7 +45,7 @@ function PollChoice(props) {
 
   return (
     <>
-      {voteButtonState || props.voteButtonState ? (
+      {props.voteButtonState2 || props.voteButtonState ? (
         <PollAfterSubmit options={props.options} votes={props.votes} />
       ) : (
         <FormControl>
