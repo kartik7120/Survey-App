@@ -13,20 +13,23 @@ import { signInContext } from "./Navbar";
 function PollChoice(props) {
   const signInObject = React.useContext(signInContext);
   const signInState = signInObject.signInState;
+  const [voteButtonState, setvoteButtonState] = React.useState(
+    props.voteButtonState
+  );
 
-  React.useEffect(function () {
-    props.userVoted.map((userId) => {
-      if (userId === signInState._id) {
-        props.setState(function (oldState) {
-          return {
-            ...oldState,
-            voteButtonState: true,
-          };
-        });
-      }
-      return 1;
-    });
-  }, []);
+  React.useEffect(
+    function () {
+      props.userVoted.map((userId) => {
+        console.log("Logged in user id = ", signInState._id);
+        console.log("user id that has voted the poll = ", userId);
+        if (userId === signInState._id) {
+          setvoteButtonState(true);
+        }
+        return 1;
+      });
+    },
+    [signInState._id, props.userVoted]
+  );
 
   const variants = {
     hover: {
@@ -45,7 +48,7 @@ function PollChoice(props) {
 
   return (
     <>
-      {props.voteButtonState ? (
+      {voteButtonState || props.voteButtonState ? (
         <PollAfterSubmit options={props.options} votes={props.votes} />
       ) : (
         <FormControl>

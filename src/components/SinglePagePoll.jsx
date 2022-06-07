@@ -14,6 +14,7 @@ function SinglePagePoll(props) {
 
   React.useEffect(
     function () {
+      console.log("I am useEffect function in SinglePollPage");
       fetch(`/poll/allPolls/${id}`)
         .then((jsonData) => jsonData.json())
         .then((data) => {
@@ -23,6 +24,7 @@ function SinglePagePoll(props) {
             return {
               ...pollData,
               targetValue: pollData.options[0],
+              voteButtonState: false,
             };
           });
         })
