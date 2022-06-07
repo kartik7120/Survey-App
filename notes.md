@@ -81,3 +81,4 @@ Adding timer in a poll
 ### Login related bug fixes
 
 - Make it so that the user is logged in even after refresh
+- [Blog for persistent login in React]([https://](https://www.freecodecamp.org/news/how-to-persist-a-logged-in-user-in-react/))
