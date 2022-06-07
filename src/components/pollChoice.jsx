@@ -25,7 +25,7 @@ function PollChoice(props) {
         return 1;
       });
     },
-    [signInState._id, props.userVoted]
+    [signInState._id, props.userVoted, props]
   );
 
   const variants = {
