@@ -77,3 +77,7 @@ Adding timer in a poll
 1. Check if the current signed in user is present in the userVoted array
 2. If the user is present then don't show the vote button and render the after submit state
 3. Else render the vote button and let the user vote
+
+### Login related bug fixes
+
+- Make it so that the user is logged in even after refresh
