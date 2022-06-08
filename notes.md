@@ -84,5 +84,5 @@ Adding timer in a poll
 - [ ] [Blog for persistent login in React](https://www.freecodecamp.org/news/how-to-persist-a-logged-in-user-in-react/)
 - [ ] Create proper error handling in the backend for if the user password is wrong or if the user exist or not
 - [ ] Make a proper flash message if the user password or username is wrong or not
-- [ ] Make the user login instantely after the user is registered in the app
+- [x] Make the user login instantely after the user is registered in the app
 - [ ] Make proper transition when the user is checked if it has voted in the poll or not
