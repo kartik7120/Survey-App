@@ -86,3 +86,9 @@ Adding timer in a poll
 - [ ] Make a proper flash message if the user password or username is wrong or not
 - [x] Make the user login instantely after the user is registered in the app
 - [ ] Make proper transition when the user is checked if it has voted in the poll or not
+
+### Handling an unregistered user votting on a poll
+
+- Send a cookie to the client browser to give it a random id 
+- Whataever changes by the user are only ones
+- When the user login or register then destroy that cookie and set it to null so that the user is only count as one
