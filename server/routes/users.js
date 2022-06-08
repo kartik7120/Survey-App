@@ -78,8 +78,7 @@ router.post("/logout", (req, res, next) => {
       if (err)
         return next(err);
     })
-    console.log(req.user);
-    console.log(req.session);
+    delete req.session.user;
     res.contentType("application/json");
     const body = {
       message: "User logged out"
