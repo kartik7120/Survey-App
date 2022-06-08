@@ -19,6 +19,9 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/login", passport.authenticate("local", { failureRedirect: "/Signin", failureFlash: false, failureMessage: "Could not log in" }), (req, res, next) => {
   try {
+    console.log("req.user in the login route = ", req.user);
+    req.session.user = req.user;
+    req.session.save();
     res.contentType("application/json");
     console.log(req.session);
     const body = {
@@ -47,10 +50,14 @@ router.post("/register", async (req, res, next) => {
     })
 
     const registeredUser = await User.register(newUser, password);
-    req.logIn(registeredUser, err => {
+
+    req.login(registeredUser, err => {
       if (err) return next(err);
     });
+    req.session.user = req.user;
+    req.session.save();
     console.log(req.session);
+    console.log("User authenticated ? ", req.isAuthenticated());
     console.log("User set by passport = ", req.user);
     res.contentType("application/json");
     const obj = {
@@ -72,6 +79,7 @@ router.post("/logout", (req, res, next) => {
         return next(err);
     })
     console.log(req.user);
+    console.log(req.session);
     res.contentType("application/json");
     const body = {
       message: "User logged out"

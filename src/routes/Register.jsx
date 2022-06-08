@@ -67,7 +67,13 @@ export default function Login() {
       .then((Jsondata) => Jsondata.json())
       .then((data) => {
         console.log("Login data = ", data);
-        setSignInState(data.isAuthenticated);
+        setSignInState(function () {
+          return {
+            isAuthenticated: data.isAuthenticated,
+            _id: data.user._id,
+            username: data.user.username,
+          };
+        });
       })
       .catch((err) => console.log("Error occured while sign up route", err));
     navigate("../home", { replace: true });

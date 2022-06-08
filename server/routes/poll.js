@@ -59,7 +59,7 @@ router.post("/create", async (req, res, next) => {
     try {
         console.log("Session user = ", req.user);
         console.log("Session = ", req.session);
-        if (req.user) {
+        if (req.session.user) {
             const { title, description, options, flair } = req.body;
             console.log("Title = ", title);
             console.log("description = ", description);
@@ -84,7 +84,7 @@ router.post("/create", async (req, res, next) => {
                 .then(() => console.log("Successfully saved to the database"))
                 .catch((err) => console.log("Error in saving to the database", err));
 
-            await (await User.findByIdAndUpdate({ _id: req.user.id }, { $push: { "polls": newPoll._id } }, { new: true })).save();
+            await (await User.findByIdAndUpdate({ _id: req.session.user._id }, { $push: { "polls": newPoll._id } }, { new: true })).save();
             // user.polls = newPoll._id;
             res.json(newPoll._id);
         }
@@ -112,9 +112,9 @@ router.patch("/updateVotes/:id", async (req, res, next) => {
             }
         }
 
-        if (req.user) {
+        if (req.session.user) {
             console.log("Inside this if condition if user has logged in");
-            userVotedArray.push(req.user._id);
+            userVotedArray.push(req.session.user._id);
             const set = new Set();
             userVotedArray.map((userId) => {
                 set.add(userId);
