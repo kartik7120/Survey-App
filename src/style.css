@@ -152,7 +152,7 @@ h1 {
   .optionGrid {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: stretch;
   }
   .side-list-on-poll {
@@ -161,9 +161,11 @@ h1 {
 }
 .error-page-background {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin: 0;
 }
 .error-page-background > img {
-  height: 20em;
+  width: 100%;
+  height: 23em;
 }
