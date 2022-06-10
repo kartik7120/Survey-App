@@ -16,6 +16,7 @@ import LogOut from './routes/LogOut';
 import SinglePagePoll from './components/SinglePagePoll';
 import Profile from './routes/Profile';
 import UserPolls from "../src/routes/UserPolls";
+import ErrorPage from './routes/ErrorPage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -35,7 +36,7 @@ root.render(
             <Route path='polls' element={<UserPolls />} />
           </Route>
         </Route>
-        <Route path="*" element={<div>This path does not exist</div>} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </React.StrictMode>
   </BrowserRouter>
