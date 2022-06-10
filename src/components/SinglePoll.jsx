@@ -87,12 +87,10 @@ function SinglePoll(props) {
                 <Typography
                   variant="button"
                   sx={{
-                    border: "1px solid cyan",
                     padding: "0.5em",
-                    backgroundColor: "cyan",
                   }}
                 >
-                  {totalVotes} votes
+                  <Chip color="info" label={`${totalVotes} votes`} />
                 </Typography>
                 {state.flair ? (
                   <Chip color="secondary" label={state.flair} />
