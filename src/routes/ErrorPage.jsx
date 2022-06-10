@@ -2,7 +2,15 @@ import { Button, Container, Typography } from "@mui/material";
 
 function ErrorPage(props) {
   return (
-    <Container maxWidth="lg">
+    <Container
+      maxWidth="lg"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+      }}
+    >
       <Typography variant="h1" component="div" gutterBottom textAlign="center">
         404
       </Typography>
