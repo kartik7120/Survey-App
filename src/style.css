@@ -159,3 +159,11 @@ h1 {
     width: 70%;
   }
 }
+.error-page-background {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+.error-page-background > img {
+  height: 20em;
+}
