@@ -92,3 +92,9 @@ Adding timer in a poll
 - Send a cookie to the client browser to give it a random id 
 - Whataever changes by the user are only ones
 - When the user login or register then destroy that cookie and set it to null so that the user is only count as one
+
+### Handling authentication using JSON web tokens
+
+- When the user logs in the user , create a token and supply it to the front end
+- Attach this token to the authorization header of every request
+- Store the JWT in the cookie as we need to perform some checks during reloading
