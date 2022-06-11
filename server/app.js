@@ -1,3 +1,4 @@
+require("dotenv").config();
 const User = require("./models/userSchema");
 const pollRouter = require("./routes/poll");
 const router = require("./routes/testServer");

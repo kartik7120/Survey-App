@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const User = require("../models/userSchema");
 const passport = require("passport");
-
+const bcrypt = require("bcryptjs");
+const JWT = require("jsonwebtoken");
 router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -44,28 +45,20 @@ router.post("/register", async (req, res, next) => {
     const { firstName, lastName, password, email } = req.body;
 
     const name = firstName + " " + lastName;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const newUser = new User({
       username: name,
-      email: email
+      password: hashedPassword,
+      email
     })
 
-    const registeredUser = await User.register(newUser, password);
-
-    req.login(registeredUser, err => {
-      if (err) return next(err);
-    });
-    req.session.user = req.user;
-    req.session.save();
-    console.log(req.session);
-    console.log("User authenticated ? ", req.isAuthenticated());
-    console.log("User set by passport = ", req.user);
+    const token = JWT.sign({ email }, process.env.SECRET, { expiresIn: "1h" });
+    // await newUser.save();
     res.contentType("application/json");
-    const obj = {
-      user: req.user,
-      isAuthenticated: req.isAuthenticated(),
-      message: "User registered"
-    }
-    res.json(obj);
+    res.cookie("JWTtoken", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
+    res.json(token);
   } catch (error) {
     console.log("Some error occured = ", error);
     next(error);
