@@ -85,11 +85,7 @@ router.post("/register", async (req, res, next) => {
 
 router.post("/logout", (req, res, next) => {
   try {
-    req.logout(req.user, err => {
-      if (err)
-        return next(err);
-    })
-    delete req.session.user;
+    res.clearCookie("JWTtoken");
     res.contentType("application/json");
     const body = {
       message: "User logged out"
