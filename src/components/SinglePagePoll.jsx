@@ -64,11 +64,11 @@ function SinglePagePoll(props) {
       fetch(`/poll/updateVotes/${state._id}`, fetchConfig)
         .then((jsonData) => {
           if (jsonData.status === 404) navigate("/Signin");
-          jsonData.json();
+          return jsonData.json();
         })
         .then((data) => {
           console.log("Data recieved from patch request", data);
-          const objData = JSON.parse(data);
+          const objData = data;
           console.log(objData);
           setState(function (oldState) {
             return {

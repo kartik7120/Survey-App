@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require("../models/userSchema");
 const { default: mongoose } = require("mongoose");
 const checkUserAuthentication = require("../middleware/checkUserAuthtication");
-
+const jwt = require("jsonwebtoken");
 router.get("/allPolls/details", async (req, res, next) => {
     try {
         const noOfPolls = await Poll.find({}).count();
@@ -99,7 +99,7 @@ router.post("/create", async (req, res, next) => {
 router.patch("/updateVotes/:id", checkUserAuthentication, async (req, res, next) => {
     try {
         const { _id, targetValue } = req.body;
-        console.log("req.user in updateVotes = ", req.user);
+        const token = req.header("o-auth-token");
 
         const poll = await Poll.findById({ _id });
         let updateIdx = -1;
@@ -112,21 +112,19 @@ router.patch("/updateVotes/:id", checkUserAuthentication, async (req, res, next)
                 break;
             }
         }
+        console.log("Inside this if condition if user has logged in");
+        const payload = jwt.verify(token, process.env.SECRET);
+        userVotedArray.push(payload.sub);
+        const set = new Set();
+        userVotedArray.map((userId) => {
+            set.add(userId);
+            return 1;
+        })
 
-        if (req.session.user) {
-            console.log("Inside this if condition if user has logged in");
-            userVotedArray.push(req.session.user._id);
-            const set = new Set();
-            userVotedArray.map((userId) => {
-                set.add(userId);
-                return 1;
-            })
+        userVotedArray = [];
 
-            userVotedArray = [];
-
-            for (let userId of set) {
-                userVotedArray.push(userId);
-            }
+        for (let userId of set) {
+            userVotedArray.push(userId);
         }
 
         const votesArray = poll.votes;
@@ -134,8 +132,8 @@ router.patch("/updateVotes/:id", checkUserAuthentication, async (req, res, next)
 
         const newPoll = await Poll.findByIdAndUpdate({ _id }, { $set: { "votes": votesArray, "userVoted": userVotedArray } }, { new: true });
         res.contentType("application/json");
-
-        res.json(JSON.stringify(newPoll));
+        console.log(newPoll);
+        res.json(newPoll);
     } catch (error) {
         next(error);
     }

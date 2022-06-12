@@ -1,5 +1,4 @@
 require("dotenv").config();
-const User = require("./models/userSchema");
 const pollRouter = require("./routes/poll");
 const router = require("./routes/testServer");
 const cors = require("cors");
@@ -12,7 +11,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const passport = require("passport");
-const LocalStrategy = require("passport-local");
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/Survey')
   .then(() => {
