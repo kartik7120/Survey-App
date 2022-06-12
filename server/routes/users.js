@@ -2,18 +2,24 @@ const express = require('express');
 const router = express.Router();
 const User = require("../models/userSchema");
 const passport = require("passport");
+const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
-router.get("/:id", async (req, res, next) => {
+router.get("/user", async (req, res, next) => {
+
+  const token = req.header("o-auth-token");
+  console.log(token);
   try {
-    const { id } = req.params;
-    const user = await User.findById({ _id: id }).populate("polls");
+    const payload = JWT.verify(token, process.env.SECRET);
+    console.log("payload = ", payload);
+    const user = await User.findById({ _id: payload.sub }).populate("polls");
     const userPolls = user.polls;
     console.log("User polls data = ", userPolls);
     const body = JSON.stringify(user);
     res.contentType("application/json");
     res.json(body);
-  } catch (error) {
+  }
+  catch (error) {
     next(error);
   }
 })
@@ -49,12 +55,13 @@ router.post("/register", async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
+      _id: new mongoose.Types.ObjectId(),
       username: name,
       password: hashedPassword,
       email
     })
 
-    const token = JWT.sign({ email }, process.env.SECRET, { expiresIn: "1h" });
+    const token = JWT.sign({ _id: newUser._id }, process.env.SECRET, { expiresIn: "1h", subject: `${newUser._id}` });
     // await newUser.save();
     res.contentType("application/json");
     res.cookie("JWTtoken", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });

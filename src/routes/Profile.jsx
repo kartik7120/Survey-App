@@ -49,8 +49,16 @@ function Profile(props) {
   const [userDataState, setUserDataState] = React.useState(null);
   React.useEffect(
     function () {
-      if (signInState !== false) {
-        fetch(`/users/${signInState._id}`)
+      if (signInState) {
+        const fetchConfig = {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "*/*",
+            "o-auth-token": localStorage.getItem("userToken"),
+          },
+        };
+        fetch(`/users/user`, fetchConfig)
           .then((jsonData) => jsonData.json())
           .then((data) => {
             console.log("Data from the /users/:id route", data);
