@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/userSchema");
 const { default: mongoose } = require("mongoose");
+const checkUserAuthentication = require("../middleware/checkUserAuthtication");
 
 router.get("/allPolls/details", async (req, res, next) => {
     try {
