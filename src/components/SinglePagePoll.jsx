@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import React from "react";
 import PollChoice from "./pollChoice";
 import { Button, Card, CardContent, Chip, Container } from "@mui/material";
+import SocialMediaShareButtons from "./SocialMediaShareButtons";
 function SinglePagePoll(props) {
   const { id } = useParams();
   let navigate = useNavigate();
@@ -44,10 +45,6 @@ function SinglePagePoll(props) {
     [id]
   );
 
-  //   const totalVotes = props.votes.reduce(
-  //     (prevValue, currValue) => prevValue + currValue,
-  //     0
-  //   );
   function handleSubmit(e) {
     if (localStorage.getItem("userToken")) {
       e.preventDefault();
@@ -150,6 +147,7 @@ function SinglePagePoll(props) {
                 </div>
               </CardContent>
             </Card>
+            <SocialMediaShareButtons state={state} />
           </Container>
         </>
       ) : (
