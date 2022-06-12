@@ -6,10 +6,9 @@ import PollChoice from "./pollChoice";
 import { Button, Card, CardContent, Chip, Container } from "@mui/material";
 function SinglePagePoll(props) {
   const { id } = useParams();
-  console.log(id);
   let navigate = useNavigate();
   const signInObject = React.useContext(signInContext);
-  const signInState = signInObject.signInState;
+  const setAlertState = signInObject.setAlertState;
   const [state, setState] = React.useState(null);
   const [voteButtonState, setvoteButtonState] = React.useState(false);
 
@@ -50,7 +49,7 @@ function SinglePagePoll(props) {
   //     0
   //   );
   function handleSubmit(e) {
-    if (signInState) {
+    if (localStorage.getItem("userToken")) {
       e.preventDefault();
       const fetchConfig = {
         method: "PATCH",
@@ -63,7 +62,12 @@ function SinglePagePoll(props) {
       };
       fetch(`/poll/updateVotes/${state._id}`, fetchConfig)
         .then((jsonData) => {
-          if (jsonData.status === 404) navigate("/Signin");
+          if (jsonData.status === 404) {
+            setAlertState(function (oldState) {
+              return "Session expired";
+            });
+            navigate("/Signin");
+          }
           return jsonData.json();
         })
         .then((data) => {

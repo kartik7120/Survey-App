@@ -55,10 +55,12 @@ const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [signInState, setSignInState] = React.useState(false);
-
+  const [alertState, setAlertState] = React.useState(false);
   stateObject = {
     signInState,
     setSignInState,
+    alertState,
+    setAlertState,
   };
 
   const handleOpenNavMenu = (event) => {

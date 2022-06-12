@@ -1,12 +1,26 @@
-import { Container, Typography, Divider, Fab } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Divider,
+  Fab,
+  Collapse,
+  Alert,
+  IconButton,
+} from "@mui/material";
 import { useNavigate } from "react-router";
 import React from "react";
 import "../homeStyle.css";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
+import { signInContext } from "../components/Navbar";
+import CloseIcon from "@mui/icons-material/Close";
+import { Box } from "@mui/system";
 function Home(props) {
   let navigate = useNavigate();
   const [state, setState] = React.useState(null);
-
+  const [open, setOpen] = React.useState(true);
+  const signInObject = React.useContext(signInContext);
+  const alertState = signInObject.alertState;
+  const setAlertState = signInObject.alertState;
   React.useEffect(function () {
     fetch("poll/allPolls/details")
       .then((jsonData) => jsonData.json())
@@ -26,6 +40,32 @@ function Home(props) {
     <>
       {state ? (
         <Container maxWidth="xl">
+          {alertState ? (
+            <Box sx={{ width: "45%", margin: "0.7% auto" }}>
+              <Collapse in={open}>
+                <Alert
+                  action={
+                    <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        // setAlertState("");
+                        setOpen(false);
+                      }}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  }
+                  sx={{ mb: 2 }}
+                >
+                  {alertState}
+                </Alert>
+              </Collapse>
+            </Box>
+          ) : (
+            ""
+          )}
           <div className="upperFlexBox">
             <div className="upperText">
               <Typography

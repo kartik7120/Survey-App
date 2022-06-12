@@ -13,7 +13,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { signInContext } from "../components/Navbar";
 import { useNavigate } from "react-router";
-// import { Alert } from "@mui/material";
+import { Alert, Collapse, IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 function Copyright(props) {
   return (
@@ -37,8 +38,11 @@ const theme = createTheme();
 
 export default function SignIn() {
   let navigate = useNavigate();
+  const [open, setOpen] = React.useState(true);
   const signInObject = React.useContext(signInContext);
   const setSignInState = signInObject.setSignInState;
+  const alertState = signInObject.alertState;
+  const setAlertState = signInObject.setAlertState;
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -62,7 +66,9 @@ export default function SignIn() {
     };
 
     fetch("/users/login", fetchConfig)
-      .then((jsonData) => jsonData.json())
+      .then((jsonData) => {
+        return jsonData.json();
+      })
       .then((data) => {
         console.log("Data returned by the login route", data);
         localStorage.setItem("userToken", data.token);
@@ -71,6 +77,7 @@ export default function SignIn() {
             username: data.username,
           };
         });
+        setAlertState("User logged in");
       })
       .catch((err) =>
         console.log("Error occuered while fetching login route", err)
@@ -90,7 +97,32 @@ export default function SignIn() {
             alignItems: "center",
           }}
         >
-          {/* <Alert severity="error">This is an error alert — check it out!</Alert> */}
+          {alertState ? (
+            <Box sx={{ width: "100%" }}>
+              <Collapse in={open}>
+                <Alert
+                  action={
+                    <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        // setAlertState("");
+                        setOpen(false);
+                      }}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  }
+                  sx={{ mb: 2 }}
+                >
+                  {alertState}
+                </Alert>
+              </Collapse>
+            </Box>
+          ) : (
+            ""
+          )}
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>

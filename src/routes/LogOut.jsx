@@ -8,7 +8,7 @@ function LogOut(props) {
   let navigate = useNavigate();
   const signInObject = React.useContext(signInContext);
   const setSignInState = signInObject.setSignInState;
-
+  const setAlertState = signInObject.setAlertState;
   function handleClick(e) {
     const fetchConfig = {
       method: "POST",
@@ -24,6 +24,7 @@ function LogOut(props) {
           localStorage.removeItem("userToken");
         }
         setSignInState(false);
+        setAlertState("User logged out");
       })
       .catch((err) => console.log("Some errored while logging out", err));
     navigate("../home", { replace: true });
