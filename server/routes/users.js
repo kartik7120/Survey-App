@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../models/userSchema");
-const passport = require("passport");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
@@ -24,21 +23,26 @@ router.get("/user", async (req, res, next) => {
   }
 })
 
-router.post("/login", passport.authenticate("local", { failureRedirect: "/Signin", failureFlash: false, failureMessage: "Could not log in" }), (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   try {
-    console.log("req.user in the login route = ", req.user);
-    req.session.user = req.user;
-    req.session.save();
-    res.contentType("application/json");
-    console.log(req.session);
-    const body = {
-      username: req.user.username,
-      user_id: req.user._id,
-      isAuthenticated: req.isAuthenticated(),
-      message: "User logged in"
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+    console.log("user in the login route = ", user.password);
+    console.log("user password = ", password);
+    if (!user.password) {
+      return res.status(404).json("Either email or password is wrong");
     }
-    console.log(JSON.stringify(body));
-    res.json(JSON.stringify(body));
+
+    const isValid = await bcrypt.compare(`${password}`, user.password);
+
+    if (!isValid) {
+      return res.status(406).json("Either email or password is wrong");
+    }
+
+    const token = JWT.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "1h", subject: `${user._id}` });
+    res.cookie("JWTtoken", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
+    res.status(200).json({ token, name: user.username })
   } catch (error) {
     console.log("Oh no some error occured in login route = ", error);
     next(error);
@@ -62,7 +66,7 @@ router.post("/register", async (req, res, next) => {
     })
 
     const token = JWT.sign({ _id: newUser._id }, process.env.SECRET, { expiresIn: "1h", subject: `${newUser._id}` });
-    // await newUser.save();
+    await newUser.save();
     res.contentType("application/json");
     res.cookie("JWTtoken", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
     res.json({ token, name });
