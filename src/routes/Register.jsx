@@ -67,11 +67,10 @@ export default function Login() {
       .then((Jsondata) => Jsondata.json())
       .then((data) => {
         console.log("Login data = ", data);
+        localStorage.setItem("userToken", data.token);
         setSignInState(function () {
           return {
-            isAuthenticated: data.isAuthenticated,
-            _id: data.user._id,
-            username: data.user.username,
+            username: data.name,
           };
         });
       })

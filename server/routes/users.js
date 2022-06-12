@@ -58,7 +58,7 @@ router.post("/register", async (req, res, next) => {
     // await newUser.save();
     res.contentType("application/json");
     res.cookie("JWTtoken", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
-    res.json(token);
+    res.json({ token, name });
   } catch (error) {
     console.log("Some error occured = ", error);
     next(error);
