@@ -30,7 +30,7 @@ router.post("/login", async (req, res, next) => {
     const user = await User.findOne({ email });
     console.log("user in the login route = ", user.password);
     console.log("user password = ", password);
-    if (!user.password) {
+    if (!user) {
       return res.status(404).json("Either email or password is wrong");
     }
 
