@@ -16,7 +16,14 @@ function SinglePagePoll(props) {
   React.useEffect(
     function () {
       console.log("I am useEffect function in SinglePollPage");
-      fetch(`/poll/allPolls/${id}`)
+      const fetchConfig = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*",
+        },
+      };
+      fetch(`/poll/allPolls/${id}`, fetchConfig)
         .then((jsonData) => jsonData.json())
         .then((data) => {
           console.log("Data revieved from allPolls/:id route", data);
@@ -50,6 +57,7 @@ function SinglePagePoll(props) {
         headers: {
           "Content-Type": "application/json",
           Accept: "*/*",
+          "o-auth-token": localStorage.getItem("userToken"),
         },
         body: JSON.stringify(state),
       };

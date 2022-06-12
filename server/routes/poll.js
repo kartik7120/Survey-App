@@ -96,7 +96,7 @@ router.post("/create", async (req, res, next) => {
     }
 });
 
-router.patch("/updateVotes/:id", async (req, res, next) => {
+router.patch("/updateVotes/:id", checkUserAuthentication, async (req, res, next) => {
     try {
         const { _id, targetValue } = req.body;
         console.log("req.user in updateVotes = ", req.user);

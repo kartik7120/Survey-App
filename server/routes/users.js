@@ -19,6 +19,7 @@ router.get("/user", async (req, res, next) => {
     res.json(body);
   }
   catch (error) {
+    console.log(error);
     next(error);
   }
 })
@@ -39,7 +40,7 @@ router.post("/login", async (req, res, next) => {
     if (!isValid) {
       return res.status(406).json("Either email or password is wrong");
     }
-
+    req.user = user;
     const token = JWT.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "1h", subject: `${user._id}` });
     res.cookie("JWTtoken", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
     res.status(200).json({ token, name: user.username })
