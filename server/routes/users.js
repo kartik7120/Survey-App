@@ -4,7 +4,9 @@ const User = require("../models/userSchema");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
-router.get("/user", async (req, res, next) => {
+const checkUserAuthentication = require("../middleware/checkUserAuthtication");
+
+router.get("/user", checkUserAuthentication, async (req, res, next) => {
 
   const token = req.header("o-auth-token");
   console.log(token);
