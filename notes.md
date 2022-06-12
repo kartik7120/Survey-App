@@ -19,7 +19,7 @@
 - [ ] Make the app look pretty
 - [x] Make a proper landing page for the web app
 - [x] Users should not be able to vote on the poll that they already voted who are logged in
-- [ ] User should be logged in to vote
+- [x] User should be logged in to vote
 - [ ] Make backend safe using different mentioned in the express document
 - [x] Add a footer in the app
 - [x] Add a logo
@@ -29,7 +29,7 @@
 - [x] User redirects to it's when a new poll is made
 - [x] Fix the links in the bread crumb when the app is in mobile layout
 - [x] Fix the create all polls bug
-- [ ] Add sharable links to all polls for social media platforms
+- [x] Add sharable links to all polls for social media platforms
 - [x] Add category to the create poll route
 - [x] Make create poll form reponsive
 - [x] Fix margin of a single poll after the vote has been submitted0
@@ -80,10 +80,10 @@ Adding timer in a poll
 
 ### Login related bug fixes
 
-- [ ] Make it so that the user is logged in even after refresh
-- [ ] [Blog for persistent login in React](https://www.freecodecamp.org/news/how-to-persist-a-logged-in-user-in-react/)
-- [ ] Create proper error handling in the backend for if the user password is wrong or if the user exist or not
-- [ ] Make a proper flash message if the user password or username is wrong or not
+- [x] Make it so that the user is logged in even after refresh
+- [x] [Blog for persistent login in React](https://www.freecodecamp.org/news/how-to-persist-a-logged-in-user-in-react/)
+- [x] Create proper error handling in the backend for if the user password is wrong or if the user exist or not
+- [x] Make a proper flash message if the user password or username is wrong or not
 - [x] Make the user login instantely after the user is registered in the app
 - [ ] Make proper transition when the user is checked if it has voted in the poll or not
 
