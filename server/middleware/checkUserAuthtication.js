@@ -5,11 +5,10 @@ const checkUserAuthentication = (req, res, next) => {
         return res.status(404).json("Token not found");
     }
     try {
-        const payload = JWT.verify(token, process.env.SECRET);
+        JWT.verify(token, process.env.SECRET);
         next();
     } catch (error) {
-        console.log(error);
-        next(error);
+        return res.status(404).json("Token is invalid");
     }
 }
 module.exports = checkUserAuthentication;

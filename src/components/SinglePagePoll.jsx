@@ -62,7 +62,10 @@ function SinglePagePoll(props) {
         body: JSON.stringify(state),
       };
       fetch(`/poll/updateVotes/${state._id}`, fetchConfig)
-        .then((jsonData) => jsonData.json())
+        .then((jsonData) => {
+          if (jsonData.status === 404) navigate("/Signin");
+          jsonData.json();
+        })
         .then((data) => {
           console.log("Data recieved from patch request", data);
           const objData = JSON.parse(data);
@@ -80,9 +83,10 @@ function SinglePagePoll(props) {
             };
           });
         })
-        .catch((err) =>
-          console.log("Error occured while making a PATCH request", err)
-        );
+        .catch((err) => {
+          if (err === "Token is invalid") navigate("/Signin");
+          console.log("Error occured while making a PATCH request", err);
+        });
     } else {
       navigate("/Signup");
     }
