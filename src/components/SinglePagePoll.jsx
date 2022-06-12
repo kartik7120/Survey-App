@@ -50,7 +50,7 @@ function SinglePagePoll(props) {
   //     0
   //   );
   function handleSubmit(e) {
-    if (signInState.isAuthenticated !== false) {
+    if (signInState) {
       e.preventDefault();
       const fetchConfig = {
         method: "PATCH",
