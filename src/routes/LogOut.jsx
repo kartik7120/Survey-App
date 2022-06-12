@@ -20,6 +20,9 @@ function LogOut(props) {
       .then((jsonData) => jsonData.json())
       .then((data) => {
         console.log("Data recieved from logout route", data);
+        if (localStorage.getItem("userToken")) {
+          localStorage.removeItem("userToken");
+        }
         setSignInState(false);
       })
       .catch((err) => console.log("Some errored while logging out", err));

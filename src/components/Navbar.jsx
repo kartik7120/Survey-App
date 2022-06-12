@@ -194,7 +194,7 @@ const ResponsiveAppBar = () => {
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
                     {...stringAvatar(
-                      signInState ? signInState.username : "Kaartik Shukla"
+                      /*signInState ? signInState.username :*/ "Kaartik Shukla"
                     )}
                   />
                 </IconButton>

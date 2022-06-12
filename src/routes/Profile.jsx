@@ -59,7 +59,10 @@ function Profile(props) {
           },
         };
         fetch(`/users/user`, fetchConfig)
-          .then((jsonData) => jsonData.json())
+          .then((jsonData) => {
+            if (jsonData.status === 404) navigate("../Signin");
+            return jsonData.json();
+          })
           .then((data) => {
             console.log("Data from the /users/:id route", data);
             const body = JSON.parse(data);

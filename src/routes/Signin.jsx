@@ -13,6 +13,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { signInContext } from "../components/Navbar";
 import { useNavigate } from "react-router";
+// import { Alert } from "@mui/material";
 
 function Copyright(props) {
   return (
@@ -89,6 +90,7 @@ export default function SignIn() {
             alignItems: "center",
           }}
         >
+          {/* <Alert severity="error">This is an error alert — check it out!</Alert> */}
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
