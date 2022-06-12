@@ -47,7 +47,7 @@ export default function SignIn() {
     });
 
     const body = {
-      username: data.get("username"),
+      email: data.get("email"),
       password: data.get("password"),
     };
 
@@ -64,12 +64,10 @@ export default function SignIn() {
       .then((jsonData) => jsonData.json())
       .then((data) => {
         console.log("Data returned by the login route", data);
-        const body = JSON.parse(data);
+        localStorage.setItem("userToken", data.token);
         setSignInState(function (oldState) {
           return {
-            isAuthenticated: body.isAuthenticated,
-            _id: body.user_id,
-            username: body.username,
+            username: data.username,
           };
         });
       })
@@ -107,10 +105,10 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              id="username"
-              label="Username"
-              name="username"
-              autoComplete="username"
+              id="email"
+              label="email"
+              name="email"
+              autoComplete="email"
               autoFocus
             />
             <TextField
