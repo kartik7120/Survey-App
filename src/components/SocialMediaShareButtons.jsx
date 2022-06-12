@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from "@mui/material";
+import { Card, CardContent, CardHeader, Typography } from "@mui/material";
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -22,7 +22,9 @@ function SocialMediaShareButtons(props) {
         minWidth: "25em",
       }}
     >
-      <CardHeader component="h1">Share</CardHeader>
+      <Typography variant="h3" component="h1" textAlign="center">
+        Share
+      </Typography>
       <CardContent style={{ display: "flex", justifyContent: "space-evenly" }}>
         <RedditShareButton
           url="http://localhost:3000/poll/6290601894c72cbd8787af53"
