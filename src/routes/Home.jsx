@@ -19,8 +19,8 @@ function Home(props) {
   const [state, setState] = React.useState(null);
   const [open, setOpen] = React.useState(true);
   const signInObject = React.useContext(signInContext);
-  const alertState = signInObject.alertState;
-  const setAlertState = signInObject.alertState;
+  let alertState = signInObject.alertState;
+  // const setAlertState = signInObject.setAlertState;
   React.useEffect(function () {
     fetch("poll/allPolls/details")
       .then((jsonData) => jsonData.json())
@@ -50,8 +50,9 @@ function Home(props) {
                       color="inherit"
                       size="small"
                       onClick={() => {
-                        // setAlertState("");
                         setOpen(false);
+                        alertState = null;
+                        // setAlertState(null);
                       }}
                     >
                       <CloseIcon fontSize="inherit" />

@@ -41,7 +41,7 @@ export default function SignIn() {
   const [open, setOpen] = React.useState(true);
   const signInObject = React.useContext(signInContext);
   const setSignInState = signInObject.setSignInState;
-  const alertState = signInObject.alertState;
+  let alertState = signInObject.alertState;
   const setAlertState = signInObject.setAlertState;
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -107,8 +107,9 @@ export default function SignIn() {
                       color="inherit"
                       size="small"
                       onClick={() => {
-                        // setAlertState("");
                         setOpen(false);
+                        alertState = null;
+                        // setAlertState(null);
                       }}
                     >
                       <CloseIcon fontSize="inherit" />

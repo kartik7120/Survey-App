@@ -66,7 +66,7 @@ function SinglePagePoll(props) {
             setAlertState(function (oldState) {
               return "Session expired";
             });
-            navigate("/Signin");
+            navigate("/home");
           }
           return jsonData.json();
         })
