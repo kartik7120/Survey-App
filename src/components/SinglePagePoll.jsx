@@ -107,7 +107,7 @@ function SinglePagePoll(props) {
               marginTop: "5%",
             }}
           >
-            <Card sx={{ width: "50%", borderRadius: "3em" }}>
+            <Card sx={{ width: "50%", borderRadius: "3em", minWidth: "20em" }}>
               <CardContent>
                 <div className="poll">
                   <form action="" method="post" onSubmit={handleSubmit}>
