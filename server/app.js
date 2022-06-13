@@ -12,7 +12,14 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const helmet = require("helmet");
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/Survey')
+const connectionParams = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}
+
+const url = process.env.URL || 'mongodb://localhost:27017/Survey';
+
+mongoose.connect(url, connectionParams)
   .then(() => {
     console.log("Connected to the mongo DB database");
   })

@@ -9,7 +9,7 @@ router.get("/allPolls/details", async (req, res, next) => {
     try {
         const noOfPolls = await Poll.find({}).count();
         const noOfUsers = await User.find({}).count();
-        const allPolls = await Poll.find({ $where: "this.votes.length > 0" }, { votes: 1, _id: 0 });
+        const allPolls = await Poll.find({}, { votes: 1, _id: 0 });
         let totalVotes = 0;
         allPolls.map((votesObj) => {
             votesObj.votes.map((vote) => {
