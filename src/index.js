@@ -29,7 +29,7 @@ root.render(
           <Route path='createPoll' element={<Poll />} />
           <Route path="Signup" element={<Login />} />
           <Route path='Signin' element={<SignIn />} />
-          <Route path="Allpolls" element={<AllPolls />} />
+          <Route path="polls" element={<AllPolls />} />
           <Route path='poll/:id' element={<SinglePagePoll />} />
           <Route path='Logout' element={<LogOut />} />
           <Route path='Profile' element={<Profile />} >

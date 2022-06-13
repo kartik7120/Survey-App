@@ -25,6 +25,7 @@ function Poll(props) {
   let navigate = useNavigate();
   const signInObject = React.useContext(signInContext);
   const signInState = signInObject.signInState;
+  const setAlertState = signInObject.setAlertState;
   const [state, setState] = React.useState(2);
   const [isSubmited, setIsSubmited] = React.useState(false);
   const [formState, setFormState] = React.useState({
@@ -82,11 +83,20 @@ function Poll(props) {
         headers: {
           "Content-Type": "application/json",
           Accept: "*/*",
+          "o-auth-token": localStorage.getItem("userToken"),
         },
         body: JSON.stringify(body),
       };
       fetch("/poll/create", fetchConfig)
-        .then((jsonData) => jsonData.json())
+        .then((jsonData) => {
+          if (jsonData.status === 404) {
+            setAlertState(function (oldState) {
+              return "Session expired";
+            });
+            navigate("/createPoll");
+          }
+          return jsonData.json();
+        })
         .then((data) => {
           navigate(`/poll/${data}`, { replace: true });
         })

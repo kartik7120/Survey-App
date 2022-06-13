@@ -56,11 +56,13 @@ router.get("/allPolls/:id", async (req, res) => {
     res.json(JSON.stringify(poll));
 })
 
-router.post("/create", async (req, res, next) => {
+router.post("/create", checkUserAuthentication, async (req, res, next) => {
     try {
-        console.log("Session user = ", req.user);
-        console.log("Session = ", req.session);
-        if (req.session.user) {
+        const token = req.header("o-auth-token");
+
+        const payload = jwt.verify(token, process.env.SECRET);
+        const id = payload.sub;
+        if (payload) {
             const { title, description, options, flair } = req.body;
             console.log("Title = ", title);
             console.log("description = ", description);
@@ -85,7 +87,7 @@ router.post("/create", async (req, res, next) => {
                 .then(() => console.log("Successfully saved to the database"))
                 .catch((err) => console.log("Error in saving to the database", err));
 
-            await (await User.findByIdAndUpdate({ _id: req.session.user._id }, { $push: { "polls": newPoll._id } }, { new: true })).save();
+            await (await User.findByIdAndUpdate({ _id: id }, { $push: { "polls": newPoll._id } }, { new: true })).save();
             // user.polls = newPoll._id;
             res.json(newPoll._id);
         }

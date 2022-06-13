@@ -16,8 +16,8 @@ import { NavLink } from "react-router-dom";
 import Footer from "./footer";
 import PollIcon from "@mui/icons-material/Poll";
 
-const pages = ["home", "about", "createPoll", "Allpolls"];
-const settings = ["Profile", "Signup", "Signin", "Logout"];
+const pages = ["home", "about", "createPoll", "polls"];
+const settings = ["Profile", "Signup", "Signin"];
 
 const signInContext = React.createContext(null);
 let stateObject;
@@ -144,7 +144,7 @@ const ResponsiveAppBar = () => {
                         }}
                         className="navbarTextCollapased"
                       >
-                        {page.toUpperCase()}
+                        {page}
                       </NavLink>
                     </Typography>
                   </MenuItem>
@@ -185,7 +185,7 @@ const ResponsiveAppBar = () => {
                     to={`/${page}`}
                     style={{ textDecoration: "none", color: "white" }}
                   >
-                    {page.toUpperCase()}
+                    {page}
                   </NavLink>
                 </Button>
               ))}

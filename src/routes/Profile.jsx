@@ -49,7 +49,7 @@ function Profile(props) {
   const [userDataState, setUserDataState] = React.useState(null);
   React.useEffect(
     function () {
-      if (signInState) {
+      if (localStorage.getItem("userToken")) {
         const fetchConfig = {
           method: "GET",
           headers: {
