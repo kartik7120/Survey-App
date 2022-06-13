@@ -34,7 +34,7 @@ function Home(props) {
   }, []);
 
   function handleClick(e) {
-    navigate("../Allpolls");
+    navigate("../polls");
   }
   return (
     <>
