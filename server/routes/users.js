@@ -12,8 +12,6 @@ router.get("/user", checkUserAuthentication, async (req, res, next) => {
   try {
     const payload = JWT.verify(token, process.env.SECRET);
     const user = await User.findById({ _id: payload.sub }).populate("polls");
-    const userPolls = user.polls;
-    console.log("User polls data = ", userPolls);
     const body = JSON.stringify(user);
     res.contentType("application/json");
     res.json(body);
