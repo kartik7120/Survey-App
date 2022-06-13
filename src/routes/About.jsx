@@ -93,6 +93,11 @@ function About(props) {
           </div>
         </IconContext.Provider>
       </Box>
+      <Typography component="p" variant="h6" textAlign="center">
+        If you find a bug or want to add a feature to this project you can
+        <Link href="https://github.com/kartik7120/Survey-App">fork</Link> the
+        project from here and start contributing !
+      </Typography>
     </Container>
   );
 }
