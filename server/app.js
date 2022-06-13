@@ -10,6 +10,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const helmet = require("helmet");
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/Survey')
   .then(() => {
@@ -40,7 +41,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/testServer", router); // for testing the router the server
 app.use("/poll", pollRouter);
-
+app.use(helmet());
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
