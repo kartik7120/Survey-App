@@ -15,7 +15,6 @@ function SinglePagePoll(props) {
 
   React.useEffect(
     function () {
-      console.log("I am useEffect function in SinglePollPage");
       const fetchConfig = {
         method: "GET",
         headers: {
@@ -26,9 +25,7 @@ function SinglePagePoll(props) {
       fetch(`/poll/allPolls/${id}`, fetchConfig)
         .then((jsonData) => jsonData.json())
         .then((data) => {
-          console.log("Data revieved from allPolls/:id route", data);
           const pollData = JSON.parse(data);
-          console.log("Polldata = ", pollData);
           setState(function (oldState) {
             return {
               ...pollData,
@@ -69,9 +66,7 @@ function SinglePagePoll(props) {
           return jsonData.json();
         })
         .then((data) => {
-          console.log("Data recieved from patch request", data);
           const objData = data;
-          console.log(objData);
           setState(function (oldState) {
             return {
               ...oldState,

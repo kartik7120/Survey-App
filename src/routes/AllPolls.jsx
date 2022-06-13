@@ -24,7 +24,6 @@ function AllPolls(props) {
         .then((jsonData) => jsonData.json())
         .then((data) => {
           const body = data;
-          console.log("Data from allPolls/page = ", data);
           setState(function (oldState) {
             return {
               pollData: body.pollData,

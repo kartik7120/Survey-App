@@ -50,7 +50,6 @@ router.get("/allPolls/:id", async (req, res) => {
     const { id } = req.params;
 
     const poll = await Poll.findById({ _id: id });
-    console.log("Poll data from allPolls/:id route", poll);
     res.contentType("application/json");
 
     res.json(JSON.stringify(poll));
@@ -64,9 +63,6 @@ router.post("/create", checkUserAuthentication, async (req, res, next) => {
         const id = payload.sub;
         if (payload) {
             const { title, description, options, flair } = req.body;
-            console.log("Title = ", title);
-            console.log("description = ", description);
-            console.log("options = ", options);
             let op = [];
             for (let [, value] of Object.entries(options)) {
                 op.push(value); // values for options
@@ -114,7 +110,6 @@ router.patch("/updateVotes/:id", checkUserAuthentication, async (req, res, next)
                 break;
             }
         }
-        console.log("Inside this if condition if user has logged in");
         const payload = jwt.verify(token, process.env.SECRET);
         userVotedArray.push(payload.sub);
         const set = new Set();
@@ -134,7 +129,6 @@ router.patch("/updateVotes/:id", checkUserAuthentication, async (req, res, next)
 
         const newPoll = await Poll.findByIdAndUpdate({ _id }, { $set: { "votes": votesArray, "userVoted": userVotedArray } }, { new: true });
         res.contentType("application/json");
-        console.log(newPoll);
         res.json(newPoll);
     } catch (error) {
         next(error);

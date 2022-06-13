@@ -19,7 +19,6 @@ function LogOut(props) {
     fetch("/users/logout", fetchConfig)
       .then((jsonData) => jsonData.json())
       .then((data) => {
-        console.log("Data recieved from logout route", data);
         if (localStorage.getItem("userToken")) {
           localStorage.removeItem("userToken");
         }

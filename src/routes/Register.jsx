@@ -40,13 +40,6 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-      firstName: data.get("firstName"),
-      lastName: data.get("lastName"),
-    });
-
     const body = {
       email: data.get("email"),
       password: data.get("password"),
@@ -66,7 +59,6 @@ export default function Login() {
     fetch("/users/register", fetchConfig)
       .then((Jsondata) => Jsondata.json())
       .then((data) => {
-        console.log("Login data = ", data);
         localStorage.setItem("userToken", data.token);
         setSignInState(function () {
           return {

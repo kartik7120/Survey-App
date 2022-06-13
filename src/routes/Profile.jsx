@@ -45,7 +45,6 @@ function Profile(props) {
   let navigate = useNavigate();
   const signInObject = React.useContext(signInContext);
   const signInState = signInObject.signInState;
-  console.log("signInState from profile route = ", signInState);
   const [userDataState, setUserDataState] = React.useState(null);
   React.useEffect(
     function () {
@@ -64,7 +63,6 @@ function Profile(props) {
             return jsonData.json();
           })
           .then((data) => {
-            console.log("Data from the /users/:id route", data);
             const body = JSON.parse(data);
             let totalVotes = 0;
             body.polls.map((ele) => {

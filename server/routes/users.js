@@ -9,10 +9,8 @@ const checkUserAuthentication = require("../middleware/checkUserAuthtication");
 router.get("/user", checkUserAuthentication, async (req, res, next) => {
 
   const token = req.header("o-auth-token");
-  console.log(token);
   try {
     const payload = JWT.verify(token, process.env.SECRET);
-    console.log("payload = ", payload);
     const user = await User.findById({ _id: payload.sub }).populate("polls");
     const userPolls = user.polls;
     console.log("User polls data = ", userPolls);
@@ -21,7 +19,6 @@ router.get("/user", checkUserAuthentication, async (req, res, next) => {
     res.json(body);
   }
   catch (error) {
-    console.log(error);
     next(error);
   }
 })
@@ -31,8 +28,6 @@ router.post("/login", async (req, res, next) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-    console.log("user in the login route = ", user.password);
-    console.log("user password = ", password);
     if (!user) {
       return res.status(404).json("Either email or password is wrong");
     }
@@ -47,14 +42,12 @@ router.post("/login", async (req, res, next) => {
     res.cookie("JWTtoken", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
     res.status(200).json({ token, name: user.username, _id: user._id })
   } catch (error) {
-    console.log("Oh no some error occured in login route = ", error);
     next(error);
   }
 })
 
 router.post("/register", async (req, res, next) => {
   try {
-    console.log(req.body);
     const { firstName, lastName, password, email } = req.body;
 
     const user = await User.findOne({ email });
@@ -80,7 +73,6 @@ router.post("/register", async (req, res, next) => {
     res.cookie("JWTtoken", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
     res.json({ token, name, _id: newUser._id });
   } catch (error) {
-    console.log("Some error occured = ", error);
     next(error);
   }
 });
@@ -94,7 +86,7 @@ router.post("/logout", (req, res, next) => {
     }
     res.json(JSON.stringify(body));
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 })
 
