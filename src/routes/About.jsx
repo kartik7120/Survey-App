@@ -44,10 +44,17 @@ function About(props) {
       <Typography variant="h3" component="h2" textAlign="center">
         Tech Stack used for creating this web app
       </Typography>
-      <Box>
-        <IconContext.Provider value={{ size: "6em", color: "cyan" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "2%",
+          flexWrap: "wrap",
+        }}
+      >
+        <IconContext.Provider value={{ size: "6em", color: "#4DB33D" }}>
           <div>
-            <FaReact />
+            <SiMongodb />
           </div>
         </IconContext.Provider>
         <IconContext.Provider value={{ size: "6em", color: "grey" }}>
@@ -55,14 +62,14 @@ function About(props) {
             <SiExpress />
           </div>
         </IconContext.Provider>
+        <IconContext.Provider value={{ size: "6em", color: "cyan" }}>
+          <div>
+            <FaReact />
+          </div>
+        </IconContext.Provider>
         <IconContext.Provider value={{ size: "6em", color: "#44883e" }}>
           <div>
             <FaNodeJs />
-          </div>
-        </IconContext.Provider>
-        <IconContext.Provider value={{ size: "6em", color: "#4DB33D" }}>
-          <div>
-            <SiMongodb />
           </div>
         </IconContext.Provider>
         <IconContext.Provider value={{ size: "6em", color: "red" }}>
