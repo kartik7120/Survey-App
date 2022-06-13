@@ -29,7 +29,7 @@ function About(props) {
               idea
             </Link>
           </Typography>
-          of the app from this
+          of the app from the
           <Typography variant="h6" component="a" sx={{ padding: "0.2em" }}>
             <Link
               href="https://github.com/florinpop17/app-ideas"
