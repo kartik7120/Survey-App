@@ -5,7 +5,6 @@ const checkUserAlreadyVoted = async (req, res, next) => {
     const { _id } = req.body;
     try {
         const decodedToken = JWT.decode(token, { complete: true });
-        console.log("decoded token = ", decodedToken);
         const user_id = decodedToken.sub;
         const poll = await Poll.findById({ _id });
         const isUserVoted = poll.userVoted.find(userId => userId === user_id);
@@ -14,7 +13,6 @@ const checkUserAlreadyVoted = async (req, res, next) => {
         }
         next();
     } catch (error) {
-        console.log(error);
         return res.status(404).json("Token is invalid");
     }
 }
