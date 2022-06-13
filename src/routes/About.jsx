@@ -1,5 +1,15 @@
 import { Container, Link, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { FaReact, FaNodeJs } from "react-icons/fa";
+import { IconContext } from "react-icons";
+import {
+  SiExpress,
+  SiMongodb,
+  SiReactrouter,
+  SiJsonwebtokens,
+  SiFramer,
+  SiMaterialui,
+} from "react-icons/si";
 function About(props) {
   return (
     <Container maxWidth="lg" sx={{ margin: "3em auto" }}>
@@ -35,7 +45,46 @@ function About(props) {
         Tech Stack used for creating this web app
       </Typography>
       <Box>
-        
+        <IconContext.Provider value={{ size: "6em", color: "cyan" }}>
+          <div>
+            <FaReact />
+          </div>
+        </IconContext.Provider>
+        <IconContext.Provider value={{ size: "6em", color: "grey" }}>
+          <div>
+            <SiExpress />
+          </div>
+        </IconContext.Provider>
+        <IconContext.Provider value={{ size: "6em", color: "#44883e" }}>
+          <div>
+            <FaNodeJs />
+          </div>
+        </IconContext.Provider>
+        <IconContext.Provider value={{ size: "6em", color: "#4DB33D" }}>
+          <div>
+            <SiMongodb />
+          </div>
+        </IconContext.Provider>
+        <IconContext.Provider value={{ size: "6em", color: "red" }}>
+          <div>
+            <SiReactrouter />
+          </div>
+        </IconContext.Provider>
+        <IconContext.Provider value={{ size: "6em" }}>
+          <div>
+            <SiJsonwebtokens />
+          </div>
+        </IconContext.Provider>
+        <IconContext.Provider value={{ size: "6em", color: "#0288d1" }}>
+          <div>
+            <SiMaterialui />
+          </div>
+        </IconContext.Provider>
+        <IconContext.Provider value={{ size: "6em", color: "black" }}>
+          <div>
+            <SiFramer />
+          </div>
+        </IconContext.Provider>
       </Box>
     </Container>
   );
