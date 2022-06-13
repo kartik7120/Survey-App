@@ -45,7 +45,7 @@ router.post("/login", async (req, res, next) => {
     req.user = user;
     const token = JWT.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "1h", subject: `${user._id}` });
     res.cookie("JWTtoken", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
-    res.status(200).json({ token, name: user.username })
+    res.status(200).json({ token, name: user.username, _id: user._id })
   } catch (error) {
     console.log("Oh no some error occured in login route = ", error);
     next(error);
@@ -78,7 +78,7 @@ router.post("/register", async (req, res, next) => {
     await newUser.save();
     res.contentType("application/json");
     res.cookie("JWTtoken", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
-    res.json({ token, name });
+    res.json({ token, name, _id: newUser._id });
   } catch (error) {
     console.log("Some error occured = ", error);
     next(error);

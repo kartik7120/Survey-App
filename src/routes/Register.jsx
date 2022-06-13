@@ -71,6 +71,7 @@ export default function Login() {
         setSignInState(function () {
           return {
             username: data.name,
+            _id: data._id,
           };
         });
       })

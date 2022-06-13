@@ -28,6 +28,7 @@ function SinglePagePoll(props) {
         .then((data) => {
           console.log("Data revieved from allPolls/:id route", data);
           const pollData = JSON.parse(data);
+          console.log("Polldata = ", pollData);
           setState(function (oldState) {
             return {
               ...pollData,

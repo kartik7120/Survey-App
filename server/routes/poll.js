@@ -5,7 +5,6 @@ const User = require("../models/userSchema");
 const { default: mongoose } = require("mongoose");
 const checkUserAuthentication = require("../middleware/checkUserAuthtication");
 const jwt = require("jsonwebtoken");
-const checkUserAlreadyVoted = require("../middleware/checkUserAlreadyVoted");
 router.get("/allPolls/details", async (req, res, next) => {
     try {
         const noOfPolls = await Poll.find({}).count();
@@ -97,7 +96,7 @@ router.post("/create", async (req, res, next) => {
     }
 });
 
-router.patch("/updateVotes/:id", checkUserAuthentication, checkUserAlreadyVoted, async (req, res, next) => {
+router.patch("/updateVotes/:id", checkUserAuthentication, async (req, res, next) => {
     try {
         const { _id, targetValue } = req.body;
         const token = req.header("o-auth-token");

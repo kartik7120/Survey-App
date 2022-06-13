@@ -75,6 +75,7 @@ export default function SignIn() {
         setSignInState(function (oldState) {
           return {
             username: data.username,
+            _id: data._id,
           };
         });
         setAlertState("User logged in");
