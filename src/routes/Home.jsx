@@ -86,9 +86,8 @@ function Home(props) {
                 }}
                 gutterBottom
               >
-                Create a poll, Share with friends or Embed on your site.
-                Unlimited Polls - Unlimited Votes - Limitless Customisation -
-                ABSOLUTELY FREE!
+                Create a poll, Share with friends . Unlimited Polls - Unlimited
+                Votes - Limitless Customisation - ABSOLUTELY FREE!
               </Typography>
             </div>
             <div className="homeBody">
