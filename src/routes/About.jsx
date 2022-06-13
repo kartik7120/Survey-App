@@ -95,8 +95,10 @@ function About(props) {
       </Box>
       <Typography component="p" variant="h6" textAlign="center">
         If you find a bug or want to add a feature to this project you can
-        <Link href="https://github.com/kartik7120/Survey-App">fork</Link> the
-        project from here and start contributing !
+        <Typography variant="h6" component="a" sx={{ padding: "0.2em" }}>
+          <Link href="https://github.com/kartik7120/Survey-App" color="secondary">fork</Link>
+        </Typography>
+        the project from here and start contributing !
       </Typography>
     </Container>
   );
