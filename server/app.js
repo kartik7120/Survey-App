@@ -10,7 +10,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const passport = require("passport");
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/Survey')
   .then(() => {
@@ -37,8 +36,6 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }))
-app.use(passport.initialize());
-app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/testServer", router); // for testing the router the server
